@@ -1,0 +1,137 @@
+#!/bin/bash
+
+[[  -z $lang ]] && printf "Enter Language Name : " && read lang
+[[  -z $entry ]] && printf "Enter Program Entry Point : " && read entry
+
+function py_init() {
+  echo "
+  {
+    \"configurations\": {
+      \"<name>: Launch\": {
+        \"adapter\": \"debugpy\",
+        \"configuration\": {
+          \"name\": \"<name>: Launch\",
+          \"type\": \"python\",
+          \"request\": \"launch\",
+          \"cwd\": \"\${workspaceRoot}\",
+          \"python\": \"/usr/local/opt/python@3.8/libexec/bin/python\",
+          \"stopOnEntry\": true,
+          \"console\": \"externalTerminal\",
+          \"debugOptions\": [],
+          \"program\": \"${entry}\"
+        }
+      }
+    }
+  }
+  " > .vimspector.json
+}
+
+function lua_init() {
+  echo "
+  {
+    \"$schema\": \"https://puremourning.github.io/vimspector/schema/vimspector.schema.json#\",
+    \"configurations\": {
+      \"lua\": {
+        \"adapter\": \"lua-local\",
+        \"configuration\": {
+          \"request\": \"launch\",
+          \"type\": \"lua-local\",
+          \"cwd\": \"${workspaceFolder}\",
+          \"program\": {
+            \"lua\": \"lua\",
+            \"file\": \"${file}\"
+          }
+        }
+      },
+      \"luajit\": {
+        \"adapter\": \"lua-local\",
+        \"configuration\": {
+          \"request\": \"launch\",
+          \"type\": \"lua-local\",
+          \"cwd\": \"${workspaceFolder}\",
+          \"program\": {
+            \"lua\": \"luajit\",
+            \"file\": \"${file}\"
+          }
+        }
+      },
+      \"love\": {
+        \"adapter\": \"lua-local\",
+        \"configuration\": {
+          \"request\": \"launch\",
+          \"type\": \"lua-local\",
+          \"cwd\": \"${workspaceFolder}\",
+          \"program\": {
+            \"command\": \"love\"
+          },
+          \"args\": [\"${workspaceFolder}\"]
+        }
+      }
+    }
+  }
+  " > .vimspector.json
+}
+
+function c_init() {
+  echo "
+  {
+    \"configurations\": {
+      \"Launch\": {
+        \"adapter\": \"vscode-cpptools\",
+        \"configuration\": {
+          \"request\": \"launch\",
+          \"program\": \"/usr/bin/gcc\",
+          \"args\": [ ... ],
+          \"cwd\": \"${workspaceRoot}\",
+          \"environment\": [ ... ],
+          \"externalConsole\": true,
+          \"MIMode\": \"lldb\"
+        }
+      },
+      \"Attach\": {
+        \"adapter\": \"vscode-cpptools\",
+        \"configuration\": {
+          \"request\": \"attach\",
+          \"program\": \"/usr/bin/gcc\",
+          \"MIMode\": \"lldb\"
+        }
+      }
+    }
+  }
+  " > .vimspector.json
+}
+
+function node_init() {
+  echo "
+  {
+  \"configurations\": {
+    \"run\": {
+      \"adapter\": \"vscode-node\",
+      \"configuration\": {
+        \"request\": \"launch\",
+        \"protocol\": \"auto\",
+        \"stopOnEntry\": true,
+        \"console\": \"integratedTerminal\",
+        \"program\": \"${workspaceRoot}/${entry}\",
+        \"cwd\": \"${workspaceRoot}\"
+      }
+    }
+  }
+}
+  " > .vimspector.json;
+}
+
+
+
+case $lang in
+  py|python )
+    py_init
+    ;;
+  c|cpp|rust )
+    c_init
+    ;;
+  node|node.js )
+    node_init
+    ;;
+esac
+

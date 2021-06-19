@@ -1,0 +1,142 @@
+# !/bin/env zsh
+
+# reset
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + alt + cmd - s :  [[hs.wiki|hs]] -c 'stackline.config:toggle("appearance.showIcons")'
+
+# open apps
+cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
+
+alt + shift - return: open -na '/Applications/Google Chrome.app' --args --incognito
+alt - return: open -na '/Applications/Google Chrome.app'
+alt - m : open -na /Applications/mpv.app $(pbpaste)
+
+# Launch from scratchpad (all floating)
+cmd - m : /usr/local/opt/python@3.9/libexec/bin/python /Users/atidyshirt/bin/dropdown Spotify #~/bin/opacity
+cmd - d : /usr/local/opt/python@3.9/libexec/bin/python /Users/atidyshirt/bin/dropdown Discord
+
+# focus space
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+
+alt - h : yabai -m window --focus west
+alt- j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+shift + alt - h : yabai -m window --swap west
+shift + alt- j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+shift + ctrl - h : yabai -m window --warp west
+shift + ctrl- j : yabai -m window --warp south
+shift + ctrl - k : yabai -m window --warp north
+shift + ctrl - l : yabai -m window --warp east
+
+shift + cmd - h : yabai -m window --insert west
+shift + cmd- j : yabai -m window --insert south
+shift + cmd - k : yabai -m window --insert north
+shift + cmd - l : yabai -m window --insert east
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + cmd - n : yabai -m space --create && \
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
+
+# create desktop and follow focus - uses jq for parsing json (brew install jq)
+cmd + alt - n : yabai -m space --create && \
+                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                 yabai -m space --focus "${index}"
+
+
+# destroy desktop
+cmd + alt - w : yabai -m space --destroy
+
+# send window to desktop and follow focus
+shift + cmd - 1 : yabai -m window --space  1; yabai -m space --focus 1
+shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
+shift + cmd - 3 : yabai -m window --space  3; yabai -m space --focus 3
+shift + cmd - 4 : yabai -m window --space  4; yabai -m space --focus 4
+shift + cmd - 5 : yabai -m window --space  5; yabai -m space --focus 5
+
+# focus monitor
+ctrl + alt - 1  : yabai -m display --focus 1
+ctrl + alt - 2  : yabai -m display --focus 2
+ctrl + alt - 3  : yabai -m display --focus 3
+
+# send window to monitor and follow focus
+ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
+ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
+
+# move window
+shift + ctrl - a : yabai -m window --move rel:-30:0
+shift + ctrl - s : yabai -m window --move rel:0:30
+shift + ctrl - w : yabai -m window --move rel:0:-30
+shift + ctrl - d : yabai -m window --move rel:30:0
+
+# increase window size
+shift + alt - a : yabai -m window --resize left:-50:0
+shift + alt - s : yabai -m window --resize bottom:0:50
+shift + alt - w : yabai -m window --resize top:0:-50
+shift + alt - d : yabai -m window --resize right:50:0
+
+# decrease window size
+shift + cmd - a : yabai -m window --resize left:50:0
+shift + cmd - s : yabai -m window --resize bottom:0:-50
+shift + cmd - w : yabai -m window --resize top:0:50
+shift + cmd - d : yabai -m window --resize right:-50:0
+
+# mirror tree y-axis
+alt - y : yabai -m space --mirror y-axis
+
+# toggle desktop offset - ubersicht calander
+ctrl + alt + cmd - t : yabai -m config left_padding 20 && osascript -e 'tell application id "tracesof.uebersicht" to set hidden of widget id "ubersicht-calendar-widget-calendar-coffee" to true'
+ctrl + alt + cmd - y : yabai -m config left_padding 255 && osascript -e 'tell application id "tracesof.uebersicht" to set hidden of widget id "ubersicht-calendar-widget-calendar-coffee" to false'
+
+# toggle window parent zoom
+alt - d : yabai -m window --toggle zoom-parent && \
+
+# toggle window fullscreen zoom
+alt - f : yabai -m window --toggle zoom-fullscreen; \
+
+# toggle window native fullscreen
+shift + alt - f : yabai -m window --toggle native-fullscreen; \
+
+# toggle window border
+shift + alt - b : yabai -m window --toggle border; \
+
+# toggle window split type
+alt - e : yabai -m window --toggle split
+
+# float / unfloat window and center on screen
+alt - t : yabai -m window --toggle float; \
+          yabai -m window --grid 4:4:1:1:2:2
+
+shift + alt - t : yabai -m window --toggle float;\
+          yabai -m window --grid 20:20:1:1:18:18
+
+# toggle sticky, float and resize to picture-in-picture size
+alt - p : yabai -m window --toggle sticky;\
+          yabai -m window --toggle topmost;\
+          yabai -m window --grid 4:1:4:4:0:0
+
+
+shift + alt - z : yabai -m space --layout bsp
+shift + alt - x : yabai -m space --layout float
+shift + alt - c : yabai -m space --layout stack
+
+shift + ctrl - n : yabai -m window --stack next
+
+# focus stack
+alt - tab : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+shift + alt - tab : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
