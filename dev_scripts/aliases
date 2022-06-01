@@ -12,7 +12,7 @@ alias svi='sudo nvim'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias gc='git clone'
-alias dotfiles='stow --target=${HOME}'
+alias dotfiles='stow --target=$HOME'
 
 # Config Files
 alias arc='vi ~/dev_scripts/aliases'

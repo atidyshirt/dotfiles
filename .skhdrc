@@ -2,7 +2,7 @@
 
 # open apps
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
-alt - return : open -na '/Applications/Firefox.app'
+alt - return : open -na '/Applications/Google Chrome.app'
 alt - m : open -na /Applications/mpv.app $(pbpaste)
 
 # Launch from scratchpad (all floating)
