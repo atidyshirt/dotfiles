@@ -54,7 +54,7 @@ exec_always --no-startup-id xset s off
 
 # -- Terminal --
 bindsym $mod+Return 			exec --no-startup-id kitty
-bindsym $alt+Return 		    exec --no-startup-id firefox
+bindsym $alt+Return 		    exec --no-startup-id google-chrome-stable
 
 # -- Rofi --
 bindsym $alt+F1 				exec --no-startup-id ~/.config/i3/rofi/bin/launcher
@@ -209,4 +209,6 @@ mode "Move" {
 }
 bindsym $mod+Shift+m mode "Move"
 
-
+assign [class="^Discord*"] $ws5
+assign [class="^Slack*"] $ws5
+assign [class="^zoom*"] $ws4

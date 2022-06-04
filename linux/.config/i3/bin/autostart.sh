@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 ## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-## Autostart Programs
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 ## Autostart Programs
 
 # Capslock mapped to escape
 xmodmap -e 'clear Lock' #ensures you're not stuck in CAPS on mode
@@ -33,7 +32,6 @@ ksuperkey -e 'Super_R=Alt_L|F1' &
 unclutter &
 
 # Restore wallpaper
-# hsetroot -cover ~/.config/i3/wallpapers/home_gruvbox_comfy_brown.jpg
 nitrogen --restore
 
 # Lauch notification daemon
