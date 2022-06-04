@@ -24,7 +24,7 @@
 
 **Showcase**
 
-![Linux Preview](./preview-mac.png)
+![Mac Preview](./preview-mac.png)
 
 **Installation**
 
