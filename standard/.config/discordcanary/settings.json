@@ -7,5 +7,7 @@
     "y": 19,
     "width": 1042,
     "height": 1882
-  }
+  },
+  "UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod",
+  "NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod/"
 }
