@@ -2,6 +2,7 @@ require('packer').startup({
     function(use)
         -- packer self management
         use('wbthomason/packer.nvim')
+		
 
         -- {{{ lsp/autocompletion/snippets
         -- lsp plugins
