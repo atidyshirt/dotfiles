@@ -2,7 +2,14 @@ require('packer').startup({
     function(use)
         -- packer self management
         use('wbthomason/packer.nvim')
-		
+        use { 'nvim-orgmode/orgmode', config = function()
+            require('orgmode').setup{}
+        end }	
+        use {"akinsho/org-bullets.nvim", config = function()
+            require("org-bullets").setup {
+                symbols = { "◉", "○", "✸", "✿" }
+            }
+        end }
 
         -- {{{ lsp/autocompletion/snippets
         -- lsp plugins

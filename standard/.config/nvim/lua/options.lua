@@ -29,10 +29,7 @@ o.expandtab = true    	-- tabs -> spaces
 o.smartindent = true    -- nice indenting
 
  -- Better folding
-o.foldmethod = 'indent'
-o.foldnestmax = 10
 o.foldenable = false
-o.foldlevel = 2
 
 -- backup/swap files
 opt.swapfile = false  	-- have files saved to swap
@@ -52,3 +49,6 @@ vim.opt.termguicolors = true
 vim.diagnostic.config({
   virtual_text = false
 })
+
+vim.api.nvim_exec('language en_US.UTF-8', true)
+

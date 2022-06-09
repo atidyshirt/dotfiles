@@ -11,6 +11,7 @@ cmp.setup({
 	mapping = keymap.cmp_mappings,
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1 },
+		{ name = 'orgmode' },
 		{ name = 'ultisnips' },
 	}, {
 		{ name = 'buffer' },
