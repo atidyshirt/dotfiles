@@ -256,8 +256,8 @@ label-mode-foreground = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %icon%
-label-focused-foreground = ${color.BGL}
-label-focused-background = ${color.BLUE}
+label-focused-foreground = ${color.BLUE}
+label-focused-background = ${color.BGL}
 
 ; Available tokens:
 ;   %name%
@@ -276,8 +276,8 @@ label-unfocused-background = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-visible = %icon%
-label-visible-foreground = ${color.BGL}
-label-visible-background = ${color.GREEN}
+label-visible-foreground = ${color.GREEN}
+label-visible-background = ${color.BGL}
 
 ; Available tokens:
 ;   %name%
@@ -286,8 +286,8 @@ label-visible-background = ${color.GREEN}
 ;   %output%
 ; Default: %icon%  %name%
 label-urgent = %icon%
-label-urgent-foreground = ${color.BGL}
-label-urgent-background = ${color.RED}
+label-urgent-foreground = ${color.RED}
+label-urgent-background = ${color.BGL}
 
 ; Paddings
 label-focused-padding = 1

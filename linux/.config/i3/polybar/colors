@@ -2,16 +2,16 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 [color]
-BG = #262626
-BGL = #32302f
-FG = #bab5b7
-FGA = #808080
+BG = #24292e
+BGL = #444c56
+FG = #d1d5da
+FGA = #d1d5da
 
-BLACK = #000000
-WHITE = #FFFFFF
-RED = #62554A
-GREEN = #A3BE8C
-YELLOW = #bebebe
-BLUE = #637a8a
-PURPLE = #78758A
-CYAN = #877979
+BLACK = #586069
+WHITE = #d1d5da
+RED = #ea4a5a
+GREEN = #34d058
+YELLOW = #ffea7f
+BLUE = #2188ff
+PURPLE = #b392f0
+CYAN = #39c5cf

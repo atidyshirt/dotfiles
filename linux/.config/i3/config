@@ -33,11 +33,10 @@ gaps outer 0
 ##-- Colors ------------------------------
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #62554A #62554A #62554A #637a8a   #62554A
-client.focused_inactive #32302f #32302f #32302f #32302f   #32302f
-client.unfocused        #32302f #32302f #32302f #637a8a   #32302f
-client.urgent           #A3BE8C #A3BE8C #A3BE8C #637a8a   #A3BE8C
-client.placeholder      #32302f #32302f #32302f #637a8a   #32302f
+client.focused          #444c56 #444c56 #444c56 #24292e   #444c56
+client.focused_inactive #24292e #24292e #24292e #24292e   #24292e
+client.unfocused        #24292e #24292e #24292e #24292e   #24292e
+client.placeholder      #24292e #24292e #24292e #24292e   #24292e
 
 client.background       #1E222A
 

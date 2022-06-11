@@ -17,6 +17,7 @@ local lualine_def_themes = {
 	'iceberg_dark',
 	'iceberg_light',
 	'jellybeans',
+	'github',
 	'material',
 	'modeus_vivendi',
 	'molokai',
@@ -45,7 +46,7 @@ local lualine_def_styles = {
 -- }}}
 
 -- {{{ varible definitions
-M.scheme = 'gruvbox-material' -- specifies scheme. default is "everforest"
+M.scheme = 'github_dark' -- specifies scheme. default is "everforest"
 
 -- specifies line style
 M.lualine_style_left = ''
@@ -87,7 +88,7 @@ end
 function M.load_lualine_scheme(choice)
 	M.scheme = choice
 	local is_present = false
-	for i, name in ipairs(lualine_def_themes) do
+	for _, name in ipairs(lualine_def_themes) do
 		if name == choice then
 			is_present = true
 			M.is_lualine_default = true

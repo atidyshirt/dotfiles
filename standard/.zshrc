@@ -10,7 +10,7 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr ' •'
 zstyle ':vcs_info:*' stagedstr ' +'
-PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
+PROMPT='%(?.%F{blue}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 
 # Scripts
 export PATH="$HOME/.bin:$PATH"
