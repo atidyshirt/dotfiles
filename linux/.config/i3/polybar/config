@@ -40,7 +40,7 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 26
+height = 33
 offset-x = 0%
 offset-y = 0%
 background = ${color.BG}
@@ -55,10 +55,10 @@ padding = 0
 module-margin-left = 0
 module-margin-right = 0
 font-0 = "JetBrains Mono:bold:size=13;3"
-font-1 = "Iosevka Nerd Font:size=14;3"
-font-2 = "Iosevka Nerd Font:size=15;4"
-font-3 = "Iosevka Nerd Font:bold:size=14;4"
-font-4 = "archcraft:size=15;4"
+font-1 = "Iosevka Nerd Font:size=15;3"
+font-2 = "Iosevka Nerd Font:size=18;4"
+font-3 = "Iosevka Nerd Font:bold:size=15;4"
+font-4 = "archcraft:size=17;4"
 
 ; Modules are added to one of the available blocks
 ;   modules-left = cpu ram
@@ -68,7 +68,7 @@ font-4 = "archcraft:size=15;4"
 # Default
 modules-left = menu dot LD i3 RD
 modules-center = 
-modules-right = volume dot network dot backlight dot battery dot LD date RD dot sysmenu
+modules-right = volume dot network dot LD date RD dot sysmenu
 
 # Alternate
 ;modules-left = openbox 2LD cpu 3LD memory 4LD filesystem 5LD
