@@ -41,6 +41,7 @@ stow -t=$HOME standard mac
 **Requirements**
 
 - i3-gaps
+- i3-scratchpad
 - rofi
 - polybar
 - picom

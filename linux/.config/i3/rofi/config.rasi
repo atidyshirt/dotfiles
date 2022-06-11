@@ -2,7 +2,7 @@ configuration {
   modi: "drun";
   display-drun: "";
   drun-display-format: "{name}";
-  font: "JetBrains Mono 10";
+  font: "JetBrains Mono 13";
 }
 
 @theme "/dev/null"
@@ -18,7 +18,7 @@ configuration {
 window {
   location: west;
   width: 25%;
-  margin: 0 0 0 0;
+  margin: 2.25% 0 0 0;
   height: 100%;
   spacing: 0;
   children: [ box ];

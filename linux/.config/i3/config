@@ -14,6 +14,10 @@ font pango:JetBrains Mono Medium 10
 # Title bar text alignment
 title_align center
 
+# disable focus follows mouse
+focus_follows_mouse no
+floating_minimum_size 1200x600
+
 # Uncomment this to enable title bars
 # for_window [class=".*"] border normal 4
 
@@ -24,11 +28,21 @@ for_window [class=".*"] border pixel 5
 gaps inner 15
 gaps outer 0
 
+# titlebars on floating windows
+bindsym $mod+t floating toggle; [tiling con_id=__focused__] border pixel 5; [floating con_id=__focused__] border normal 0;
+default_border pixel 5
+default_floating_border normal 0
+
 # Only enable gaps on a workspace when there is at least one container
-#smart_gaps on
+smart_gaps on
 
 # Activate smart borders (always)
-#smart_borders on
+smart_borders on
+
+# scratchpad applications
+bindsym $alt+m            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
+bindsym $alt+d            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc discord"
+bindsym $alt+k exec --no-startup-id "i3-scratchpad -p0,450 -d 1400x800 -tmt -atc kitty"
 
 ##-- Colors ------------------------------
 
@@ -39,38 +53,44 @@ client.unfocused        #32302f #32302f #32302f #637a8a   #32302f
 client.urgent           #A3BE8C #A3BE8C #A3BE8C #637a8a   #A3BE8C
 client.placeholder      #32302f #32302f #32302f #637a8a   #32302f
 
-client.background       #1E222A
+client.background       #32302f
 
 ##-- Autostart ---------------------------
 
-exec_always --no-startup-id 	~/.config/i3/bin/autostart.sh
-
+exec_always --no-startup-id ~/.config/i3/bin/i3bar.sh
 exec_always --no-startup-id setterm -blank 0 -powersave off -powerdown 0
+exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id xset s off
-
-
+exec_always --no-startup-id unclutter &
+exec_always --no-startup-id xset m 0 0
+exec_always --no-startup-id xmodmap -e 'clear Lock'
+exec_always --no-startup-id xmodmap -e 'keycode 0x42=Escape'
+exec_always --no-startup-id libinput-gestures-setup stop desktop autostart start
+exec_always --no-startup-id ~/.config/i3/bin/autostart.sh
 
 ##-- Key Bindings ------------------------
 
 # -- Terminal --
-bindsym $mod+Return 			exec --no-startup-id kitty
-bindsym $alt+Return 		    exec --no-startup-id google-chrome-stable
+bindsym $mod+Return 			exec --no-startup-id kitty --listen-on=unix:@mykitty --single-instance -d ~ &> /dev/null
+bindsym $alt+Return 		    exec --no-startup-id firefox
+bindsym $alt+Shift+Return 		exec --no-startup-id google-chrome-stable
+
+# -- mpv from clipboard --
+bindsym $mod+m 		            exec --no-startup-id mpv $(xclip -o)
+bindsym $mod+p exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 600px; resize shrink height 10000px; resize grow height 350px;move position 18px 1168px;'"
 
 # -- Rofi --
 bindsym $alt+F1 				exec --no-startup-id ~/.config/i3/rofi/bin/launcher
+bindsym $mod+w 				    exec --no-startup-id ~/.config/i3/rofi/bin/windows
 bindsym $mod+x 					exec --no-startup-id ~/.config/i3/rofi/bin/powermenu
 bindsym $mod+Shift+s 		    exec --no-startup-id ~/.config/i3/rofi/bin/screenshot
+bindsym $mod+Shift+t 		    exec --no-startup-id ~/.config/i3/rofi/bin/themes
 
 # -- Function keys --
-bindsym XF86MonBrightnessUp 	exec --no-startup-id "brightness --inc"
-bindsym XF86MonBrightnessDown 	exec --no-startup-id "brightness --dec"
-bindsym XF86AudioRaiseVolume 	exec --no-startup-id "volume --inc"
-bindsym XF86AudioLowerVolume 	exec --no-startup-id "volume --dec"
-bindsym XF86AudioMute 			exec --no-startup-id "volume --toggle"
-bindsym XF86AudioNext 			exec --no-startup-id "mpc next"
-bindsym XF86AudioPrev 			exec --no-startup-id "mpc prev"
-bindsym XF86AudioPlay 			exec --no-startup-id "mpc toggle"
-bindsym XF86AudioStop 			exec --no-startup-id "mpc stop"
+bindsym $mod+Shift+plus 	    exec --no-startup-id "brightness --inc"
+bindsym $mod+Shift+minus 	    exec --no-startup-id "brightness --dec"
+bindsym $alt+Shift+plus 	    exec --no-startup-id "volume --inc"
+bindsym $alt+Shift+minus 	    exec --no-startup-id "volume --dec"
 
 # -- Screenshots --
 bindsym Print 					exec --no-startup-id "takeshot --now"
@@ -86,7 +106,6 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+c kill
 
 # change focus
 bindsym $mod+h focus left
@@ -114,7 +133,7 @@ bindsym $mod+Shift+z layout toggle split
 bindsym $mod+Shift+x layout tabbed
 
 # toggle tiling / floating
-bindsym $mod+t floating toggle
+# bindsym $mod+t floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
@@ -154,38 +173,36 @@ bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
-bindsym $alt+1 workspace number $ws5
-bindsym $alt+2 workspace number $ws6
-bindsym $alt+3 workspace number $ws7
-bindsym $alt+4 workspace number $ws8
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $alt+Shift+1 move container to workspace number $ws5
-bindsym $alt+Shift+2 move container to workspace number $ws6
-bindsym $alt+Shift+3 move container to workspace number $ws7
-bindsym $alt+Shift+4 move container to workspace number $ws8
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
 
 # reload the configuration file
 bindsym Control+$alt+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Control+Shift+r restart
 # quit i3 session
-bindsym Control+Shift+q exit
+bindsym control+shift+q exit
 
 ##-- Resize / Move / Gaps ------------------------
 
 # resize window (you can also use the mouse for that)
 mode "Resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym j resize grow height 2 px or 2 ppt
-        bindsym k resize shrink height 2 px or 2 ppt
-        bindsym l resize grow width 2 px or 2 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -197,10 +214,10 @@ bindsym $mod+Shift+r mode "Resize"
 mode "Move" {
         # These bindings trigger as soon as you enter the Move mode
 
-        bindsym h move left 20px
-        bindsym j move down  20px
-        bindsym k move up 20px
-        bindsym l move right 20px
+        bindsym h move left 50px
+        bindsym j move down  50px
+        bindsym k move up 50px
+        bindsym l move right 50px
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"

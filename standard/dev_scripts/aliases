@@ -23,7 +23,7 @@ alias zrc='vi ~/.zshrc'
 o(){
   selected=$(\
              find \
-                 ~/Documents/Files/Repos ~/Documents/Files/University ~/Documents/Files ~/.config \
+                 ~/projects ~/.config \
                  -mindepth 1 -maxdepth 1 -type d | \
              sed -r "s/^\/home\/[^\/]+\///g" |
              fzf --border=rounded --reverse --prompt="  ➡️  " --ansi \

@@ -40,25 +40,25 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 26
+height = 33
 offset-x = 0%
 offset-y = 0%
-background = ${color.BG}
-foreground = ${color.FG}
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
 radius-top = 0.0
 radius-bottom = 0.0
 line-size = 2
-line-color = ${color.BLUE}
+line-color = ${xrdb:color10}
 border-size = 6
-border-color = ${color.BG}
+border-color = ${xrdb:background}
 padding = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = "JetBrains Mono:bold:size=10;3"
-font-1 = "Iosevka Nerd Font:size=12;3"
-font-2 = "Iosevka Nerd Font:size=15;4"
-font-3 = "Iosevka Nerd Font:bold:size=12;4"
-font-4 = "archcraft:size=14;4"
+font-0 = "JetBrains Mono:bold:size=13;3"
+font-1 = "Iosevka Nerd Font:size=15;3"
+font-2 = "Iosevka Nerd Font:size=18;4"
+font-3 = "Iosevka Nerd Font:bold:size=15;4"
+font-4 = "archcraft:size=17;4"
 
 ; Modules are added to one of the available blocks
 ;   modules-left = cpu ram
@@ -68,7 +68,7 @@ font-4 = "archcraft:size=14;4"
 # Default
 modules-left = menu dot LD i3 RD
 modules-center = 
-modules-right = volume dot network dot LD date RD dot sysmenu
+modules-right = volume dot network dot battery dot LD date RD dot sysmenu
 
 # Alternate
 ;modules-left = openbox 2LD cpu 3LD memory 4LD filesystem 5LD
@@ -123,7 +123,7 @@ tray-maxsize = 16
 ; ARGB color (e.g. #f00, #ff992a, #ddff1023)
 ; By default the tray container will use the bar
 ; background color.
-tray-background = ${color.BG}
+tray-background = ${xrdb:background}
 
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 tray-offset-x = 0
