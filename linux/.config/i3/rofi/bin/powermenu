@@ -43,7 +43,7 @@ case $chosen in
         fi
         ;;
     $lock)
-        betterlockscreen --lock
+        betterlockscreen --lock --blur 0.5
         ;;
     $suspend)
 		ans=$($HOME/.config/i3/rofi/bin/confirm &)

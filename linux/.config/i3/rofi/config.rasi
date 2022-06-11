@@ -18,7 +18,7 @@ configuration {
 window {
   location: west;
   width: 25%;
-  margin: 0 0 0 0;
+  margin: 2.25% 0 0 0;
   height: 100%;
   spacing: 0;
   children: [ box ];

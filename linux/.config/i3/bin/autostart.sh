@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# hide cursor when inactive
+unclutter &
+
+# Restore wallpaper
+nitrogen --restore
+
+# Lauch polybar
+~/.config/i3/bin/i3bar.sh
+
 ## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 ## Autostart Programs
 
@@ -28,17 +37,8 @@ xfce4-power-manager &
 ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
 
-# hide cursor when inactive
-unclutter &
-
-# Restore wallpaper
-nitrogen --restore
-
 # Lauch notification daemon
 ~/.config/i3/bin/i3dunst.sh
-
-# Lauch polybar
-~/.config/i3/bin/i3bar.sh
 
 # Lauch compositor
 ~/.config/i3/bin/i3comp.sh
