@@ -60,6 +60,10 @@ bindsym $mod+Return 			exec --no-startup-id kitty
 bindsym $alt+Return 		    exec --no-startup-id firefox
 bindsym $alt+Shift+Return 		exec --no-startup-id google-chrome-stable
 
+# -- mpv from clipboard --
+bindsym $alt+m 		            exec --no-startup-id mpv $(xclip -o)
+bindsym $mod+p exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 600px; resize shrink height 10000px; resize grow height 350px;move position 18px 1168px;'"
+
 # -- Rofi --
 bindsym $alt+F1 				exec --no-startup-id ~/.config/i3/rofi/bin/launcher
 bindsym $mod+x 					exec --no-startup-id ~/.config/i3/rofi/bin/powermenu
