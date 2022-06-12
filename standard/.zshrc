@@ -29,3 +29,4 @@ if [[ -f .projectconfig && -r .projectconfig ]]; then
 elif [[ -f ../.projectconfig && -r ../.projectconfig ]]; then
     cd .. && source .projectconfig && cd - &> /dev/null
 fi
+export PATH=$PATH:/home/jordanp/.spicetify

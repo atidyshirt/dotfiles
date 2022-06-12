@@ -3,6 +3,9 @@
 # hide cursor when inactive
 unclutter &
 
+# turn off mouse acceloration
+xset m 0 0
+
 # Restore wallpaper
 nitrogen --restore
 

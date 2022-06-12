@@ -33,6 +33,10 @@ gaps outer 0
 # Activate smart borders (always)
 #smart_borders on
 
+# scratchpad applications
+bindsym $alt+m exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
+bindsym $alt+d exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc discord"
+
 ##-- Colors ------------------------------
 
 # class                 border  backgr. text    indicator child_border
@@ -61,7 +65,7 @@ bindsym $alt+Return 		    exec --no-startup-id firefox
 bindsym $alt+Shift+Return 		exec --no-startup-id google-chrome-stable
 
 # -- mpv from clipboard --
-bindsym $alt+m 		            exec --no-startup-id mpv $(xclip -o)
+bindsym $mod+m 		            exec --no-startup-id mpv $(xclip -o)
 bindsym $mod+p exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 600px; resize shrink height 10000px; resize grow height 350px;move position 18px 1168px;'"
 
 # -- Rofi --
@@ -90,7 +94,6 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+q kill
-bindsym $mod+c kill
 
 # change focus
 bindsym $mod+h focus left
