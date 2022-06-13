@@ -7,7 +7,7 @@ unclutter &
 xset m 0 0
 
 # setup mouse gestures
-libinput-gestures-setup stop desktop autostart start
+# libinput-gestures-setup stop desktop autostart start
 
 # Restore wallpaper
 nitrogen --restore

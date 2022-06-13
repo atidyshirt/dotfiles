@@ -27,6 +27,11 @@ for_window [class=".*"] border pixel 5
 gaps inner 15
 gaps outer 0
 
+# titlebars on floating windows
+bindsym $mod+t floating toggle; [tiling con_id=__focused__] border pixel 5; [floating con_id=__focused__] border normal 5
+default_border pixel 5
+default_floating_border normal 0
+
 # Only enable gaps on a workspace when there is at least one container
 #smart_gaps on
 
@@ -121,7 +126,7 @@ bindsym $mod+Shift+z layout toggle split
 bindsym $mod+Shift+x layout tabbed
 
 # toggle tiling / floating
-bindsym $mod+t floating toggle
+# bindsym $mod+t floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
@@ -189,10 +194,10 @@ bindsym Control+Shift+q exit
 mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym j resize grow height 2 px or 2 ppt
-        bindsym k resize shrink height 2 px or 2 ppt
-        bindsym l resize grow width 2 px or 2 ppt
+        bindsym h resize shrink width 50 px or 50 ppt
+        bindsym j resize grow height 50 px or 50 ppt
+        bindsym k resize shrink height 50 px or 50 ppt
+        bindsym l resize grow width 50 px or 50 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -204,10 +209,10 @@ bindsym $mod+Shift+r mode "Resize"
 mode "Move" {
         # These bindings trigger as soon as you enter the Move mode
 
-        bindsym h move left 20px
-        bindsym j move down  20px
-        bindsym k move up 20px
-        bindsym l move right 20px
+        bindsym h move left 50px
+        bindsym j move down  50px
+        bindsym k move up 50px
+        bindsym l move right 50px
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
