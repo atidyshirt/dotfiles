@@ -6,7 +6,7 @@
 /** ********** Fonts ********** **/
 * {
     font-family: "JetBrains Mono", "Iosevka Nerd Font", archcraft, sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 /** ********** Waybar Window ********** **/
@@ -24,12 +24,12 @@ window#waybar.hidden {
 
 /** ********** Backlight ********** **/
 #backlight {
-	background-color: #d3869b;
+	background-color: #7daea3;
 }
 
 /** ********** Battery ********** **/
 #battery {
-	background-color: #d4be98;
+	background-color: #d3869b;
 }
 
 #battery.charging {
@@ -102,7 +102,7 @@ window#waybar.hidden {
 
 /** ********** Network ********** **/
 #network {
-	background-color: #62554A;
+	background-color: #e78a4e;
 }
 
 #network.disconnected,#network.disabled {
@@ -124,7 +124,7 @@ window#waybar.hidden {
 }
 
 #custom-menu {
-	background-color: #d3869b;
+	background-color: #d4be98;
 	margin-left: 6px;
 	padding: 2px 6px;
 	font-size: 16px;
