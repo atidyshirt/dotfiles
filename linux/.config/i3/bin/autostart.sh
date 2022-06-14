@@ -10,5 +10,7 @@ done
 xsetroot -cursor_name left_ptr
 /usr/lib/xfce-polkit/xfce-polkit &
 xfce4-power-manager &
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
 ~/.config/i3/bin/i3dunst.sh
 ~/.config/i3/bin/i3comp.sh

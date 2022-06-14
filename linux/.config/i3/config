@@ -64,12 +64,8 @@ exec_always --no-startup-id xset m 0 0
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id xmodmap -e 'clear Lock'
 exec_always --no-startup-id xmodmap -e 'keycode 0x42=Escape'
-exec_always --no-startup-id ksuperkey -e 'Super_L=Alt_L|F1' &
-exec_always --no-startup-id ksuperkey -e 'Super_R=Alt_L|F1' &
 exec_always --no-startup-id libinput-gestures-setup stop desktop autostart start
 exec_always --no-startup-id	~/.config/i3/bin/autostart.sh
-
-
 
 ##-- Key Bindings ------------------------
 
