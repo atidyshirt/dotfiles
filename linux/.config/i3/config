@@ -33,10 +33,10 @@ default_border pixel 5
 default_floating_border normal 0
 
 # Only enable gaps on a workspace when there is at least one container
-#smart_gaps on
+smart_gaps on
 
 # Activate smart borders (always)
-#smart_borders on
+smart_borders on
 
 # scratchpad applications
 bindsym $alt+m exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
@@ -58,7 +58,6 @@ client.background       #1E222A
 exec_always --no-startup-id ~/.config/i3/bin/i3bar.sh
 exec_always --no-startup-id setterm -blank 0 -powersave off -powerdown 0
 exec_always --no-startup-id xset s off
-exec_always --no-startup-id xset 0 0
 exec_always --no-startup-id unclutter &
 exec_always --no-startup-id xset m 0 0
 exec_always --no-startup-id nitrogen --restore
@@ -191,7 +190,11 @@ bindsym Control+$alt+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Control+Shift+r restart
 # quit i3 session
-bindsym Control+Shift+q exit
+bindsym control+shift+q exit
+
+# wallpapers
+bindsym control+shift+i exec --no-startup-id nitrogen --set-zoom-fill ~/.wallpapers/mickael-gresset-rg29IYzdPlo-unsplash.jpg
+bindsym control+shift+o exec --no-startup-id nitrogen --set-zoom-fill ~/.config/i3/wallpapers/miramare.png
 
 ##-- Resize / Move / Gaps ------------------------
 

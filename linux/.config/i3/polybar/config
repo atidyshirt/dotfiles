@@ -83,7 +83,7 @@ separator =
 spacing = 0
 
 ; Opacity value between 0.0 and 1.0 used on fade in/out
-dim-value = 1.0
+dim-value = 0.9
 
 ; Value to be used to set the WM_NAME atom
 ; If the value is empty or undefined, the atom value

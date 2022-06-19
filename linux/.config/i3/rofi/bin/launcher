@@ -15,4 +15,4 @@ rofi \
 	-no-drun-show-actions \
 	-terminal kitty \
 	-kb-cancel Alt-F1 \
-	-theme "$DIR"/rofi/config.rasi
+	-theme "$DIR"/rofi/themes/launcher.rasi
