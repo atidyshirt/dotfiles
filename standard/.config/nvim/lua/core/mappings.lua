@@ -153,7 +153,7 @@ M.lspconfig = {
       },
 
       ["gs"] = {
-          ":0G<CR>",
+          "<cmd>:0G<CR>",
           "   Git status",
       },
 
@@ -264,7 +264,7 @@ M.nvimtree = {
 
 M.telescope = {
     n = {
-        ["<leader>f"] = {"", "  find" },
+        ["<leader>f"] = {"", "   find" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
         ["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
