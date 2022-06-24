@@ -42,7 +42,7 @@ smart_borders on
 # scratchpad applications
 bindsym $alt+m            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
 bindsym $alt+d            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc discord"
-bindsym $mod+Shift+Return exec --no-startup-id "i3-scratchpad -p0,450 -d 1400x800 -tmt -atc kitty"
+bindsym $alt+k exec --no-startup-id "i3-scratchpad -p0,450 -d 1400x800 -tmt -atc kitty"
 
 ##-- Colors ------------------------------
 
@@ -196,7 +196,7 @@ bindsym control+shift+q exit
 
 # wallpapers
 bindsym control+shift+i exec --no-startup-id nitrogen --set-zoom-fill ~/.wallpapers/mickael-gresset-rg29IYzdPlo-unsplash.jpg
-bindsym control+shift+o exec --no-startup-id nitrogen --set-zoom-fill ~/.config/i3/wallpapers/miramare.png
+bindsym control+shift+o exec --no-startup-id nitrogen --set-zoom-fill /usr/share/backgrounds/forest.jpg
 
 ##-- Resize / Move / Gaps ------------------------
 

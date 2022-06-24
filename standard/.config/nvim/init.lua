@@ -1,15 +1,16 @@
--- Load All packer plugins
-require('plug')
+require "core"
+require "core.options"
 
--- load keybindings and editor options
-require('keymap')
-require('options')
-require('autocmds')
+vim.defer_fn(function()
+   require("core.utils").load_mappings()
+end, 0)
 
--- load theme loading library
-local scheme = require('lib.scheme')
-scheme.load_shared_scheme('gruvbox-material')
+-- setup packer + plugins
+require("core.packer").bootstrap()
+require "plugins"
 
--- loading configs
-require('config.lsp')
-require('config.plug')
+local user_conf, _ = pcall(require, "custom")
+
+if user_conf then
+   require "custom"
+end
