@@ -16,6 +16,7 @@ title_align center
 
 # disable focus follows mouse
 focus_follows_mouse no
+floating_minimum_size 1200x600
 
 # Uncomment this to enable title bars
 # for_window [class=".*"] border normal 4
@@ -28,7 +29,7 @@ gaps inner 15
 gaps outer 0
 
 # titlebars on floating windows
-bindsym $mod+t floating toggle; [tiling con_id=__focused__] border pixel 5; [floating con_id=__focused__] border normal 5
+bindsym $mod+t floating toggle; [tiling con_id=__focused__] border pixel 5; [floating con_id=__focused__] border normal 0;
 default_border pixel 5
 default_floating_border normal 0
 
@@ -39,8 +40,9 @@ smart_gaps on
 smart_borders on
 
 # scratchpad applications
-bindsym $alt+m exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
-bindsym $alt+d exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc discord"
+bindsym $alt+m            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc spotify"
+bindsym $alt+d            exec --no-startup-id "i3-scratchpad -p0,200 -d 2200x1250 -tmt -atc discord"
+bindsym $mod+Shift+Return exec --no-startup-id "i3-scratchpad -p0,450 -d 1400x800 -tmt -atc kitty"
 
 ##-- Colors ------------------------------
 
@@ -51,7 +53,7 @@ client.unfocused        #32302f #32302f #32302f #637a8a   #32302f
 client.urgent           #A3BE8C #A3BE8C #A3BE8C #637a8a   #A3BE8C
 client.placeholder      #32302f #32302f #32302f #637a8a   #32302f
 
-client.background       #1E222A
+client.background       #32302f
 
 ##-- Autostart ---------------------------
 
@@ -200,12 +202,10 @@ bindsym control+shift+o exec --no-startup-id nitrogen --set-zoom-fill ~/.config/
 
 # resize window (you can also use the mouse for that)
 mode "Resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        bindsym h resize shrink width 50 px or 50 ppt
-        bindsym j resize grow height 50 px or 50 ppt
-        bindsym k resize shrink height 50 px or 50 ppt
-        bindsym l resize grow width 50 px or 50 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
