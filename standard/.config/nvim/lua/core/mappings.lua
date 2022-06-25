@@ -9,36 +9,56 @@ local function map(mode, bind, exec, opts)
     vim.api.nvim_set_keymap(mode, bind, exec, opts)
 end
 
-map("n", "ga", ":lua require('harpoon.mark').add_file()<CR>", {})
-map("n", "gm", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {})
-map("n", "gj", ":lua require('harpoon.ui').nav_file(1)<CR>", {})
-map("n", "gk", ":lua require('harpoon.ui').nav_file(2)<CR>", {})
-map("n", "gl", ":lua require('harpoon.ui').nav_file(3)<CR>", {})
-map("n", "g;", ":lua require('harpoon.ui').nav_file(4)<CR>", {})
-map("n", "<leader><space>m", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", {})
-map("n", "<leader><space>p", ":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", {})
 map('v', '<', '<gv', {noremap = true, silent = false})
 map('v', '>', '>gv', {noremap = true, silent = false})
+
+local M = {}
 
 -- {{{ Harpoon will bind to tmux if its running else use terminals
 local in_tmux_session = vim.fn.system('echo $TMUX'):find('tmux')
 if in_tmux_session then
-    map("n", "gt", ":lua require('harpoon.tmux').gotoTerminal(1)<CR>", {})
-    map("n", "gy", ":lua require('harpoon.tmux').gotoTerminal(2)<CR>", {})
-    map("n", "<leader><space>j", ":lua require('harpoon.tmux').sendCommand(1,1)<cr>", {})
-    map("n", "<leader><space>k", ":lua require('harpoon.tmux').sendCommand(1,2)<cr>", {})
-    map("n", "<leader><space>l", ":lua require('harpoon.tmux').sendCommand(2,3)<cr>", {})
-    map("n", "<leader><space>;", ":lua require('harpoon.tmux').sendCommand(2,4)<cr>", {})
-else
-    map("n", "gt", ":lua require('harpoon.term').gotoTerminal(1)<CR>", {})
-    map("n", "gy", ":lua require('harpoon.term').gotoTerminal(2)<CR>", {})
-    map("n", "<leader><space>j", ":lua require('harpoon.term').sendCommand(1,1)<cr>", {})
-    map("n", "<leader><space>k", ":lua require('harpoon.term').sendCommand(1,2)<cr>", {})
-    map("n", "<leader><space>l", ":lua require('harpoon.term').sendCommand(2,3)<cr>", {})
-    map("n", "<leader><space>;", ":lua require('harpoon.term').sendCommand(2,4)<cr>", {})
-end
+    M.harpoon = {
+        n = {
+            ["gt"] = {"<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "go to term 1"},
+            ["gy"] = {"<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "go to term 2"},
+            ["ga"] = {":lua require('harpoon.mark').add_file()<CR>", "Add File"},
+            ["gm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>", "File Menu"},
+            ["gj"] = {":lua require('harpoon.ui').nav_file(1)<CR>", "Navigate file 1"},
+            ["gk"] = {":lua require('harpoon.ui').nav_file(2)<CR>", "Navigate file 2"},
+            ["gl"] = {":lua require('harpoon.ui').nav_file(3)<CR>", "Navigate file 3"},
+            ["g;"] = {":lua require('harpoon.ui').nav_file(4)<CR>", "Navigate file 4"},
 
-local M = {}
+            ["<leader><space>"] = { "", "  Harpoon" },
+            ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Command Menu" },
+            ["<leader><space>p"] = {":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", "Pandoc"},
+            ["<leader><space>j"] = {"<cmd>lua require('harpoon.tmux').sendCommand(1,1)<cr>", "execute command 1"},
+            ["<leader><space>k"] = {"<cmd>lua require('harpoon.tmux').sendCommand(1,2)<cr>", "execute command 2"},
+            ["<leader><space>l"] = {"<cmd>lua require('harpoon.tmux').sendCommand(2,3)<cr>", "execute command 3"},
+            ["<leader><space>;"] = {"<cmd>lua require('harpoon.tmux').sendCommand(2,4)<cr>", "execute command 4"},
+        }
+    }
+else
+    M.harpoon = {
+        n = {
+            ["gt"] = {"<cmd>lua require('harpoon.term').gotoTerminal(1)<CR>", "go to term 1"},
+            ["gy"] = {"<cmd>lua require('harpoon.term').gotoTerminal(2)<CR>", "go to term 2"},
+            ["ga"] = {":lua require('harpoon.mark').add_file()<CR>", "Add File"},
+            ["gm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>", "File Menu"},
+            ["gj"] = {":lua require('harpoon.ui').nav_file(1)<CR>", "Navigate file 1"},
+            ["gk"] = {":lua require('harpoon.ui').nav_file(2)<CR>", "Navigate file 2"},
+            ["gl"] = {":lua require('harpoon.ui').nav_file(3)<CR>", "Navigate file 3"},
+            ["g;"] = {":lua require('harpoon.ui').nav_file(4)<CR>", "Navigate file 4"},
+
+            ["<leader><space>"] = { "", "  Harpoon" },
+            ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Command Menu" },
+            ["<leader><space>p"] = {":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", "Pandoc"},
+            ["<leader><space>j"] = {"<cmd>lua require('harpoon.term').sendCommand(1,1)<cr>", "executre command 1"},
+            ["<leader><space>k"] = {"<cmd>lua require('harpoon.term').sendCommand(1,2)<cr>", "executre command 2"},
+            ["<leader><space>l"] = {"<cmd>lua require('harpoon.term').sendCommand(2,3)<cr>", "executre command 3"},
+            ["<leader><space>;"] = {"<cmd>lua require('harpoon.term').sendCommand(2,4)<cr>", "executre command 4"},
+        }
+    }
+end
 
 -- }}}
 
@@ -48,24 +68,10 @@ M.general = {
       -- go to  beginning and end
       ["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
       ["<C-e>"] = { "<End>", "壟 end of line" },
-
-      -- NOTE: overwritten with tmux navigator
-      -- navigate within insert mode
-      -- ["<C-h>"] = { "<Left>", "  move left" },
-      -- ["<C-l>"] = { "<Right>", " move right" },
-      -- ["<C-j>"] = { "<Down>", " move down" },
-      -- ["<C-k>"] = { "<Up>", " move up" },
    },
 
    n = {
-
       ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
-
-      -- switch between windows
-      ["<C-h>"] = { "<C-w>h", " window left" },
-      ["<C-l>"] = { "<C-w>l", " window right" },
-      ["<C-j>"] = { "<C-w>j", " window down" },
-      ["<C-k>"] = { "<C-w>k", " window up" },
 
       -- update nvchad
       -- ["<leader>u"] = { "", "  Update" },
@@ -78,7 +84,6 @@ M.general = {
 }
 
 M.tabufline = {
-
    n = {
       -- cycle through buffers
       ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
