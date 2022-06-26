@@ -86,8 +86,8 @@ M.general = {
 M.tabufline = {
    n = {
       -- cycle through buffers
-      ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
-      ["<S-Tab>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+      ["<S-H>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
+      ["<S-L>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
 
       -- cycle through tabs
       ["<leader>t"] = { "", "   tabs" },
