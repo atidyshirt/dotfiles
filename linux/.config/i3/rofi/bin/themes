@@ -1,29 +1,22 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-
-DIR="$HOME/.config/i3"
-BSP="$HOME/.config/i3/themes"
+DIR="$HOME/.config/bspwm"
+I3="$HOME/.config/i3/themes"
 rofi_command="rofi -theme $DIR/rofi/themes/themes.rasi"
 
 # Themes
 theme_1=" Gruvbox"
-theme_2=" Github Dark"
-theme_3=" Github Light"
+theme_2=" Blossom"
 
 # Variable passed to rofi
-options="$theme_1\n$theme_2\n$theme_3"
+options="$theme_1\n$theme_2"
 
-chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (20)" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (2)" -dmenu -selected-row 0)"
 case $chosen in
     $theme_1)
-        bash ${BSP}/set-theme  'miramare.jpg' 'beach' 'Gruvbox' 'Arc-Circle' 'Fluent'
+        bash ${I3}/set-theme 'gruvbox.jpg' 'gruvbox' 'Gruvbox' 'Luna-Dark' 'Future-dark'
         ;;
     $theme_2)
-        bash ${BSP}/set-theme  'miramare.jpg' 'blade' 'Arc-Lighter' 'Nordic-Folders' 'LyraS'
-        ;;
-    $theme_3)
-        bash ${BSP}/set-theme  'miramare.jpg' 'bouquet' 'Arc-dark' 'Luna-Dark' 'Future-dark'
+        bash ${I3}/set-theme 'pastel.jpg' 'blossom' 'White' 'Arc-Circle' 'Fluent-dark'
         ;;
 esac

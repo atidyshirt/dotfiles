@@ -6,16 +6,16 @@
 ## Apply themes in Bspwm
 
 CFG="$HOME/.config"
-BSP="$HOME/.config/bspwm"
+I3="$HOME/.config/i3"
 XRES="$HOME/.Xresources.d"
 
 ## Set Style
 set_style () {
 	# apply wallpaper
-	feh --bg-fill $HOME/.config/i3/wallpapers/${1}
+	feh --bg-fill /usr/share/backgrounds/${1}
 	
 	# apply color-scheme
-	cat "$BSP"/themes/${2} > "$XRES"/colors
+	cat "$I3"/themes/${2} > "$XRES"/colors
 	
 	# set gtk theme, icons and cursor
 	if [[ `pidof xsettingsd` ]]; then
@@ -33,7 +33,8 @@ set_style () {
 	fi
 	
 	# reload config
-	bspc wm -r
+        xrdb ~/.Xresources
+        i3-msg reload
 }
 
 set_style "${1}" "${2}" "${3}" "${4}" "${5}"

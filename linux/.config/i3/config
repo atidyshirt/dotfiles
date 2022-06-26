@@ -84,6 +84,7 @@ bindsym $alt+F1 				exec --no-startup-id ~/.config/i3/rofi/bin/launcher
 bindsym $mod+w 				    exec --no-startup-id ~/.config/i3/rofi/bin/windows
 bindsym $mod+x 					exec --no-startup-id ~/.config/i3/rofi/bin/powermenu
 bindsym $mod+Shift+s 		    exec --no-startup-id ~/.config/i3/rofi/bin/screenshot
+bindsym $mod+Shift+t 		    exec --no-startup-id ~/.config/i3/rofi/bin/themes
 
 # -- Function keys --
 bindsym $mod+Shift+plus 	    exec --no-startup-id "brightness --inc"
@@ -193,10 +194,6 @@ bindsym Control+$alt+c reload
 bindsym Control+Shift+r restart
 # quit i3 session
 bindsym control+shift+q exit
-
-# wallpapers
-bindsym control+shift+i exec --no-startup-id nitrogen --set-zoom-fill ~/.wallpapers/mickael-gresset-rg29IYzdPlo-unsplash.jpg
-bindsym control+shift+o exec --no-startup-id nitrogen --set-zoom-fill /usr/share/backgrounds/forest.jpg
 
 ##-- Resize / Move / Gaps ------------------------
 

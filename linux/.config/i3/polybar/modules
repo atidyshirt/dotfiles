@@ -9,7 +9,7 @@ type = custom/text
 content = " NA"
 content-prefix = 
 content-prefix-font = 2
-content-prefix-foreground = ${color.RED}
+content-prefix-foreground = ${xrdb:color9}
 content-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -44,7 +44,7 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-font = 2
-ramp-foreground = ${color.CYAN}
+ramp-foreground = ${xrdb:color12}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -80,7 +80,7 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-font = 2
-ramp-foreground = ${color.CYAN}
+ramp-foreground = ${xrdb:color12}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -119,7 +119,7 @@ time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-charging-prefix = " "
 format-charging-prefix-font = 1
-format-charging-prefix-foreground = ${color.RED}
+format-charging-prefix-foreground = ${xrdb:color9}
 
 ; Available tags:
 ;   <label-discharging> (default)
@@ -152,7 +152,7 @@ label-discharging = %percentage%%
 format-full = <label-full>
 format-full-prefix = " "
 format-full-prefix-font = 2
-format-full-prefix-foreground = ${color.RED}
+format-full-prefix-foreground = ${xrdb:color9}
 label-full = %percentage%%
 
 ; Only applies if <ramp-capacity> is used
@@ -161,7 +161,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${color.YELLOW}
+ramp-capacity-foreground = ${xrdb:color13}
 ramp-capacity-font = 2
 
 ; Only applies if <animation-charging> is used
@@ -170,7 +170,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${color.GREEN}
+animation-charging-foreground = ${xrdb:color11}
 animation-charging-font = 2
 animation-charging-framerate = 700
 
@@ -239,15 +239,15 @@ ws-icon-default = 
 ;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
 ;   <label-mode> (default)
 format = <label-state><label-mode>
-format-background = ${color.BGL}
+format-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %mode%
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 5
-label-mode-background = ${color.YELLOW}
-label-mode-foreground = ${color.BGL}
+label-mode-background = ${xrdb:color13}
+label-mode-foreground = ${xrdb:color3}
 
 ; Available tokens:
 ;   %name%
@@ -256,8 +256,8 @@ label-mode-foreground = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %icon%
-label-focused-foreground = ${color.BLUE}
-label-focused-background = ${color.BGL}
+label-focused-foreground = ${xrdb:color10}
+label-focused-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %name%
@@ -266,8 +266,8 @@ label-focused-background = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-unfocused = %icon%
-label-unfocused-foreground = ${color.FG}
-label-unfocused-background = ${color.BGL}
+label-unfocused-foreground = ${xrdb:foreground}
+label-unfocused-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %name%
@@ -276,8 +276,8 @@ label-unfocused-background = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-visible = %icon%
-label-visible-foreground = ${color.GREEN}
-label-visible-background = ${color.BGL}
+label-visible-foreground = ${xrdb:color11}
+label-visible-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %name%
@@ -286,8 +286,8 @@ label-visible-background = ${color.BGL}
 ;   %output%
 ; Default: %icon%  %name%
 label-urgent = %icon%
-label-urgent-foreground = ${color.RED}
-label-urgent-background = ${color.BGL}
+label-urgent-foreground = ${xrdb:color9}
+label-urgent-background = ${xrdb:color0}
 
 ; Paddings
 label-focused-padding = 1
@@ -296,10 +296,10 @@ label-visible-padding = 1
 label-urgent-padding = 1
 
 ; Separator in between workspaces
-label-separator = |
+label-separator = 
 label-separator-padding = 0
-label-separator-foreground = ${color.BGL}
-label-separator-background = ${color.BGL}
+label-separator-foreground = ${xrdb:color0}
+label-separator-background = ${xrdb:color0}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -319,7 +319,7 @@ interval = 0.5
 format = <label>
 format-prefix = 
 format-prefix-font = 2
-format-prefix-foreground = ${color.YELLOW}
+format-prefix-foreground = ${xrdb:color13}
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load averaged over all cores
@@ -363,8 +363,8 @@ time-alt = %b %d, %G
 format = <label>
 format-prefix = " "
 format-prefix-font = 2
-format-prefix-foreground = ${color.CYAN}
-format-background = ${color.BGL}
+format-prefix-foreground = ${xrdb:color12}
+format-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %date%
@@ -372,7 +372,7 @@ format-background = ${color.BGL}
 ; Default: %date%
 label = %time%
 label-font = 4
-label-foreground = ${color.CYAN}
+label-foreground = ${xrdb:color12}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -405,7 +405,7 @@ format-mounted = <label-mounted>
 
 format-mounted-prefix = 
 format-mounted-prefix-font = 2
-format-mounted-prefix-foreground = ${color.PURPLE}
+format-mounted-prefix-foreground = ${xrdb:color8}
 
 ; Available tags:
 ;   <label-unmounted> (default)
@@ -413,7 +413,7 @@ format-unmounted = <label-unmounted>
 
 format-unmounted-prefix = 
 format-unmounted-prefix-font = 2
-format-unmounted-prefix-foreground = ${color.PURPLE}
+format-unmounted-prefix-foreground = ${xrdb:color8}
 
 ; Available tokens:
 ;   %mountpoint%
@@ -455,7 +455,7 @@ format = <label>
 
 format-prefix = 
 format-prefix-font = 2
-format-prefix-foreground = ${color.CYAN}
+format-prefix-foreground = ${xrdb:color12}
 
 ; Available tokens:
 ;   %percentage_used% (default)
@@ -528,8 +528,8 @@ interval = 2
 format-online = <icon-prev> <toggle> <icon-next>
 ;;format-online-prefix = " "
 ;;format-online-prefix-font = 2
-;;format-online-prefix-foreground = ${color.GREEN}
-format-online-background = ${color.BGL}
+;;format-online-prefix-foreground = ${xrdb:color11}
+format-online-background = ${xrdb:color0}
 
 format-playing = ${self.format-online}
 format-paused = ${self.format-online}
@@ -539,7 +539,7 @@ format-stopped = ${self.format-online}
 ;   <label-offline>
 format-offline = <label-offline>
 format-offline-prefix = " "
-format-offline-background = ${color.BGL}
+format-offline-background = ${xrdb:color0}
 
 ; Available tokens:
 ;   %artist%
@@ -565,18 +565,18 @@ label-offline = "Offline"
 ; Only applies if <icon-X> is used
 icon-play = 
 icon-play-font = 2
-icon-play-foreground = ${color.GREEN}
+icon-play-foreground = ${xrdb:color11}
 icon-pause = 
 icon-pause-font = 2
-icon-pause-foreground = ${color.RED}
+icon-pause-foreground = ${xrdb:color9}
 icon-stop = 
-icon-stop-foreground = ${color.RED}
+icon-stop-foreground = ${xrdb:color99}
 icon-prev = 玲
 icon-prev-font = 1
-icon-prev-foreground = ${color.CYAN}
+icon-prev-foreground = ${xrdb:color12}
 icon-next = 怜
 icon-next-font = 1
-icon-next-foreground = ${color.CYAN}
+icon-next-foreground = ${xrdb:color12}
 
 ; Used to display the state of random/repeat/repeatone/single
 ; Only applies if <icon-[random|repeat|repeatone|single]> is used
@@ -613,16 +613,16 @@ unknown-as-up = true
 
 format-connected = <label-connected>
 format-connected-prefix = "歷 "
-format-connected-prefix-foreground = ${color.PURPLE}
+format-connected-prefix-foreground = ${xrdb:color8}
 format-connected-prefix-font = 2
-format-connected-background = ${color.BG}
+format-connected-background = ${xrdb:background}
 format-connected-padding = 1
 
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = "轢 "
 format-disconnected-prefix-font = 2
-format-disconnected-foreground = ${color.FGA}
-format-disconnected-background = ${color.BG}
+format-disconnected-foreground = ${xrdb:foreground}
+format-disconnected-background = ${xrdb:background}
 format-disconnected-padding = 1
 
 label-connected = "%{A1:~/.config/i3/rofi/bin/network_menu &:}%downspeed%, %upspeed%%{A}"
@@ -680,7 +680,7 @@ format-connected = <ramp-signal> <label-connected>
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = "睊 "
 format-disconnected-prefix-font = 2
-format-disconnected-foreground = ${color.FGA}
+format-disconnected-foreground = ${xrdb:foreground}
 
 ; Available tags:
 ;   <label-connected> (default)
@@ -725,7 +725,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${color.PURPLE}
+ramp-signal-foreground = ${xrdb:color8}
 ramp-signal-font = 2
 
 ; Only applies if <animation-packetloss> is used
@@ -774,7 +774,7 @@ format-muted-prefix-font = 2
 ; Available tokens:
 ;   %percentage% (default)
 label-muted = " Mute"
-label-muted-foreground = ${color.FGA}
+label-muted-foreground = ${xrdb:foreground}
 
 ; Only applies if <bar-volume> is used
 bar-volume-width = 10
@@ -782,19 +782,19 @@ bar-volume-gradient = false
 
 bar-volume-indicator = 雷
 bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = ${color.BLUE}
+bar-volume-indicator-foreground = ${xrdb:color4}
 
 bar-volume-fill = 絛
 bar-volume-fill-font = 3
-bar-volume-foreground-0 = ${color.BLUE}
-bar-volume-foreground-1 = ${color.BLUE}
-bar-volume-foreground-2 = ${color.BLUE}
-bar-volume-foreground-3 = ${color.BLUE}
-bar-volume-foreground-4 = ${color.BLUE}
+bar-volume-foreground-0 = ${xrdb:color4}
+bar-volume-foreground-1 = ${xrdb:color4}
+bar-volume-foreground-2 = ${xrdb:color4}
+bar-volume-foreground-3 = ${xrdb:color4}
+bar-volume-foreground-4 = ${xrdb:color4}
 
 bar-volume-empty = 絛
 bar-volume-empty-font = 3
-bar-volume-empty-foreground = ${color.BGL}
+bar-volume-empty-foreground = ${xrdb:color4}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
@@ -808,7 +808,7 @@ ramp-volume-7 = 
 ramp-volume-8 = 
 ramp-volume-9 = 
 ramp-volume-font = 2
-ramp-volume-foreground = ${color.BLUE}
+ramp-volume-foreground = ${xrdb:color4}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -861,7 +861,7 @@ label = %temperature-c%
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
 label-warn = "%temperature-c%"
-label-warn-foreground = ${color.RED}
+label-warn-foreground = ${xrdb:color9}
 
 ; Requires the <ramp> tag
 ; The icon selection will range from 0 to `warn-temperature`
@@ -877,7 +877,7 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-font = 2
-ramp-foreground = ${color.YELLOW}
+ramp-foreground = ${xrdb:color13}
 ;;ramp-foreground = #55
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -889,7 +889,7 @@ content = " "
 content-font = 5
 ;content = " "
 ;content-font = 3
-content-foreground = ${color.GREEN}
+content-foreground = ${xrdb:color11}
 content-padding = 0
 
 click-left = ~/.config/i3/rofi/bin/launcher
@@ -906,7 +906,7 @@ type = custom/text
 
 content = " "
 content-font = 3
-content-foreground = ${color.RED}
+content-foreground = ${xrdb:color9}
 content-padding = 0
 
 click-left = ~/.config/i3/rofi/bin/powermenu

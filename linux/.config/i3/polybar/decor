@@ -7,15 +7,15 @@
 type = custom/text
 content = -
 
-content-background = ${color.BG}
-content-foreground = ${color.BG}
+content-background = ${xrdb:background}
+content-foreground = ${xrdb:background}
 
 [module/dot]
 type = custom/text
 content = 
 
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${xrdb:background}
+content-foreground = ${xrdb:color0}
 content-padding = 2
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -23,14 +23,14 @@ content-padding = 2
 [module/LD]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${xrdb:background}
+content-foreground = ${xrdb:color0}
 
 [module/RD]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.BG}
-content-foreground = ${color.BGL}
+content-background = ${xrdb:background}
+content-foreground = ${xrdb:color0}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______
