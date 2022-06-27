@@ -59,6 +59,7 @@ client.background       #32302f
 
 exec_always --no-startup-id ~/.config/i3/bin/i3bar.sh
 exec_always --no-startup-id setterm -blank 0 -powersave off -powerdown 0
+exec_always --no-startup-id ~/.fehbg
 exec_always --no-startup-id xset s off
 exec_always --no-startup-id unclutter &
 exec_always --no-startup-id xset m 0 0
