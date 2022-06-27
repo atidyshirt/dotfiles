@@ -16,10 +16,10 @@ chosen="$(echo -e "$options" | $rofi_command -p "Available themes : (2)" -dmenu 
 case $chosen in
     $theme_1)
         bash ${I3}/set-theme 'gruvbox.jpg' 'gruvbox' 'Gruvbox' 'Luna-Dark' 'Future-dark' &&
-        echo "include gruvbox.conf" > ${KITTY}/theme.conf
+        echo "include gruvbox.conf" > ${KITTY}/theme.conf;
         ;;
     $theme_2)
         bash ${I3}/set-theme 'blossom.jpg' 'blossom' 'White' 'Arc-Circle' 'Fluent-dark' &&
-        echo "include blossom.conf" > ${KITTY}/theme.conf
+        echo "include blossom.conf" > ${KITTY}/theme.conf;
         ;;
 esac

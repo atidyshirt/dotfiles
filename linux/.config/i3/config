@@ -70,7 +70,7 @@ exec_always --no-startup-id ~/.config/i3/bin/autostart.sh
 ##-- Key Bindings ------------------------
 
 # -- Terminal --
-bindsym $mod+Return 			exec --no-startup-id kitty
+bindsym $mod+Return 			exec --no-startup-id kitty --listen-on=unix:@mykitty --single-instance -d ~ &> /dev/null
 bindsym $alt+Return 		    exec --no-startup-id firefox
 bindsym $alt+Shift+Return 		exec --no-startup-id google-chrome-stable
 
