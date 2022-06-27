@@ -54,6 +54,7 @@ local plugins = {
     ["tpope/vim-fugitive"] = {},
     ["tpope/vim-surround"] = {},
     ["christoomey/vim-tmux-navigator"] = {},
+    ["unblevable/quick-scope"] = {},
     -- ["vimpostor/vim-tpipeline"] = {},
 
     ["NvChad/nvterm"] = {
