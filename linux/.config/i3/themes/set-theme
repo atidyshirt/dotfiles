@@ -34,7 +34,7 @@ set_style () {
 	
 	# reload config
         xrdb ~/.Xresources
-        i3-msg reload
+        i3-msg restart
 }
 
 set_style "${1}" "${2}" "${3}" "${4}" "${5}"
