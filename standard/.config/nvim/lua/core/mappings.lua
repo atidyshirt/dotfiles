@@ -247,7 +247,7 @@ M.telescope = {
     n = {
         ["<leader>f"] = {"", "   find" },
         ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-        ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
+        ["<leader>fb"] = { "<cmd> Telescope git_branches <CR>", "  find buffers" },
         ["<leader>fc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
         ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
