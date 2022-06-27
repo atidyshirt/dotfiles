@@ -15,50 +15,26 @@ map('v', '>', '>gv', {noremap = true, silent = false})
 local M = {}
 
 -- {{{ Harpoon will bind to tmux if its running else use terminals
-local in_tmux_session = vim.fn.system('echo $TMUX'):find('tmux')
-if in_tmux_session then
-    M.harpoon = {
-        n = {
-            ["gt"] = {"<cmd>lua require('harpoon.tmux').gotoTerminal(1)<CR>", "go to term 1"},
-            ["gy"] = {"<cmd>lua require('harpoon.tmux').gotoTerminal(2)<CR>", "go to term 2"},
-            ["ga"] = {":lua require('harpoon.mark').add_file()<CR>", "Add File"},
-            ["gm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>", "File Menu"},
-            ["gj"] = {":lua require('harpoon.ui').nav_file(1)<CR>", "Navigate file 1"},
-            ["gk"] = {":lua require('harpoon.ui').nav_file(2)<CR>", "Navigate file 2"},
-            ["gl"] = {":lua require('harpoon.ui').nav_file(3)<CR>", "Navigate file 3"},
-            ["g;"] = {":lua require('harpoon.ui').nav_file(4)<CR>", "Navigate file 4"},
+M.harpoon = {
+    n = {
+        ["gt"] = {"<cmd>lua require('harpoon.term').gotoTerminal(1)<CR> | <cmd>set nobuflisted<cr>", "go to term 1"},
+        ["gy"] = {"<cmd>lua require('harpoon.term').gotoTerminal(2)<CR> | <cmd>set nobuflisted<cr>", "go to term 2"},
+        ["ga"] = {":lua require('harpoon.mark').add_file()<CR>", "Add File"},
+        ["gm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>", "File Menu"},
+        ["gj"] = {":lua require('harpoon.ui').nav_file(1)<CR>", "Navigate file 1"},
+        ["gk"] = {":lua require('harpoon.ui').nav_file(2)<CR>", "Navigate file 2"},
+        ["gl"] = {":lua require('harpoon.ui').nav_file(3)<CR>", "Navigate file 3"},
+        ["g;"] = {":lua require('harpoon.ui').nav_file(4)<CR>", "Navigate file 4"},
 
-            ["<leader><space>"] = { "", "  Harpoon" },
-            ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Command Menu" },
-            ["<leader><space>p"] = {":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", "Pandoc"},
-            ["<leader><space>j"] = {"<cmd>lua require('harpoon.tmux').sendCommand(1,1)<cr>", "execute command 1"},
-            ["<leader><space>k"] = {"<cmd>lua require('harpoon.tmux').sendCommand(1,2)<cr>", "execute command 2"},
-            ["<leader><space>l"] = {"<cmd>lua require('harpoon.tmux').sendCommand(2,3)<cr>", "execute command 3"},
-            ["<leader><space>;"] = {"<cmd>lua require('harpoon.tmux').sendCommand(2,4)<cr>", "execute command 4"},
-        }
+        ["<leader><space>"] = { "", "  Harpoon" },
+        ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Command Menu" },
+        ["<leader><space>p"] = {":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", "Pandoc"},
+        ["<leader><space>j"] = {"<cmd>lua require('harpoon.term').sendCommand(1,1)<cr>", "executre command 1"},
+        ["<leader><space>k"] = {"<cmd>lua require('harpoon.term').sendCommand(1,2)<cr>", "executre command 2"},
+        ["<leader><space>l"] = {"<cmd>lua require('harpoon.term').sendCommand(2,3)<cr>", "executre command 3"},
+        ["<leader><space>;"] = {"<cmd>lua require('harpoon.term').sendCommand(2,4)<cr>", "executre command 4"},
     }
-else
-    M.harpoon = {
-        n = {
-            ["gt"] = {"<cmd>lua require('harpoon.term').gotoTerminal(1)<CR>", "go to term 1"},
-            ["gy"] = {"<cmd>lua require('harpoon.term').gotoTerminal(2)<CR>", "go to term 2"},
-            ["ga"] = {":lua require('harpoon.mark').add_file()<CR>", "Add File"},
-            ["gm"] = {":lua require('harpoon.ui').toggle_quick_menu()<CR>", "File Menu"},
-            ["gj"] = {":lua require('harpoon.ui').nav_file(1)<CR>", "Navigate file 1"},
-            ["gk"] = {":lua require('harpoon.ui').nav_file(2)<CR>", "Navigate file 2"},
-            ["gl"] = {":lua require('harpoon.ui').nav_file(3)<CR>", "Navigate file 3"},
-            ["g;"] = {":lua require('harpoon.ui').nav_file(4)<CR>", "Navigate file 4"},
-
-            ["<leader><space>"] = { "", "  Harpoon" },
-            ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Command Menu" },
-            ["<leader><space>p"] = {":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>", "Pandoc"},
-            ["<leader><space>j"] = {"<cmd>lua require('harpoon.term').sendCommand(1,1)<cr>", "executre command 1"},
-            ["<leader><space>k"] = {"<cmd>lua require('harpoon.term').sendCommand(1,2)<cr>", "executre command 2"},
-            ["<leader><space>l"] = {"<cmd>lua require('harpoon.term').sendCommand(2,3)<cr>", "executre command 3"},
-            ["<leader><space>;"] = {"<cmd>lua require('harpoon.term').sendCommand(2,4)<cr>", "executre command 4"},
-        }
-    }
-end
+}
 
 -- }}}
 
