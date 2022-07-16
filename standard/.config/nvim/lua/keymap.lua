@@ -14,7 +14,7 @@ local M = {}
 -- {{{ generic leader bindings
 vim.g.mapleader = ' ' -- Map leader key to space
 vim.g.maplocalleader = ','
-map('', '<leader>e', ':Ex<CR>', opt) -- toggle nvimtree
+map('', '<leader>e', ':Ex | :setlocal nobuflisted<CR>', opt) -- toggle nvimtree
 map('', '<leader>/', ':CommentToggle<CR>', opt) -- toggle comment on current line or selection
 
 -- {{{ autocompletion mappings for cmp 

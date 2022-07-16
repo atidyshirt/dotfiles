@@ -52,3 +52,21 @@ vim.diagnostic.config({
 
 vim.api.nvim_exec('language en_US.UTF-8', true)
 
+-- TODO: replicate this funcitionality using lua
+-- vimscript persistant nobuflist for buffers that should not be in jump list
+vim.cmd([[
+function! s:PersistNobl()                             
+  if exists('b:persist_nobl')                         
+    setl nobuflisted                                
+  elseif !&buflisted                                  
+    let b:persist_nobl = 1                            
+  endif                                               
+endfunction                                           
+
+augroup persist_nobuflisted                           
+  autocmd!                                            
+  autocmd OptionSet buflisted call <SID>PersistNobl() 
+  autocmd BufEnter * call <SID>PersistNobl()          
+augroup END
+]])
+
