@@ -9,7 +9,6 @@ return {
 	require('config.plug.lualine'),
 	require('config.plug.lspkind'),
 	require('config.plug.orgmode'),
-	require('config.plug.nvimtree'),
 	require('config.plug.gitsigns'),
 	require('config.plug.ultisnips'),
 	require('config.plug.autopairs'),

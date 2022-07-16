@@ -50,7 +50,6 @@ require('packer').startup({
         use('terrortylor/nvim-comment')
         use('sbdchd/neoformat')
         use({'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}})
-		use("kyazdani42/nvim-tree.lua")
         -- }}}
 
         -- {{{ imporved syntax plugins
