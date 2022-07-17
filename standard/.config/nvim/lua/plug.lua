@@ -3,11 +3,17 @@ require('packer').startup({
         -- packer self management
         use('wbthomason/packer.nvim')
         use { 'nvim-orgmode/orgmode', config = function()
-            require('orgmode').setup{}
-        end }	
-        use {"akinsho/org-bullets.nvim", config = function()
-            require("org-bullets").setup {
-                symbols = { "◉", "○", "✸", "✿" }
+            require('orgmode').setup{
+                T = {
+                    description = 'Todo',
+                    template = '* TODO %?\n %u',
+                    target = '~/org/todo.org'
+                },
+                j = {
+                    description = 'Journal',
+                    template = '* TODO %?\n %u',
+                    target = '~/org/journal.org'
+                }
             }
         end }
 
@@ -22,7 +28,7 @@ require('packer').startup({
         use({
             'hrsh7th/nvim-cmp',
             requires = {
-                {'hrsh7th/cmp-nvim-lsp'}, 
+                {'hrsh7th/cmp-nvim-lsp'},
 				{'hrsh7th/cmp-path'},
                 {'hrsh7th/cmp-buffer'}
             }
