@@ -22,6 +22,6 @@
     "fixed-center": true, 
     "ipc": true, 		
  
-    "modules-left": ["custom/menu"],
+    "modules-left": ["custom/menu", "wlr/workspaces"],
     "modules-right": ["backlight", "network", "battery", "clock", "custom/power"],
 }
