@@ -178,7 +178,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   orgmode = {
-    config = { "\27LJ\2\nÿ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\6j\1\0\3\vtarget\22~/org/journal.org\16description\fJournal\rtemplate\18* TODO %?\n %u\6T\1\0\0\1\0\3\vtarget\19~/org/todo.org\16description\tTodo\rtemplate\18* TODO %?\n %u\nsetup\forgmode\frequire\0" },
+    config = { "\27LJ\2\nÿ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\6j\1\0\3\rtemplate\18* TODO %?\n %u\vtarget\22~/org/journal.org\16description\fJournal\6T\1\0\0\1\0\3\rtemplate\18* TODO %?\n %u\vtarget\19~/org/todo.org\16description\tTodo\nsetup\forgmode\frequire\0" },
     loaded = true,
     path = "/home/jordanp/.local/share/nvim/site/pack/packer/start/orgmode",
     url = "https://github.com/nvim-orgmode/orgmode"
@@ -243,7 +243,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: orgmode
 time([[Config for orgmode]], true)
-try_loadstring("\27LJ\2\nÿ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\6j\1\0\3\vtarget\22~/org/journal.org\16description\fJournal\rtemplate\18* TODO %?\n %u\6T\1\0\0\1\0\3\vtarget\19~/org/todo.org\16description\tTodo\rtemplate\18* TODO %?\n %u\nsetup\forgmode\frequire\0", "config", "orgmode")
+try_loadstring("\27LJ\2\nÿ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\6j\1\0\3\rtemplate\18* TODO %?\n %u\vtarget\22~/org/journal.org\16description\fJournal\6T\1\0\0\1\0\3\rtemplate\18* TODO %?\n %u\vtarget\19~/org/todo.org\16description\tTodo\nsetup\forgmode\frequire\0", "config", "orgmode")
 time([[Config for orgmode]], false)
 
 -- Command lazy-loads

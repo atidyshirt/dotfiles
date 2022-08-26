@@ -1,0 +1,117 @@
+{
+  "disable24Hour": true,
+  "disableDate": false,
+  "disableMessage": false,
+  "disableSearchBar": false,
+  "disableWeather": true,
+  "linkInNewTab": true,
+  "quickLinks": {
+    "d": {
+      "Search": "/?q=",
+      "URL": "https://duckduckgo.com"
+    },
+    "g": "https://github.com",
+    "p": "https://startpage.com",
+    "r": "https://reddit.com",
+    "s": "https://stackoverflow.com",
+    "w": "https://wiki.atlnz.lc/awpwiki/index.php/Main_Page",
+    "y": "https://youtube.com"
+  },
+  "searchEngine": "DuckDuckGo",
+  "settingsIcon": false,
+  "squares": [
+    {
+      "color": "red",
+      "links": [
+        {
+          "name": "Spotify",
+          "url": "https://open.spotify.com/"
+        },
+        {
+          "name": "Netflix",
+          "url": "https://netflix.com"
+        },
+        {
+          "name": "Youtube",
+          "url": "https://youtube.com"
+        }
+      ],
+      "name": "media"
+    },
+    {
+      "color": "#26A69A",
+      "links": [
+        {
+          "name": "TTS",
+          "url": "https://intranet.atlnz.lc/tts/index.php?page=my_times/grid"
+        },
+        {
+          "name": "Gerrit",
+          "url": "https://gerrit.atlnz.lc/#/q/status:open"
+        },
+        {
+          "name": "Jira",
+          "url": "https://jira.atlnz.lc/projects/GART/summary"
+        },
+        {
+          "name": "GART Report",
+          "url": "https://jenkins.atlnz.lc/job/gart/Serenity_20Test_20Report/"
+        }
+      ],
+      "name": "work"
+    },
+    {
+      "links": [
+        {
+          "name": "Email",
+          "url": "https://mail.alliedtelesis.co.nz/owa/#path=/mail"
+        },
+        {
+          "name": "Rocket Chat",
+          "url": "https://chat.alliedtelesis.co.nz/home"
+        },
+        {
+          "name": "Reddit",
+          "url": "https://reddit.com"
+        },
+        {
+          "name": "Messenger",
+          "url": "https://www.messenger.com/"
+        }
+      ],
+      "name": "social"
+    },
+    {
+      "links": [
+        {
+          "name": "Github",
+          "url": "https://github.com"
+        },
+        {
+          "name": "My Pay",
+          "url": "https://www.datacomdirectaccess.co.nz/1/home"
+        }
+      ],
+      "name": "Others"
+    }
+  ],
+  "style": {
+    "autocompleteHighlightBackgroundColor": "#3B3B3B",
+    "backgroundColor": "#212121",
+    "dateColor": "#d9d9d9",
+    "lineColor": "#fff",
+    "messageColor": "#fff",
+    "searchBackgroundColor": "#2e2e2e",
+    "searchColor": "#fff",
+    "squareBackgroundColor": "#2e2e2e",
+    "squareColor": "#9e9e9e",
+    "weatherColor": "#d9d9d9"
+  },
+  "timeZone": "Auckland/Pacific",
+  "title": "startpage",
+  "user": "atidyshirt",
+  "weatherConf": {
+    "location": "Christchurch New Zealand",
+    "unit": "cel"
+  }
+}
