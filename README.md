@@ -14,11 +14,13 @@
     * packer plugin manager
 - tmux
 - stow
+- sketchyBar
+    * Top panel bar (Fast alternative to Übersicht)
 
 **Optional**
 
-- Übersicht (top bar)
-    * Simplebar
+- sketchyVim
+    * Pipe MacOS buffers into vim buffers
 - lazygit
 - lazydocker
 

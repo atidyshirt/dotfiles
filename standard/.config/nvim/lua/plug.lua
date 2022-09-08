@@ -35,6 +35,7 @@ require('packer').startup({
         })
 
         -- snippets
+        use('honza/vim-snippets')
         use('sirver/ultisnips')
         use('quangnguyen30192/cmp-nvim-ultisnips')
         -- }}}
