@@ -8,4 +8,7 @@ M.ui = {
 M.plugins = require "custom.plugins"
 M.mappings = require "custom.mappings"
 
+-- setup options
+require "custom.options"
+
 return M
