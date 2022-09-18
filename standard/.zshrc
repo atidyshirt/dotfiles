@@ -19,7 +19,7 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # Autocomplete
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555,bg=#282828"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 
 # Scripts
 export PATH="$HOME/.bin:$PATH"
