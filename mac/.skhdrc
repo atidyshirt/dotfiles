@@ -7,7 +7,7 @@ alt - m : open -na /Applications/mpv.app $(pbpaste)
 
 # Launch from scratchpad (all floating)
 cmd - m : python3 $HOME/.bin/dropdown Spotify &&
-cmd - d : python3 $HOME/.bin/dropdown Discord &&
+cmd - d : python3 $HOME/.bin/dropdown "Discord Canary" &&
 
 alt - x : yabai -m window --focus recent
 alt - h : yabai -m window --focus west
@@ -73,7 +73,7 @@ shift + cmd - l : yabai -m window --insert east
 shift + cmd - i : yabai -m window --insert stack
 
 # toggle desktop offset
-alt - a : yabai -m space --toggle padding; yabai -m space --toggle gap
+alt - a : yabai -m space --toggle padding; yabai -m window --toggle border; yabai -m space --toggle gap
 
 # toggle window parent zoom
 alt - d : yabai -m window --toggle zoom-parent; \

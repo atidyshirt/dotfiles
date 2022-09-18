@@ -26,6 +26,11 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config window_shadow                off
 
+# Opacity
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 0.96
+yabai -m config normal_window_opacity 0.96
+
 # Boarders
 yabai -m config window_border                on
 yabai -m config window_border_width          8
@@ -35,7 +40,8 @@ yabai -m config normal_window_border_color   0xff$gruvInactive
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  51
+yabai -m config external_bar                 main:39:0
+yabai -m config top_padding                  10
 yabai -m config bottom_padding               10
 yabai -m config left_padding                 10
 yabai -m config right_padding                10
