@@ -27,6 +27,7 @@ o.smartindent = true    -- nice indenting
 
  -- Better folding
 o.foldenable = true
+o.foldmethod = "indent"
 
 -- backup/swap files
 opt.swapfile = false  	-- have files saved to swap
