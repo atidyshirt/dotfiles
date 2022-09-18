@@ -1,15 +1,34 @@
--- Load All packer plugins
-require('plug')
+vim.defer_fn(function()
+  pcall(require, "impatient")
+end, 0)
 
--- load keybindings and editor options
-require('keymap')
-require('options')
-require('autocmds')
+require "core"
+require "core.options"
 
--- load theme loading library
-local scheme = require('lib.scheme')
-scheme.load_shared_scheme('gruvbox-material')
+-- setup packer + plugins
+local fn = vim.fn
+local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 
--- loading configs
-require('config.lsp')
-require('config.plug')
+if fn.empty(fn.glob(install_path)) > 0 then
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+  print "Cloning packer .."
+  fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+
+  -- install plugins + compile their configs
+  vim.cmd "packadd packer.nvim"
+  require "plugins"
+  vim.cmd "PackerSync"
+
+  -- install binaries from mason.nvim & tsparsers
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "PackerComplete",
+    callback = function()
+      vim.cmd "bw | silent! MasonInstallAll" -- close packer window
+      require("packer").loader "nvim-treesitter"
+    end,
+  })
+end
+
+pcall(require, "custom")
+
+require("core.utils").load_mappings()
