@@ -26,7 +26,7 @@ o.expandtab = true    	-- tabs -> spaces
 o.smartindent = true    -- nice indenting
 
  -- Better folding
-o.foldenable = true
+o.foldenable = false
 o.foldmethod = "indent"
 
 -- backup/swap files
