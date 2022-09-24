@@ -28,12 +28,15 @@ yabai -m config window_shadow                off
 
 # Opacity
 yabai -m config window_opacity on
-yabai -m config active_window_opacity 0.96
-yabai -m config normal_window_opacity 0.96
+yabai -m config active_window_opacity 0.92
+yabai -m config normal_window_opacity 0.92
+yabai -m config window_border_hidpi off
+yabai -m config window_border_blur on
+# yabai -m config window_border_radius 5
 
 # Boarders
 yabai -m config window_border                on
-yabai -m config window_border_width          8
+yabai -m config window_border_width          5
 yabai -m config active_window_border_color   0xff$gruvActive
 yabai -m config insert_feedback_color        0xff$gruvActive
 yabai -m config normal_window_border_color   0xff$gruvInactive
@@ -41,11 +44,11 @@ yabai -m config normal_window_border_color   0xff$gruvInactive
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config external_bar                 main:39:0
-yabai -m config top_padding                  10
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 10
-yabai -m config right_padding                10
-yabai -m config window_gap                   10
+yabai -m config top_padding                  20
+yabai -m config bottom_padding               20
+yabai -m config left_padding                 20
+yabai -m config right_padding                20
+yabai -m config window_gap                   20
 
 # Running through float windows
 yabai -m space 1 --label code
