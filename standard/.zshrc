@@ -12,13 +12,18 @@ zstyle ':vcs_info:*' unstagedstr ' •'
 zstyle ':vcs_info:*' stagedstr ' +'
 PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 
-# Scripts
-export PATH="$HOME/.bin:$PATH"
-
 # Linuxbrew
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" 
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH" 
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
+# Autocomplete
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+
+# Scripts
+export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Keybinds
 source ~/dev_scripts/aliases
@@ -30,3 +35,6 @@ elif [[ -f ../.projectconfig && -r ../.projectconfig ]]; then
     cd .. && source .projectconfig && cd - &> /dev/null
 fi
 export PATH=$PATH:/home/jordanp/.spicetify
+
+# 7081
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

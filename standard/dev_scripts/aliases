@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # tmux attatch
 alias ts='tmux a || tmux'
 
@@ -12,7 +14,7 @@ alias svi='sudo nvim'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias gc='git clone'
-alias dotfiles="stow --target=$HOME --dir=$HOME/projects/dotfiles"
+alias dotfiles='stow --target="$HOME" --dir="$HOME/projects/dotfiles"'
 
 # Config Files
 alias arc='vi ~/dev_scripts/aliases'
@@ -20,6 +22,10 @@ alias trc='vi ~/.config/kitty/kitty.conf'
 alias zrc='vi ~/.zshrc'
 
 # Functions
+gdir() {
+    cat * | grep "$1" | sort | bat;
+}
+
 o(){
   selected=$(\
              find \
