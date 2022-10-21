@@ -1,57 +1,8 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
-M.load_config = function()
-  local config = require "core.default_config"
-  local initrc_exists, initrc = pcall(require, "custom.initrc")
-
-  if initrc_exists then
-    -- merge user config if it exists and is a table; otherwise display an error
-    if type(initrc) == "table" then
-      config.mappings = M.remove_disabled_keys(initrc.mappings, config.mappings)
-      config = merge_tb("force", config, initrc) or {}
-    else
-      error "chadrc must return a table!"
-    end
-  end
-
-  config.mappings.disabled = nil
-  return config
-end
-
-M.remove_disabled_keys = function(initrc_mappings, default_mappings)
-  if not initrc_mappings then
-    return default_mappings
-  end
-
-  -- store keys in a array with true value to compare
-  local keys_to_disable = {}
-  for _, mappings in pairs(initrc_mappings) do
-    for mode, section_keys in pairs(mappings) do
-      if not keys_to_disable[mode] then
-        keys_to_disable[mode] = {}
-      end
-      section_keys = (type(section_keys) == "table" and section_keys) or {}
-      for k, _ in pairs(section_keys) do
-        keys_to_disable[mode][k] = true
-      end
-    end
-  end
-
-  -- make a copy as we need to modify default_mappings
-  for section_name, section_mappings in pairs(default_mappings) do
-    for mode, mode_mappings in pairs(section_mappings) do
-      mode_mappings = (type(mode_mappings) == "table" and mode_mappings) or {}
-      for k, _ in pairs(mode_mappings) do
-        -- if key if found then remove from default_mappings
-        if keys_to_disable[mode] and keys_to_disable[mode][k] then
-          default_mappings[section_name][mode][k] = nil
-        end
-      end
-    end
-  end
-
-  return default_mappings
+M.load_config = function ()
+  return require("core.default_config")
 end
 
 M.load_mappings = function(section, mapping_opt)

@@ -17,7 +17,7 @@ local options = {
   ignore_ft_on_setup = { "alpha" },
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = false,
-  update_cwd = true,
+  update_cwd = false,
   update_focused_file = {
     enable = true,
     update_cwd = false,
@@ -29,7 +29,7 @@ local options = {
     hide_root_folder = true,
   },
   git = {
-    enable = false,
+    enable = true,
     ignore = true,
   },
   filesystem_watchers = {

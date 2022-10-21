@@ -203,6 +203,26 @@ local plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
   },
+
+  ["max397574/better-escape.nvim"] = {
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+
+  ['unblevable/quick-scope'] = {},
+  ['tpope/vim-fugitive'] = {},
+  ['tpope/vim-surround'] = {},
+  ['tpope/vim-sleuth'] = {},
+  ['christoomey/vim-tmux-navigator'] = {},
+  ['weilbith/nvim-code-action-menu'] = {
+    cmd = 'CodeActionMenu'
+  },
+
+  -- Harpoon
+  ['ThePrimeagen/harpoon'] = {},
+
 }
 
 -- Load all plugins

@@ -7,73 +7,50 @@ end
 local M = {}
 
 M.general = {
-  i = {
-    -- go to  beginning and end
-    ["<C-b>"] = { "<ESC>^i", "beginning of line" },
-    ["<C-e>"] = { "<End>", "end of line" },
-
-    -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "move left" },
-    ["<C-l>"] = { "<Right>", "move right" },
-    ["<C-j>"] = { "<Down>", "move down" },
-    ["<C-k>"] = { "<Up>", "move up" },
-  },
-
   n = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
-
-    -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
     ["<C-l>"] = { "<C-w>l", "window right" },
     ["<C-j>"] = { "<C-w>j", "window down" },
     ["<C-k>"] = { "<C-w>k", "window up" },
-
-    -- save
-    ["<C-s>"] = { "<cmd> w <CR>", "save file" },
-
-    -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
-
-    -- line numbers
-    ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
-
-    -- update nvchad
-    ["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "update nvchad" },
-
+    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
     ["<leader>tt"] = {
       function()
         require("base46").toggle_theme()
       end,
       "toggle theme",
     },
+    -- vim-fugative
+    ["gs"] = {":0G<CR>"},
+    ["<leader>x"] = {":bd!<CR>"},
+    ["<leader>X"] = {":%bd!|e#<CR>"},
 
-    -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-    -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-    -- empty mode is same as using <cmd> :map
-    -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-
-    -- new buffer
-    ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
+    -- Harpoon
+    ["ga"] = { ":lua require('harpoon.mark').add_file()<CR>" },
+    ["gm"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>" },
+    ["gj"] = { ":lua require('harpoon.ui').nav_file(1)<CR>" },
+    ["gk"] = { ":lua require('harpoon.ui').nav_file(2)<CR>" },
+    ["gl"] = { ":lua require('harpoon.ui').nav_file(3)<CR>" },
+    ["g;"] = { ":lua require('harpoon.ui').nav_file(4)<CR>" },
+    ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>" },
+    ["<leader><space>p"] = { ":!pandoc % -o %<.pdf --from markdown --template eisvogel --listings --toc<CR>" },
+    ["gt"] = { ":lua require('harpoon.tmux').gotoTerminal(1)<CR>" },
+    ["gy"] = { ":lua require('harpoon.tmux').gotoTerminal(2)<CR>" },
+    ["<leader><space>j"] = { ":lua require('harpoon.tmux').sendCommand(1,1)<cr>" },
+    ["<leader><space>k"] = { ":lua require('harpoon.tmux').sendCommand(1,2)<cr>" },
+    ["<leader><space>l"] = { ":lua require('harpoon.tmux').sendCommand(2,3)<cr>" },
+    ["<leader><space>;"] = { ":lua require('harpoon.tmux').sendCommand(2,4)<cr>" },
   },
 
-  t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
+  t = { ["<esc>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
 
   v = {
-    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-  },
-
-  x = {
-    ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-    ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-    -- Don't copy the replaced text after pasting in visual mode
-    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
+    ['<'] = { '<gv', opts = {noremap = true, silent = false} },
+    ['>'] = { '>gv', opts = {noremap = true, silent = false} },
   },
 }
 
@@ -82,24 +59,20 @@ M.tabufline = {
 
   n = {
     -- cycle through buffers
-    ["<TAB>"] = {
+    ["L"] = {
       function()
         require("nvchad_ui.tabufline").tabuflineNext()
       end,
       "goto next buffer",
     },
 
-    ["<S-Tab>"] = {
+    ["H"] = {
       function()
         require("nvchad_ui.tabufline").tabuflinePrev()
       end,
       "goto prev buffer",
     },
 
-    -- pick buffers via numbers
-    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
-
-    -- close buffer + hide terminal buffer
     ["<leader>x"] = {
       function()
         require("nvchad_ui.tabufline").close_buffer()
@@ -111,8 +84,6 @@ M.tabufline = {
 
 M.comment = {
   plugin = true,
-
-  -- toggle comment in both modes
   n = {
     ["<leader>/"] = {
       function()
@@ -132,10 +103,8 @@ M.comment = {
 
 M.lspconfig = {
   plugin = true,
-
-  -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-
   n = {
+    ['<leader>la'] = { '<cmd>CodeActionMenu<CR>' },
     ["gD"] = {
       function()
         vim.lsp.buf.declaration()
@@ -171,25 +140,11 @@ M.lspconfig = {
       "lsp signature_help",
     },
 
-    ["<leader>D"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "lsp definition type",
-    },
-
-    ["<leader>ra"] = {
+    ["<leader>lr"] = {
       function()
         require("nvchad_ui.renamer").open()
       end,
       "lsp rename",
-    },
-
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "lsp code_action",
     },
 
     ["gr"] = {
@@ -199,21 +154,14 @@ M.lspconfig = {
       "lsp references",
     },
 
-    ["<leader>f"] = {
-      function()
-        vim.diagnostic.open_float()
-      end,
-      "floating diagnostic",
-    },
-
-    ["[d"] = {
+    ["lp"] = {
       function()
         vim.diagnostic.goto_prev()
       end,
       "goto prev",
     },
 
-    ["d]"] = {
+    ["ln"] = {
       function()
         vim.diagnostic.goto_next()
       end,
@@ -227,7 +175,7 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    ["<leader>fm"] = {
+    ["<leader>lf"] = {
       function()
         vim.lsp.buf.formatting {}
       end,

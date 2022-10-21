@@ -8,7 +8,13 @@ require("base46").load_highlight "treesitter"
 
 local options = {
   ensure_installed = {
+    "vim",
     "lua",
+    "html",
+    "css",
+    "typescript",
+    "c",
+    "cpp",
   },
 
   highlight = {
