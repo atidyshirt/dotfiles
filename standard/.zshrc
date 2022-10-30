@@ -24,6 +24,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 # Scripts
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export CPATH="/opt/homebrew/include:$CPATH:$CONAN_INCLUDE_DIRS"
+export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
 
 # Keybinds
 source ~/dev_scripts/aliases

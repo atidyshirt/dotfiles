@@ -39,9 +39,6 @@ local plugins = {
     config = function()
       require "plugins.configs.nvterm"
     end,
-    setup = function()
-      require("core.utils").load_mappings "nvterm"
-    end,
   },
 
   ["kyazdani42/nvim-web-devicons"] = {
