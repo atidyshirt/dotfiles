@@ -1,6 +1,6 @@
 local plugins = {
 
-  ["nvim-lua/plenary.nvim"] = { module = "plenary" },
+  ["nvim-lua/plenary.nvim"] = {},
 
   ["lewis6991/impatient.nvim"] = {},
 
@@ -219,6 +219,18 @@ local plugins = {
 
   -- Harpoon
   ['ThePrimeagen/harpoon'] = {},
+  ['ThePrimeagen/vim-be-good'] = {},
+  ['TimUntersberger/neogit'] = {},
+  ['gelguy/wilder.nvim'] = {
+    config = function()
+      require('wilder').setup({
+        modes = {':', '/', '?'}
+      })
+    end,
+  },
+  ['sindrets/diffview.nvim'] = {
+      requires = "plenary.nvim"
+  },
 }
 
 -- Load all plugins
