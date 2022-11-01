@@ -72,10 +72,8 @@ lspconfig.sumneko_lua.setup {
 }
 
 local servers = {
-    "lua-language-server",
-    "stylua",
-    "css-lsp",
-    "html-lsp",
+    "cssls",
+    "html",
     "tsserver",
     "clangd",
     "pyright",
