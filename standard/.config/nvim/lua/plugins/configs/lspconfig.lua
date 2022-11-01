@@ -50,34 +50,43 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.sumneko_lua.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
+-- lspconfig.sumneko_lua.setup {
+  -- on_attach = M.on_attach,
+  -- capabilities = M.capabilities,
 
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
-}
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { "vim" },
+--       },
+--       workspace = {
+--         library = {
+--           [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+--           [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+--         },
+--         maxPreload = 100000,
+--         preloadFileSize = 10000,
+--       },
+--     },
+--   },
+-- }
 
-local servers = { "html", "cssls", "tsserver", "clangd", "pyright", "angularls" }
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = M.on_attach,
-    capabilities = M.capabilities,
-  }
-end
+-- local servers = {
+--     "lua-language-server",
+--     "stylua",
+--     "css-lsp",
+--     "html-lsp",
+--     "tsserver",
+--     "clangd",
+--     "pyright",
+--     "angularls"
+--  }
+--
+-- for _, lsp in ipairs(servers) do
+--   lspconfig[lsp].setup {
+--     on_attach = M.on_attach,
+--     capabilities = M.capabilities,
+--   }
+-- end
 
 return M

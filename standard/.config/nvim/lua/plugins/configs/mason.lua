@@ -15,15 +15,14 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 local options = {
   ensure_installed = {
-    -- lua stuff
     "lua-language-server",
     "stylua",
-
-    -- web dev stuff
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
+    "clangd",
+    "pyright",
+    "angularls"
   },
 
   ui = {
