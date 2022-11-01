@@ -43,7 +43,6 @@ local plugins = {
 
   ["kyazdani42/nvim-web-devicons"] = {
     after = "ui",
-    module = "nvim-web-devicons",
     config = function()
       require("plugins.configs.others").devicons()
     end,
@@ -60,15 +59,15 @@ local plugins = {
     end,
   },
 
-  ["NvChad/nvim-colorizer.lua"] = {
-    opt = true,
-    setup = function()
-      require("core.lazy_load").on_file_open "nvim-colorizer.lua"
-    end,
-    config = function()
-      require("plugins.configs.others").colorizer()
-    end,
-  },
+  -- ["NvChad/nvim-colorizer.lua"] = {
+  --   opt = true,
+  --   setup = function()
+  --     require("core.lazy_load").on_file_open "nvim-colorizer.lua"
+  --   end,
+  --   config = function()
+  --     require("plugins.configs.others").colorizer()
+  --   end,
+  -- },
 
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
@@ -220,12 +219,23 @@ local plugins = {
   -- Harpoon
   ['ThePrimeagen/harpoon'] = {},
   ['ThePrimeagen/vim-be-good'] = {},
-  ['TimUntersberger/neogit'] = {},
+
   ['gelguy/wilder.nvim'] = {
+    requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require('wilder').setup({
+      local wilder = require('wilder')
+      wilder.setup({
         modes = {':', '/', '?'}
       })
+      wilder.set_option('renderer', wilder.popupmenu_renderer(
+        wilder.popupmenu_border_theme({
+          highlighter = wilder.basic_highlighter(),
+          min_width = '100%', -- minimum height of the popupmenu, can also be a number
+          min_height = '25%', -- to set a fixed height, set max_height to the same value
+          max_height = '25%', -- to set a fixed height, set max_height to the same value
+          reverse = 1,        -- if 1, shows the candidates from bottom to top
+        })
+      ))
     end,
   },
   ['sindrets/diffview.nvim'] = {
