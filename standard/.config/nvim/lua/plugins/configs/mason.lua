@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 local options = {
   ensure_installed = {
+    "prettier",
     "lua-language-server",
     "stylua",
     "css-lsp",
@@ -22,7 +23,7 @@ local options = {
     "typescript-language-server",
     "clangd",
     "pyright",
-    "angularls"
+    "angular-language-server"
   },
 
   ui = {
