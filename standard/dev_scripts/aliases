@@ -11,6 +11,7 @@ alias ls='exa --icons'
 # Neovim + Coding
 alias vi='nvim'
 alias svi='sudo nvim'
+alias vgit='nvim -c :0G'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias gc='git clone'

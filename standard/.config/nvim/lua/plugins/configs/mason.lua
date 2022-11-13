@@ -23,7 +23,9 @@ local options = {
     "typescript-language-server",
     "clangd",
     "pyright",
-    "angular-language-server"
+    "angular-language-server",
+    "cucumber-language-server",
+    "cmake-language-server"
   },
 
   ui = {

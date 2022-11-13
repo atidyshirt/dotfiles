@@ -4,7 +4,7 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
+# RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '(%F{blue}%b%c%u%F{white})'
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
@@ -16,10 +16,6 @@ PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH" 
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH" 
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-
-# Autocomplete
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 
 # Scripts
 export PATH="$HOME/.bin:$PATH"

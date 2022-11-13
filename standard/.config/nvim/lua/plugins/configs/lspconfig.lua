@@ -71,14 +71,31 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
+lspconfig.cucumber_language_server.setup{
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  cmd = { "cucumber-language-server", "--stdio" },
+  settings = {
+    cucumber = {
+      features = { "**/*.feature" },
+      glue = {
+        "**/step_definitions/*.ts",
+        "**/StepDefinitions/*.ts",
+        "**/*.step.ts",
+      },
+    },
+  },
+}
+
 local servers = {
-    "cssls",
-    "html",
-    "tsserver",
-    "clangd",
-    "pyright",
-    "angularls"
- }
+  "cssls",
+  "html",
+  "tsserver",
+  "clangd",
+  "pyright",
+  "cmake",
+  "angularls"
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
