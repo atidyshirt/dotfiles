@@ -3,7 +3,7 @@
 
 main:
   # To show or not show top bars
-  show_headers: false
+  show_headers: true
 
   # Colors for the border on menu and todo lists!
   body_dim: dim white
@@ -90,7 +90,7 @@ keybindings:
   add_child: A
   spawn_sort_menu: ctrl+s
   start_search: /
-  select_node: enter
+  select_node: l
   move_focus_to_menu: h
   show_help: "?"
   increase_urgency: ["+", "="]
