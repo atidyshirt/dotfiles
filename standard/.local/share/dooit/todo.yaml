@@ -1,0 +1,40 @@
+Allied Telesis:
+  common:
+  - - x (4) due:18-11-2022 Write Health Monitoring Tests
+    - - x (3) due:18-11-2022 Write test case to visit page and check the health score
+      - x (3) due:18-11-2022 Write test case to scan values on page and expect results
+      - x (3) due:18-11-2022 Write test that turns off a router and ensures health
+        monitor is updated
+      - X (4) due:18-11-2022 Write handler for polling times from the health monitor
+        plugin
+      - x (2) due:23-11-2022 Write simulator support for testing health monitor on
+        the simulator
+      - x (2) due:23-11-2022 Bypass polling times with simulator responses
+      - x (2) due:24-11-2022 Move GART tests over to the simulator
+  - - x (3) due:24-11-2022 Implement node name redirect for Serenity tests
+    - - x (1) due:24-11-2022 Implement Vista code to create redirect on nodenames
+      - x (1) due:24-11-2022 Handle the case where multiple nodes share a common name
+      - x (1) due:24-11-2022 Update test to navigate on node names instead of nodeId's
+  - - x (1) due:28-11-2022 Show James the fundamentals of GART testing
+    - - x (1) due:None Introduce James to the project (Serenity 3.0)
+      - x (1) due:None Teach James about writing Serenity JS Code
+      - x (1) due:None Introduce him to resources (docs, information, code structure)
+      - x (1) due:None Get James working towards moving over code to Serenity 3.0
+      - x (1) due:None Provide help on what needs to change in package.json to make
+        this change happen
+  - - x (1) due:None Write tests for Server Guards and accessing pages
+    - - x (1) due:None Ensure that we can get the respective licenses to trigger each
+        server guard
+      - x (1) due:None AMF+ license allows for AMF+ features
+      - x (1) due:None No AMF+ access, ensure we cannot navigate to AMF+ pages
+      - x (1) due:None SD-WAN access
+      - x (1) due:None Base license pages
+Empyrean:
+  common:
+  - - x (1) due:None Write Stochastic RSI Indicator
+    - - x (1) due:None Write formatting data to get information from the selected
+        API's
+      - x (1) due:None Write method to wait for previous data needed for caclulations
+      - x (1) due:None Write a strategy that only reads for overbought/oversold stocks
+      - x (1) due:None Write a function that takes in an indicator and waits for stocks
+        to overbought/oversold
