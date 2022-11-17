@@ -1,16 +1,16 @@
 Allied Telesis:
   common:
   - - x (4) due:18-11-2022 Write Health Monitoring Tests
-    - - x (3) due:18-11-2022 Write test case to visit page and check the health score
-      - x (3) due:18-11-2022 Write test case to scan values on page and expect results
+    - - x (3) due:18-11-2022 Write test case to scan values on page and expect results
       - x (3) due:18-11-2022 Write test that turns off a router and ensures health
         monitor is updated
-      - X (4) due:18-11-2022 Write handler for polling times from the health monitor
-        plugin
       - x (2) due:23-11-2022 Write simulator support for testing health monitor on
         the simulator
       - x (2) due:23-11-2022 Bypass polling times with simulator responses
       - x (2) due:24-11-2022 Move GART tests over to the simulator
+      - X (3) due:18-11-2022 Write test case to visit page and check the health score
+      - X (4) due:18-11-2022 Write handler for polling times from the health monitor
+        plugin
   - - x (3) due:24-11-2022 Implement node name redirect for Serenity tests
     - - x (1) due:24-11-2022 Implement Vista code to create redirect on nodenames
       - x (1) due:24-11-2022 Handle the case where multiple nodes share a common name
