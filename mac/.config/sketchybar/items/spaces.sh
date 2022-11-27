@@ -14,10 +14,10 @@ do
                               icon.padding_left=22                          \
                               icon.padding_right=22                         \
                               label.padding_right=33                        \
-                              icon.highlight_color=$RED                     \
+                              icon.highlight_color=$GREEN                   \
                               background.padding_left=-8                    \
                               background.padding_right=-8                   \
-                              background.color=$ACCENT                      \
+                              background.color=$BLACK                      \
                               background.drawing=on                         \
                               label.font="sketchybar-app-font:Regular:16.0" \
                               label.background.height=26                    \

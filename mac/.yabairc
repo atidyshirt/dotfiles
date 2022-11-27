@@ -34,11 +34,11 @@ yabai -m config normal_window_border_color   0xff$gruvInactive
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config external_bar                 main:39:0
-yabai -m config top_padding                  10
-yabai -m config bottom_padding               10
-yabai -m config left_padding                 10
-yabai -m config right_padding                10
-yabai -m config window_gap                   10
+yabai -m config top_padding                  15
+yabai -m config bottom_padding               15
+yabai -m config left_padding                 15
+yabai -m config right_padding                15
+yabai -m config window_gap                   15
 
 # Rules for specific apps to launch and be managed by yabai
 yabai -m rule --add app=Spotify --space 6
