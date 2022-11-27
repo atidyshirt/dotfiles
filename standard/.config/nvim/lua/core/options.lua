@@ -22,6 +22,9 @@ opt.titlestring = "%t - Vim" -- Set title string
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
+-- GUI font settings
+vim.opt.guifont = { "FiraCode Nerd Font", ":h16" }
+
 -- Indenting
 opt.expandtab = true
 opt.shiftwidth = 4

@@ -7,13 +7,13 @@ Allied Telesis:
         results
       - X (3) due:17-11-2022 Write test case to visit page and check the health score
       - X (3) due:18-11-2022 Clean up commit and create new gerrit review
-      - O (4) due:18-11-2022 Create Health monitoring test post rebooting routers
-      - x (4) due:18-11-2022 Create gerrit review for rebooting routers test
-  - - x (3) due:24-11-2022 Implement node name redirect for Serenity tests
-    - - x (1) due:24-11-2022 Implement Vista code to create redirect on nodenames
-      - x (1) due:24-11-2022 Handle the case where multiple nodes share a common name
-      - x (1) due:24-11-2022 Update test to navigate on node names instead of nodeId's
-      - x (1) due:24-11-2022 Clean up commit and make a gerrit review
+      - x (4) due:21-11-2022 Create Health monitoring test post rebooting routers
+      - x (4) due:21-11-2022 Create gerrit review for rebooting routers test
+  - - X (3) due:24-11-2022 Implement node name redirect for Serenity tests
+    - - X (1) due:24-11-2022 Implement Vista code to create redirect on nodenames
+      - X (1) due:24-11-2022 Handle the case where multiple nodes share a common name
+      - X (1) due:24-11-2022 Update test to navigate on node names instead of nodeId's
+      - X (1) due:24-11-2022 Clean up commit and make a gerrit review
   - - x (1) due:None Write tests for Server Guards and accessing pages
     - - x (1) due:None Ensure that we can get the respective licenses to trigger each
         server guard
@@ -28,6 +28,21 @@ Allied Telesis:
       - x (1) due:None Get James working towards moving over code to Serenity 3.0
       - x (1) due:None Provide help on what needs to change in package.json to make
         this change happen
+Dooit:
+  common:
+  - - X (1) due:None Extend remove child function to take copy on clipboard
+    - - X (1) due:None Create clipboard class that can be accessed globally
+      - X (1) due:None Ensure that we write to the clipboard when removing a node
+  - - X (1) due:None Create insertion method to insert at specific index in the tree
+    - - X (1) due:None Check if we are a child/parent node
+      - X (1) due:None Copy entire node with new index position relative to the parent
+        node
+      - X (1) due:None Ensure that all children are copied across
+      - X (1) due:None Set clipboard to NULL to avoid conflicting names
+  - - x (1) due:None Bug fixing and testing
+    - - X (1) due:None Is the crashing/freezing my fault
+      - X (1) due:None Any bugs in moving TODO's
+      - x (1) due:None Extend moving TODO's to moving Workspaces
 Empyrean:
   common:
   - - x (1) due:27-11-2022 Write Stochastic RSI Indicator

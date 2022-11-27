@@ -1,29 +1,37 @@
 #!/usr/bin/env sh
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 
+SPACE_ICONS=("➊" "➋" "➌" "➍" "➎" "➏" "➐" "➑")
+SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
+
+sid=0
 for i in "${!SPACE_ICONS[@]}"
 do
   sid=$(($i+1))
-  sketchybar --add space      space.$sid left                    \
-             --set space.$sid associated_space=$sid              \
-                              icon=${SPACE_ICONS[i]}             \
-                              icon.padding_left=22               \
-                              icon.padding_right=22              \
-                              icon.highlight_color=$GREEN        \
-                              background.padding_left=-8         \
-                              background.padding_right=-8        \
-                              background.height=26               \
-                              background.corner_radius=9         \
-                              background.color=0xff62554A        \
-                              background.drawing=on              \
-                              label.drawing=off                  \
+  sketchybar --add space      space.$sid left                               \
+             --set space.$sid associated_space=$sid                         \
+                              icon=${SPACE_ICONS[i]}                        \
+                              icon.padding_left=22                          \
+                              icon.padding_right=22                         \
+                              label.padding_right=33                        \
+                              icon.highlight_color=$RED                     \
+                              background.padding_left=-8                    \
+                              background.padding_right=-8                   \
+                              background.color=$ACCENT                      \
+                              background.drawing=on                         \
+                              label.font="sketchybar-app-font:Regular:16.0" \
+                              label.background.height=26                    \
+                              label.background.drawing=off                  \
+                              label.background.color=$BLACK                 \
+                              label.background.corner_radius=9              \
+                              label.drawing=on                              \
+                              script="$PLUGIN_DIR/space.sh"                 \
                               click_script="$SPACE_CLICK_SCRIPT"
 done
 
 sketchybar   --add item       separator left                          \
              --set separator  icon=                                  \
-                              icon.font="FiraCode Nerd Font:Regular:16.0" \
+                              icon.font="Hack Nerd Font:Regular:16.0" \
                               background.padding_left=26              \
                               background.padding_right=15             \
                               label.drawing=off                       \

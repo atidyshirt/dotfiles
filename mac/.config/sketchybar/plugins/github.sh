@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 update() {
   source "$HOME/.config/sketchybar/colors.sh"
@@ -20,7 +20,7 @@ update() {
   args+=(--remove '/github.notification\.*/')
 
   COUNTER=0
-  COLOR=$WHITE
+  COLOR=$BLUE
   args+=(--set github.bell icon.color=$COLOR)
 
   while read -r repo url type title 
@@ -28,7 +28,7 @@ update() {
     COUNTER=$((COUNTER + 1))
     IMPORTANT="$(echo "$title" | egrep -i "(deprecat|break|broke)")"
     COLOR=$BLUE
-    PADDING=5
+    PADDING=0
 
     if [ "${repo}" = "" ] && [ "${title}" = "" ]; then
       repo="Note"
