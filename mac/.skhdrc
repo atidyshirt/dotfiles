@@ -15,8 +15,8 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
-alt - tab         : yabai -m window --focus stack.prev
-alt + shift - tab : yabai -m window --focus stack.next
+alt - tab         : yabai -m window --focus stack.next
+alt + shift - tab : yabai -m window --focus stack.prev
 
 shift + alt - h : yabai -m window --warp west
 shift + alt- j : yabai -m window --warp south
@@ -104,8 +104,9 @@ shift + alt - t : yabai -m window --toggle float;\
 
 
 # toggle sticky, float and resize to picture-in-picture size
- alt - p : yabai -m window --toggle sticky; \
-           yabai -m window --grid 4:1:2:4:4:0; \
+alt - p : yabai -m window --toggle sticky;\
+    yabai -m window --toggle topmost;\
+    yabai -m window --grid 4:4:4:0:1:1
 
 # toggle back from picture in picture mode
  shift + alt - p : yabai -m window --toggle float; \
