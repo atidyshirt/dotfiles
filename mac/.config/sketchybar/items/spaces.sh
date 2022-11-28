@@ -1,7 +1,14 @@
 #!/usr/bin/env sh
 
 
-SPACE_ICONS=("➊" "➋" "➌" "➍" "➎" "➏" "➐" "➑")
+SPACE_ICONS=(
+  ":vim:" 
+  ":terminal:" 
+  ":google_chrome:" 
+  ":slack:" 
+  ":spotify:" 
+  ":git_hub:" 
+)
 SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
 
 sid=0
@@ -20,6 +27,7 @@ do
                               background.color=$BLACK                      \
                               background.drawing=on                         \
                               label.font="sketchybar-app-font:Regular:16.0" \
+                              icon.font="sketchybar-app-font:Regular:16.0" \
                               label.background.height=26                    \
                               label.background.drawing=off                  \
                               label.background.color=$BLACK                 \

@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+#=================================SKETCHYBAR CONFIGURATION ==================================
+
 source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 
@@ -66,7 +68,8 @@ source "$ITEM_DIR/divider.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/spotify.sh"
 
-# Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
 
 echo "sketchybar configuation loaded.."
+
+#=================================SKETCHYBAR CONFIGURATION END ==============================
