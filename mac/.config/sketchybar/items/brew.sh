@@ -10,4 +10,3 @@ sketchybar --add event brew_update                 \
                       label=?                      \
                       background.padding_right=15  \
           --subscribe brew brew_update
-

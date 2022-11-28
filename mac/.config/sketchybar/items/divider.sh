@@ -1,4 +1,4 @@
-sketchybar --add bracket status brew github.bell volume volume_alias \
+sketchybar --add bracket status brew battery github.bell volume volume_alias \
            --set status background.color=$ACCENT
 
 sketchybar --add item divider right \
