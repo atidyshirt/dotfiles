@@ -13,6 +13,7 @@ if [[ $CHARGING != "" ]]; then
   exit 0
 fi
 
+[[ ${BATT_PERCENT} -gt 40 ]] && COLOR=$GREEN || COLOR=$ORANGE
 [[ ${BATT_PERCENT} -gt 20 ]] && COLOR=$GREEN || COLOR=$RED
 
 case ${BATT_PERCENT} in
