@@ -10,7 +10,8 @@ local plugins = {
         rooter_patterns = {
           '.git',
           'package.json',
-          'tsconfig.json'
+          'tsconfig.json',
+          'conanfile.txt'
         },
         trigger_patterns = { '*' },
         manual = false,

@@ -216,12 +216,22 @@ M.nvimtree = {
   },
 }
 
+local find_files_gitdir_check = function()
+  vim.fn.system('git rev-parse --is-inside-work-tree')
+  if vim.v.shell_error == 0 then
+    return "<cmd> Telescope git_files <CR>"
+  else
+    return "<cmd> Telescope find_files <CR>"
+  end
+end
+
+
 M.telescope = {
   plugin = true,
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>ff"] = { find_files_gitdir_check(), "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },

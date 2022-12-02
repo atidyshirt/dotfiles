@@ -19,6 +19,7 @@ local options = {
       "--column",
       "--smart-case",
     },
+    root_dir = { ".git" },
     prompt_prefix = "   ",
     selection_caret = "  ",
     entry_prefix = "  ",
