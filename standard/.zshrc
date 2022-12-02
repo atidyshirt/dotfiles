@@ -36,3 +36,4 @@ export PATH=$PATH:/home/jordanp/.spicetify
 
 # 7081
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"

@@ -4,6 +4,20 @@ local plugins = {
 
   ["lewis6991/impatient.nvim"] = {},
 
+  ['notjedi/nvim-rooter.lua'] = {
+    config = function()
+      require('nvim-rooter').setup {
+        rooter_patterns = {
+          '.git',
+          'package.json',
+          'tsconfig.json'
+        },
+        trigger_patterns = { '*' },
+        manual = false,
+      }
+    end
+  },
+
   ["wbthomason/packer.nvim"] = {
     cmd = require("core.lazy_load").packer_cmds,
     config = function()

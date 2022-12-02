@@ -3,6 +3,14 @@
 # tmux attatch
 alias ts='tmux a || tmux'
 
+# MacOS override for brew to update sketchybar
+function brew() {
+  command brew "$@" 
+  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+    sketchybar --trigger brew_update
+  fi
+}
+
 # curl into work over SOCKS proxy hosted on localhost:1080
 alias curl-atlnz='curl --socks5-hostname localhost:1080'
 
