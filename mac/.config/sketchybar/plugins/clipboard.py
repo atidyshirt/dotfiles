@@ -3,7 +3,7 @@ import json
 import subprocess
 
 class Clipboard:
-    def __init__(self, file):
+    def __init__(self, file: str) -> None:
         self.file = file
         try: 
             with open(self.file, 'r') as openfile:
@@ -11,14 +11,13 @@ class Clipboard:
         except: 
             json_object = { "clipboard": [] }
         self.storage = json_object
-        self.hasChanged = False
 
-    def write_to_clipboard(self):
+    def write_to_clipboard(self) -> None:
         json_object = json.dumps(self.storage, indent=4)
         with open(self.file, "w") as outfile:
             outfile.write(json_object)
 
-    def add_to_clipboard(self):
+    def add_to_clipboard(self) -> bool:
         clip = subprocess.check_output("pbpaste").decode('utf-8').strip()
         if clip not in self.storage["clipboard"]:
             if len(self.storage["clipboard"]) < 5:
@@ -26,10 +25,11 @@ class Clipboard:
             else:
                 self.storage["clipboard"].pop(0)
                 self.storage["clipboard"].append(clip)
-            self.hasChanged = True
+            return True
+        return False
 
-    def draw_clipboard(self):
-        options = []
+    def draw_clipboard(self) -> None:
+        options: list[str] = []
         if len(self.storage["clipboard"]) == 0:
             options += [
                 'sketchybar',
@@ -76,7 +76,6 @@ class Clipboard:
 
 if __name__ == "__main__":
     clipboard = Clipboard("/Users/jordanp/.config/.clipboard_storage.json")
-    clipboard.add_to_clipboard()
-    if clipboard.hasChanged:
+    if clipboardHasChanged := clipboard.add_to_clipboard():
         clipboard.write_to_clipboard()
         clipboard.draw_clipboard()
