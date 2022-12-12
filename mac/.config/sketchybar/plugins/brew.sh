@@ -13,9 +13,9 @@ args+=(--remove '/brew.template\.*/')
 COLOR=$RED
 
 case "$COUNT" in
-  [3-5][0-9]) COLOR=$RED
+  [2-5][0-9]) COLOR=$RED
   ;;
-  [1-2][0-9]) COLOR=$ORANGE
+  [1-0][0-9]) COLOR=$ORANGE
   ;;
   [1-9]) COLOR=$YELLOW
   ;;
