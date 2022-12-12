@@ -63,7 +63,7 @@ class Clipboard:
                 f'clipboard.template.{clip}',
                  f"""click_script=`echo '{self.storage["clipboard"][clip]}' | pbcopy` """
                 'drawing=on',
-                'label.width=120',
+                'label.width=200',
                 'background.corner_radius=12',
                 'background.padding_left=12',
                 'background.padding_right=12',
