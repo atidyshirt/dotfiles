@@ -32,7 +32,7 @@ update() {
 
     if [ "${repo}" = "" ] && [ "${title}" = "" ]; then
       repo="Note"
-      title="No new notifications"
+      title="No notifications"
     fi 
     case "${type}" in
       "'Issue'") COLOR=$GREEN; ICON=$GIT_ISSUE; URL="$(gh api "$(echo "${url}" | sed -e "s/^'//" -e "s/'$//")" | jq .html_url)"
