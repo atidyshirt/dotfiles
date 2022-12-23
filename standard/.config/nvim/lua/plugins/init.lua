@@ -84,6 +84,8 @@ local plugins = {
   --   end,
   -- },
 
+  ["nvim-treesitter/playground"] = {},
+
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
     setup = function()
@@ -213,6 +215,8 @@ local plugins = {
     end,
   },
 
+  ['simrat39/rust-tools.nvim'] = { },
+
   ["max397574/better-escape.nvim"] = {
     event = "InsertEnter",
     config = function()
@@ -250,9 +254,9 @@ local plugins = {
       ))
     end,
   },
-  ['sindrets/diffview.nvim'] = {
-      requires = "plenary.nvim"
-  },
+
+  ['~/projects/markdown-literate'] = {},
+  -- ['shoumodip/nvim-literate'] = {},
 }
 
 -- Load all plugins

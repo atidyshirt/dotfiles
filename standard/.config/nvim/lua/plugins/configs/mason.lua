@@ -17,6 +17,7 @@ local options = {
   ensure_installed = {
     "prettier",
     "lua-language-server",
+    "rust-analyzer",
     "stylua",
     "css-lsp",
     "html-lsp",

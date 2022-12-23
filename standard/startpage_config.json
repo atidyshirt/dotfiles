@@ -34,6 +34,10 @@
         {
           "name": "Youtube",
           "url": "https://youtube.com"
+        },
+        {
+          "name": "Movies",
+          "url": "https://moviesjoy.to/movie"
         }
       ],
       "name": "media"
@@ -84,6 +88,10 @@
     {
       "links": [
         {
+          "name": "Gmail",
+          "url": "https://mail.google.com/mail/u/0/#inbox"
+        },
+        {
           "name": "Github",
           "url": "https://github.com"
         },
@@ -92,7 +100,7 @@
           "url": "https://www.datacomdirectaccess.co.nz/1/home"
         }
       ],
-      "name": "Others"
+      "name": "Personal"
     }
   ],
   "style": {

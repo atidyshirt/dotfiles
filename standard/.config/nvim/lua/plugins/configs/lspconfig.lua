@@ -87,6 +87,38 @@ lspconfig.cucumber_language_server.setup{
   },
 }
 
+
+-- Rust
+local rt = require("rust-tools")
+
+M.rust_on_attach = function(client, bufnr)
+  if vim.g.vim_version > 7 then
+    -- nightly
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  else
+    -- stable
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
+
+  utils.load_mappings("lspconfig", { buffer = bufnr })
+  vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+  vim.keymap.set("n", "<Leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
+
+  if client.server_capabilities.signatureHelpProvider then
+    require("nvchad_ui.signature").setup(client)
+  end
+end
+
+rt.setup({
+  server = {
+    on_attach = M.rust_on_attach,
+    capabilities = M.capabilities,
+  },
+})
+
+-- Other servers
 local servers = {
   "cssls",
   "html",

@@ -24,9 +24,9 @@ M.general = {
       "toggle theme",
     },
     -- vim-fugative
-    ["gs"] = {":0G<CR>"},
-    ["<leader>x"] = {":bd!<CR>", "Close buffer"},
-    ["<leader>X"] = {":%bd!|e#<CR>", "Close other buffers"},
+    ["gs"] = { ":0G<CR>" },
+    ["<leader>x"] = { ":bd!<CR>", "Close buffer" },
+    ["<leader>X"] = { ":%bd!|e#<CR>", "Close other buffers" },
 
     -- Harpoon
     ["ga"] = { ":lua require('harpoon.mark').add_file()<CR>", "Harpoon add" },
@@ -37,7 +37,7 @@ M.general = {
     ["g;"] = { ":lua require('harpoon.ui').nav_file(4)<CR>", "Harpoon file 4" },
     ["gt"] = { ":lua require('harpoon.tmux').gotoTerminal(1)<CR>", "Terminal 1" },
     ["gy"] = { ":lua require('harpoon.tmux').gotoTerminal(2)<CR>", "Terminal 2" },
-    ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>" , "Harpoon command menu"},
+    ["<leader><space>m"] = { ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", "Harpoon command menu" },
     ["<leader><space>j"] = { ":lua require('harpoon.tmux').sendCommand(1,1)<cr>", "Send Command 1" },
     ["<leader><space>k"] = { ":lua require('harpoon.tmux').sendCommand(1,2)<cr>", "Send Command 2" },
     ["<leader><space>l"] = { ":lua require('harpoon.tmux').sendCommand(2,3)<cr>", "Send Command 3" },
@@ -48,8 +48,8 @@ M.general = {
 
   v = {
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
-    ['<'] = { '<gv', opts = {noremap = true, silent = false} },
-    ['>'] = { '>gv', opts = {noremap = true, silent = false} },
+    ["<"] = { "<gv", opts = { noremap = true, silent = false } },
+    [">"] = { ">gv", opts = { noremap = true, silent = false } },
   },
 }
 
@@ -103,7 +103,7 @@ M.comment = {
 M.lspconfig = {
   plugin = true,
   n = {
-    ['<leader>la'] = { '<cmd>CodeActionMenu<CR>' },
+    ["<leader>la"] = { "<cmd>CodeActionMenu<CR>" },
     ["gD"] = {
       function()
         vim.lsp.buf.declaration()
@@ -217,14 +217,13 @@ M.nvimtree = {
 }
 
 local find_files_gitdir_check = function()
-  vim.fn.system('git rev-parse --is-inside-work-tree')
+  vim.fn.system "git rev-parse --is-inside-work-tree"
   if vim.v.shell_error == 0 then
     return "<cmd> Telescope git_files <CR>"
   else
     return "<cmd> Telescope find_files <CR>"
   end
 end
-
 
 M.telescope = {
   plugin = true,
