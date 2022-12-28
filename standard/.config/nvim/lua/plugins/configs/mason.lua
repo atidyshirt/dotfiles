@@ -26,7 +26,8 @@ local options = {
     "pyright",
     "angular-language-server",
     "cucumber-language-server",
-    "cmake-language-server"
+    "cmake-language-server",
+    "marksman"
   },
 
   ui = {

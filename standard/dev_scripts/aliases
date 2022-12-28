@@ -27,6 +27,7 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias gc='git clone'
 alias dotfiles='stow --target="$HOME" --dir="$HOME/projects/dotfiles"'
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
 
 # Config Files
 alias arc='vi ~/dev_scripts/aliases'

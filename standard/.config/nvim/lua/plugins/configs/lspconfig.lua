@@ -126,7 +126,8 @@ local servers = {
   "clangd",
   "pyright",
   "cmake",
-  "angularls"
+  "angularls",
+  "marksman"
 }
 
 for _, lsp in ipairs(servers) do

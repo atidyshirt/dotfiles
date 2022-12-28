@@ -27,8 +27,18 @@ M.general = {
     ["gs"] = { ":0G<CR>" },
     ["<leader>x"] = { ":bd!<CR>", "Close buffer" },
     ["<leader>X"] = { ":%bd!|e#<CR>", "Close other buffers" },
+  },
+}
 
-    -- Harpoon
+M.mardkdown_tangle = {
+  n = {
+    ["tf"] = { ":lua require('markdown-literate').tangle()<CR>", "Tangle file" },
+    ["tu"] = { ":lua require('markdown-literate').remove_tangled()<CR>", "Tangle file" },
+  },
+}
+
+M.harpoon = {
+  n = {
     ["ga"] = { ":lua require('harpoon.mark').add_file()<CR>", "Harpoon add" },
     ["gm"] = { ":lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon menu" },
     ["gj"] = { ":lua require('harpoon.ui').nav_file(1)<CR>", "Harpoon file 1" },
@@ -42,14 +52,6 @@ M.general = {
     ["<leader><space>k"] = { ":lua require('harpoon.tmux').sendCommand(1,2)<cr>", "Send Command 2" },
     ["<leader><space>l"] = { ":lua require('harpoon.tmux').sendCommand(2,3)<cr>", "Send Command 3" },
     ["<leader><space>;"] = { ":lua require('harpoon.tmux').sendCommand(2,4)<cr>", "Send Command 4" },
-  },
-
-  t = { ["<esc>"] = { termcodes "<C-\\><C-N>", "Escape terminal mode" } },
-
-  v = {
-    ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
-    ["<"] = { "<gv", opts = { noremap = true, silent = false } },
-    [">"] = { ">gv", opts = { noremap = true, silent = false } },
   },
 }
 
