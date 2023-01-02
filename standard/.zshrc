@@ -1,3 +1,4 @@
+source ~/.config/zsh/zsh-snap/znap.zsh
 export EDITOR='nvim'
 
 autoload -Uz vcs_info
@@ -37,3 +38,9 @@ export PATH=$PATH:/home/jordanp/.spicetify
 # 7081
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+
+# Plugins
+znap source zsh-users/zsh-autosuggestions
+bindkey '^[[Z' autosuggest-accept 
+znap source zsh-users/zsh-syntax-highlighting
+
