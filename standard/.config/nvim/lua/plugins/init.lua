@@ -255,8 +255,22 @@ local plugins = {
     end,
   },
 
+  -- markdown-literate
   ['~/projects/markdown-literate'] = {},
-  -- ['shoumodip/nvim-literate'] = {},
+
+  -- trouble
+  ['folke/trouble.nvim'] = {
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  },
+  ['folke/todo-comments.nvim'] = {
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
 }
 
 -- Load all plugins

@@ -1,9 +1,5 @@
 -- n, v, i, t = mode names
 
-local function termcodes(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 local M = {}
 
 M.general = {
@@ -102,6 +98,14 @@ M.comment = {
   },
 }
 
+M.trouble = {
+  n = {
+    ["lf"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble file" },
+    ["lw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble workspace" },
+    ["lt"] = { "<cmd>TodoTrouble<cr>", "Trouble tags" },
+  },
+}
+
 M.lspconfig = {
   plugin = true,
   n = {
@@ -174,13 +178,6 @@ M.lspconfig = {
         vim.diagnostic.setloclist()
       end,
       "Quickfix diagnostics",
-    },
-
-    ["<leader>lf"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "lsp formatting",
     },
 
     ["<leader>wa"] = {
