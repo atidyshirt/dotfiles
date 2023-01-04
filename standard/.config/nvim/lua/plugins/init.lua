@@ -215,7 +215,7 @@ local plugins = {
     end,
   },
 
-  ['simrat39/rust-tools.nvim'] = { },
+  ['atidyshirt/rust-tools.nvim'] = { },
 
   ["max397574/better-escape.nvim"] = {
     event = "InsertEnter",

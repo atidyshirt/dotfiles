@@ -88,7 +88,7 @@ lspconfig.cucumber_language_server.setup{
 }
 
 
--- Rust
+------------------------------------------Rust -------------------------------------------------
 local rt = require("rust-tools")
 
 M.rust_on_attach = function(client, bufnr)
@@ -110,6 +110,7 @@ M.rust_on_attach = function(client, bufnr)
     require("nvchad_ui.signature").setup(client)
   end
 end
+-------------------------------------------------------------------------------------------------
 
 rt.setup({
   server = {
