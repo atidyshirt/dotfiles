@@ -19,7 +19,7 @@ case "$COUNT" in
   ;;
   [1-9]) COLOR=$YELLOW
   ;;
-  0) COLOR=$GREEN
+  0) COLOR=$YELLOW
      COUNT=􀆅
   ;;
 esac

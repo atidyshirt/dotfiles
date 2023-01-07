@@ -12,6 +12,7 @@ zen_on() {
              --set spotify.anchor drawing=off \
              --set spotify.play updates=off \
              --set brew drawing=off \
+             --set clipboard drawing=off \
              --set divider drawing=off \
              --bar padding_left=18
 }
@@ -26,6 +27,7 @@ zen_off() {
              --set system.yabai drawing=on \
              --set volume_alias drawing=on \
              --set spotify.play updates=on \
+             --set clipboard drawing=on \
              --set brew drawing=on \
              --set divider drawing=on \
              --bar padding_left=7
