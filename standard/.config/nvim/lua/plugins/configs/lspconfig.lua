@@ -112,6 +112,11 @@ end
 
 rt.setup({
   server = {
+    settings = {
+      ["rust-analyzer"] = {
+        inlayHints = { locationLinks = false },
+      },
+    },
     on_attach = M.rust_on_attach,
     capabilities = M.capabilities,
   },
