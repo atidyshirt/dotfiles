@@ -32,7 +32,6 @@ sketchybar --bar     height=39                                         \
                      y_offset=0                                        \
                      margin=0                                          \
                      blur_radius=20                                    \
-                     notch_width=0                                     \
                                                                        \
            --default updates=when_shown                                \
                      icon.font="$FONT:Bold:14.0"                       \

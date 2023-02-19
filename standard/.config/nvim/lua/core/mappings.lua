@@ -30,6 +30,10 @@ M.mardkdown_tangle = {
   n = {
     ["tf"] = { ":lua require('markdown-literate').tangle()<CR>", "Tangle file" },
     ["tu"] = { ":lua require('markdown-literate').remove_tangled()<CR>", "Tangle file" },
+    ["tp"] = {
+      ":!pandoc % -o %<.pdf --template eisvogel --listings",
+      "Write file to pdf"
+    }
   },
 }
 

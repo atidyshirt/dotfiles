@@ -74,16 +74,6 @@ local plugins = {
     end,
   },
 
-  -- ["NvChad/nvim-colorizer.lua"] = {
-  --   opt = true,
-  --   setup = function()
-  --     require("core.lazy_load").on_file_open "nvim-colorizer.lua"
-  --   end,
-  --   config = function()
-  --     require("plugins.configs.others").colorizer()
-  --   end,
-  -- },
-
   ["nvim-treesitter/playground"] = {},
 
   ["nvim-treesitter/nvim-treesitter"] = {
