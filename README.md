@@ -8,7 +8,7 @@
 
 **Installation**
 
-```sh
+```sh { tangle: ./install/install_mac.sh }
 # Installing homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -37,7 +37,7 @@ Ensure you have installed the dependencies via package manager on system.
     * `yay -S rofi polybar picom kitty exa gh neovim tmux stow nvim-packer-git`
     * Alternatively you can install exa, kitty, neovim, tmux, stow from `homebrew`
 
-```
+```sh { tangle: ./install/install_linux.sh }
 # Installing homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 

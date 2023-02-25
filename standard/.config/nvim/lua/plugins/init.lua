@@ -246,7 +246,7 @@ local plugins = {
   },
 
   -- markdown-literate
-  ['~/projects/markdown-literate'] = {},
+  ['atidyshirt/markdown-literate'] = {},
 
   -- trouble
   ['folke/trouble.nvim'] = {
