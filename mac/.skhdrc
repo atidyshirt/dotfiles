@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
 alt - return : open -na "/Applications/Google Chrome.app"
 alt - m : open -na /Applications/mpv.app $(pbpaste)
