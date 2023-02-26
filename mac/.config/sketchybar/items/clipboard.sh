@@ -13,3 +13,4 @@ sketchybar --add item clipboard right                        \
                       click_script="python3 $PLUGIN_DIR/clipboard.py && $POPUP_CLICK_SCRIPT" \
                       icon.font="$FONT:Regular:18.0"       \
            --add item clipboard.template left popup.clipboard \
+

@@ -81,3 +81,4 @@ if __name__ == "__main__":
     if clipboardHasChanged := clipboard.add_to_clipboard():
         clipboard.write_to_clipboard()
         clipboard.draw_clipboard()
+
