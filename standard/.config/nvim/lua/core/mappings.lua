@@ -26,15 +26,13 @@ M.general = {
   },
 }
 
-M.mardkdown_tangle = {
+M.markdown_tangle = {
   n = {
-    ["tf"] = { ":lua require('markdown-literate').tangle()<CR>", "Tangle file" },
-    ["tu"] = { ":lua require('markdown-literate').remove_tangled()<CR>", "Remove tangled files" },
-    ["te"] = { ":lua require('markdown-literate').edit_block()<CR>", "Edit Code Block" },
-    ["tp"] = {
-      ":!pandoc % -o %<.pdf --template eisvogel --listings",
-      "Write file to pdf"
-    }
+    -- NOTE: the below commented keymaps are the default bindings for the `markdown-literate` plugin
+    -- ["tf"] = { ":lua require('markdown-literate').tangle()<CR>", "Tangle file" },
+    -- ["tu"] = { ":lua require('markdown-literate').remove_tangled()<CR>", "Remove tangled files" },
+    -- ["te"] = { ":lua require('markdown-literate').edit_block()<CR>", "Edit Code Block" },
+    ["tp"] = { ":!pandoc % -o %<.pdf --template eisvogel --listings", "Write file to pdf" }
   },
 }
 

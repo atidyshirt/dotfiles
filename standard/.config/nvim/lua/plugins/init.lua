@@ -246,7 +246,11 @@ local plugins = {
   },
 
   -- markdown-literate
-  ['atidyshirt/markdown-literate'] = {},
+  ['atidyshirt/markdown-literate'] = {
+    config = function()
+      require("markdown-literate").setup()
+    end
+  },
 
   -- trouble
   ['folke/trouble.nvim'] = {
