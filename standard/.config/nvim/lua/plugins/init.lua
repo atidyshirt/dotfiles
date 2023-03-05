@@ -245,6 +245,10 @@ local plugins = {
     end,
   },
 
+  ['cbochs/portal.nvim'] = {
+    requires = { "cbochs/grapple.nvim" },
+  },
+
   -- markdown-literate
   ['atidyshirt/markdown-literate'] = {
     config = function()

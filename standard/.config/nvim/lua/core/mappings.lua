@@ -23,6 +23,8 @@ M.general = {
     ["gs"] = { ":0G<CR>" },
     ["<leader>x"] = { ":bd!<CR>", "Close buffer" },
     ["<leader>X"] = { ":%bd!|e#<CR>", "Close other buffers" },
+    ["<leader>o"] = { "<cmd>Portal jumplist backward<cr>", "Jumplist backward" },
+    ["<leader>i"] = { "<cmd>Portal jumplist forward<cr>", "Jumplist forward" },
   },
 }
 
