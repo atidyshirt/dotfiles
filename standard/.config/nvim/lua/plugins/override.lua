@@ -19,18 +19,16 @@ return {
         "nvim-telescope/telescope.nvim",
         init = function()
             local keys = require("lazyvim.plugins.lsp.keymaps").get()
+            local is_git_files = function()
+                vim.fn.system("git rev-parse --is-inside-work-tree")
+                if vim.v.shell_error == 0 then
+                    return "<cmd> Telescope git_files <CR>"
+                else
+                    return "<cmd> Telescope find_files <CR>"
+                end
+            end
 
-            keys[#keys + 1] = {
-                "<leader>ff",
-                function()
-                    vim.fn.system("git rev-parse --is-inside-work-tree")
-                    if vim.v.shell_error == 0 then
-                        return "<cmd> Telescope git_files <CR>"
-                    else
-                        return "<cmd> Telescope find_files <CR>"
-                    end
-                end,
-            }
+            keys[#keys + 1] = { "<leader>ff", is_git_files() }
             keys[#keys + 1] = { "<leader>/", false }
             keys[#keys + 1] = { "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>" }
             keys[#keys + 1] = { "<leader>fw", "<cmd> Telescope live_grep <CR>" }

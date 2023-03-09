@@ -19,6 +19,7 @@ require("lazy").setup({
         lazy = false,
         version = false,
     },
+    install = { colorscheme = { "gruvbox-material" } },
     checker = { enabled = true },
     performance = {
         rtp = {
