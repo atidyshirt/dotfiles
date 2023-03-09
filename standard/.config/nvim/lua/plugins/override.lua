@@ -47,6 +47,13 @@ return {
     },
 
     {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async",
+        event = "BufReadPost",
+        opts = {},
+    },
+
+    {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
