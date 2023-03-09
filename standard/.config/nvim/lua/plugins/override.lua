@@ -29,7 +29,12 @@ return {
             end
 
             keys[#keys + 1] = { "<leader>ff", is_git_files() }
-            keys[#keys + 1] = { "<leader>/", false }
+            keys[#keys + 1] = {
+                "<leader>/",
+                function()
+                    require("Comment.api").toggle.linewise.current()
+                end,
+            }
             keys[#keys + 1] = { "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>" }
             keys[#keys + 1] = { "<leader>fw", "<cmd> Telescope live_grep <CR>" }
             keys[#keys + 1] = { "<leader>fb", "<cmd> Telescope buffers <CR>" }
