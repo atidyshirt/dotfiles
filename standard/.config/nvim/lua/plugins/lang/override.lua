@@ -5,8 +5,29 @@ end
 
 return {
     {
+        "jose-elias-alvarez/null-ls.nvim",
+        event = "BufReadPre",
+        dependencies = { "mason.nvim" },
+        opts = {
+            sources = {
+                require("null-ls").builtins.formatting.prettierd,
+            },
+        },
+    },
+    {
         "neovim/nvim-lspconfig",
-        servers = { eslint = {} },
+        setup = {
+            eslint = function(_, _)
+                require("lazyvim.util").on_attach(function(client, _)
+                    if client.name == "eslint" then
+                        client.server_capabilities.documentFormattingProvider = true
+                    end
+                    if client.name == "tsserver" then
+                        client.server_capabilities.documentFormattingProvider = false
+                    end
+                end)
+            end,
+        },
         init = function()
             local keys = require("lazyvim.plugins.lsp.keymaps").get()
             local format = require("lazyvim.plugins.lsp.format").format
@@ -16,7 +37,6 @@ return {
             keys[#keys + 1] = { "<leader>cd", false }
             keys[#keys + 1] = { "<leader>cl", false }
             keys[#keys + 1] = { "<leader>cr", false }
-            keys[#keys + 1] = { "<leader>cf", false }
             keys[#keys + 1] = { "<leader>cf", false }
             keys[#keys + 1] = { "<leader>la", false }
 
@@ -39,7 +59,7 @@ return {
             keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
             keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "documentFormatting" }
             keys[#keys + 1] =
-                { "<leader>lf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
+                { "<leader>lF", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
             keys[#keys + 1] = {
                 "<leader>la",
                 vim.lsp.buf.code_action,
@@ -48,17 +68,6 @@ return {
                 has = "codeAction",
             }
         end,
-        setup = {
-            eslint = function()
-                require("lazyvim.util").on_attach(function(client)
-                    if client.name == "eslint" then
-                        client.server_capabilities.documentFormattingProvider = true
-                    elseif client.name == "tsserver" then
-                        client.server_capabilities.documentFormattingProvider = false
-                    end
-                end)
-            end,
-        },
     },
     {
         "hrsh7th/nvim-cmp",
