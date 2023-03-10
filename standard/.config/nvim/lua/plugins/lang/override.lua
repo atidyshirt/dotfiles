@@ -4,30 +4,30 @@ if not present then
 end
 
 return {
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        event = "BufReadPre",
-        dependencies = { "mason.nvim" },
-        opts = {
-            sources = {
-                require("null-ls").builtins.formatting.prettierd,
-            },
-        },
-    },
+    -- {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     event = "BufReadPre",
+    --     dependencies = { "mason.nvim" },
+    --     opts = {
+    --         sources = {
+    --             require("null-ls").builtins.formatting.prettierd,
+    --         },
+    --     },
+    -- },
     {
         "neovim/nvim-lspconfig",
-        setup = {
-            eslint = function(_, _)
-                require("lazyvim.util").on_attach(function(client, _)
-                    if client.name == "eslint" then
-                        client.server_capabilities.documentFormattingProvider = true
-                    end
-                    if client.name == "tsserver" then
-                        client.server_capabilities.documentFormattingProvider = false
-                    end
-                end)
-            end,
-        },
+        -- setup = {
+        --     eslint = function(_, _)
+        --         require("lazyvim.util").on_attach(function(client, _)
+        --             if client.name == "eslint" then
+        --                 client.server_capabilities.documentFormattingProvider = true
+        --             end
+        --             if client.name == "tsserver" then
+        --                 client.server_capabilities.documentFormattingProvider = false
+        --             end
+        --         end)
+        --     end,
+        -- },
         init = function()
             local keys = require("lazyvim.plugins.lsp.keymaps").get()
             local format = require("lazyvim.plugins.lsp.format").format
@@ -59,7 +59,7 @@ return {
             keys[#keys + 1] = { "<leader>lr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
             keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "documentFormatting" }
             keys[#keys + 1] =
-                { "<leader>lF", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
+            { "<leader>lF", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" }
             keys[#keys + 1] = {
                 "<leader>la",
                 vim.lsp.buf.code_action,
@@ -75,7 +75,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(),
                 ["<C-n>"] = cmp.mapping.select_next_item(),
-                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-d>"] = cmp.mapping.scroll_docs( -4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.close(),
@@ -101,7 +101,7 @@ return {
                 ["<C-k>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
-                    elseif require("luasnip").jumpable(-1) then
+                    elseif require("luasnip").jumpable( -1) then
                         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
                     else
                         fallback()
