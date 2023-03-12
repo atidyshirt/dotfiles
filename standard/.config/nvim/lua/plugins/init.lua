@@ -60,6 +60,9 @@ return {
             require("nvim-rooter").setup({
                 rooter_patterns = {
                     ".git",
+                    "package.json",
+                    "tsconfig.json",
+                    "conanfile.txt",
                 },
                 trigger_patterns = { "*" },
                 manual = false,
@@ -76,13 +79,21 @@ return {
             wilder.set_option("use_python_remote_plugin", 0)
             wilder.set_option(
                 "renderer",
-                wilder.popupmenu_renderer(wilder.popupmenu_palette_theme({
-                    highlighter = wilder.basic_highlighter(),
+                wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
                     border = "rounded",
-                    max_height = "20%",
-                    min_height = 0,
-                    prompt_position = "bottom",
-                    reverse = 1,
+                    highlighter = wilder.basic_highlighter(),
+                    left = { " ", wilder.popupmenu_devicons() },
+                    min_width = "100%", -- minimum height of the popupmenu, can also be a number
+                    min_height = "20%", -- to set a fixed height, set max_height to the same value
+                    max_height = "20%", -- to set a fixed height, set max_height to the same value
+                    reverse = 1, -- if 1, shows the candidates from bottom to top
+                    highlights = {
+                        accent = wilder.make_hl(
+                            "WilderAccent",
+                            "Pmenu",
+                            { { a = 1 }, { a = 1 }, { foreground = "#7daea3" } }
+                        ),
+                    },
                 }))
             )
         end,
