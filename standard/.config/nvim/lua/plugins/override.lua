@@ -112,6 +112,10 @@ return {
         enabled = false,
     },
     {
+        "bufferline.nvim",
+        enabled = false,
+    },
+    {
         "nvim-spectre",
         enabled = false,
     },
