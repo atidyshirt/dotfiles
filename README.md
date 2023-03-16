@@ -33,9 +33,9 @@ brew bundle
 Ensure you have installed the dependencies via package manager on system.
 
 - If you are on archcraft, use the following commands to do so:
-    * `sudo pacman -S archcraft-i3wm`
-    * `yay -S rofi polybar picom kitty exa gh neovim tmux stow nvim-packer-git`
-    * Alternatively you can install exa, kitty, neovim, tmux, stow from `homebrew`
+  - `sudo pacman -S archcraft-i3wm`
+  - `yay -S rofi polybar picom kitty exa gh neovim tmux stow nvim-packer-git`
+  - Alternatively you can install exa, kitty, neovim, tmux, stow from `homebrew`
 
 ```sh { tangle: ./install/install_linux.sh }
 # Installing homebrew

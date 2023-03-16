@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # tmux attatch
-alias ts='tmux a || tmux'
+alias ts='tmux a || tmux new-session -s workspace'
 
 # MacOS override for brew to update sketchybar
 function brew() {
-  command brew "$@" 
-  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-    sketchybar --trigger brew_update
-  fi
+	command brew "$@"
+	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+		sketchybar --trigger brew_update
+	fi
 }
 
 # curl into work over SOCKS proxy hosted on localhost:1080
@@ -36,28 +36,28 @@ alias zrc='vi ~/.zshrc'
 
 # Functions
 loggrep() {
-    grep "$@" | awk '{ gsub("error|Error|fail|Fail", "\033[1;33m&\033[0m"); gsub("success|succeeded|Success|Succeeded", "\033[1;36m&\033[0m"); print }'
+	grep "$@" | awk '{ gsub("error|Error|fail|Fail", "\033[1;33m&\033[0m"); gsub("success|succeeded|Success|Succeeded", "\033[1;36m&\033[0m"); print }'
 }
 
 gdir() {
-    cat * | grep "$1" | sort | bat;
+	cat * | grep "$1" | sort | bat
 }
 
-o(){
-  selected=$(\
-             find \
-                 ~/projects ~/.config \
-                 -mindepth 1 -maxdepth 1 -type d | \
-             sed -r "s/^\/home\/[^\/]+\///g" |
-             fzf --border=rounded --reverse --prompt="  ➡️  " --ansi \
-                 --header="🚀 Finder" --header-first \
-                 --pointer="🔥" \
-                 --padding 1,0 --margin 0,2,1,2 \
-                 --color="prompt:blue,prompt:bold,border:green,border:dim" \
-                 --color="fg+:yellow" \
-                 --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
-                 --color="info:green" \
-                 --preview='\
+o() {
+	selected=$(
+		find \
+			~/projects ~/.config \
+			-mindepth 1 -maxdepth 1 -type d |
+			sed -r "s/^\/home\/[^\/]+\///g" |
+			fzf --border=rounded --reverse --prompt="  ➡️  " --ansi \
+				--header="🚀 Finder" --header-first \
+				--pointer="🔥" \
+				--padding 1,0 --margin 0,2,1,2 \
+				--color="prompt:blue,prompt:bold,border:green,border:dim" \
+				--color="fg+:yellow" \
+				--color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
+				--color="info:green" \
+				--preview='\
                             gitdir="$(echo {})$(echo "/.git")" ;\
                             if [ -e $gitdir ] ;\
                             then ;\
@@ -76,6 +76,7 @@ o(){
                             --group-directories-first -l --no-permissions --git-ignore\
                             --no-user --no-filesize --changed --no-time {} ;\
                             ' \
-                 --preview-window=border-left,50%)
-    cd $selected &> /dev/null
+				--preview-window=border-left,50%
+	)
+	cd $selected &>/dev/null
 }
