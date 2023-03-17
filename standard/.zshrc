@@ -1,5 +1,8 @@
 source ~/.config/zsh/zsh-snap/znap.zsh
+
 export EDITOR='nvim'
+export VMUX_EDITOR='nvim'
+export VMUX_REALEDITOR_NVIM='/opt/homebrew/bin/nvim'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -25,6 +28,5 @@ fi
 
 # Plugins
 znap source zsh-users/zsh-autosuggestions
-bindkey '^[[Z' autosuggest-accept 
+bindkey '^[[Z' autosuggest-accept
 znap source zsh-users/zsh-syntax-highlighting
-

@@ -20,9 +20,9 @@ alias ...='cd ../..'
 alias ls='exa --icons'
 
 # Neovim + Coding
-alias vi='nvim'
+alias vi='vmux || nvim'
 alias svi='sudo nvim'
-alias vgit='nvim -c :0G'
+alias vgit='vmux -c :0G || nvim -c :0G'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias gc='git clone'

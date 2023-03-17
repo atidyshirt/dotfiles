@@ -22,6 +22,22 @@ cd
 brew bundle
 ```
 
+**Extra dependencies**
+
+To have tmux sessions running a single neovim instance per-session, I use [vmux](https://github.com/jceb/vmux) to
+accomplish this; this can be installed using the following method:
+
+```bash
+pip3 install vmux
+```
+
+To get the most out of the tmux integration, we should install the [tmux plugin manager](https://github.com/tmux-plugins/tpm),
+the quick installation method is to use the following command:
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 ### Linux
 
 **Showcase**
