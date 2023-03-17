@@ -68,36 +68,6 @@ return {
     },
 
     {
-        "gelguy/wilder.nvim",
-        config = function()
-            local wilder = require("wilder")
-            wilder.setup({ modes = { ":", "/", "?" } })
-
-            wilder.set_option("use_python_remote_plugin", 0)
-            wilder.set_option(
-                "renderer",
-                wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-                    border = "rounded",
-                    highlighter = wilder.basic_highlighter(),
-                    left = { " ", wilder.popupmenu_devicons() },
-                    min_width = "100%", -- minimum height of the popupmenu, can also be a number
-                    min_height = "20%", -- to set a fixed height, set max_height to the same value
-                    max_height = "20%", -- to set a fixed height, set max_height to the same value
-                    reverse = 1, -- if 1, shows the candidates from bottom to top
-                    highlights = {
-                        accent = wilder.make_hl(
-                            "WilderAccent",
-                            "Pmenu",
-                            { { a = 1 }, { a = 1 }, { foreground = "#7daea3" } }
-                        ),
-                    },
-                }))
-            )
-        end,
-        requires = "kyazdani42/nvim-web-devicons",
-    },
-
-    {
         "max397574/better-escape.nvim",
         event = "InsertEnter",
         config = function()
