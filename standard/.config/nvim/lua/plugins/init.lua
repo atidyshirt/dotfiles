@@ -38,23 +38,6 @@ return {
             prev_prefix = ",",
             next_repeat = "<c-n>",
             prev_repeat = "<c-p>",
-            operators = {
-                ["h"] = {
-                    next = {
-                        command = function()
-                            require("gitsigns").next_hunk({ preview = true })
-                        end,
-                        desc = "Next diff",
-                    },
-                    prev = {
-                        command = function()
-                            require("gitsigns").prev_hunk({ preview = true })
-                        end,
-                        desc = "Prev diff",
-                    },
-                    mode = { "n", "v", "o" },
-                },
-            },
         },
     },
 
