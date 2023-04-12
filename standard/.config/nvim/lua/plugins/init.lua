@@ -8,18 +8,6 @@ return {
     },
 
     {
-        "cbochs/grapple.nvim",
-    },
-
-    {
-        "cbochs/portal.nvim",
-        keys = {
-            { "<leader>i", "<cmd>Portal jumplist forward<cr>", desc = "Portal forward" },
-            { "<leader>o", "<cmd>Portal jumplist backward<cr>", desc = "Portal backward" },
-        },
-    },
-
-    {
         "Wansmer/treesj",
         keys = {
             {
@@ -30,18 +18,6 @@ return {
         },
         opts = { use_default_keymaps = false },
     },
-
-    {
-        "liangxianzhe/nap.nvim",
-        opts = {
-            next_prefix = ",",
-            prev_prefix = ",",
-            next_repeat = "<c-n>",
-            prev_repeat = "<c-p>",
-        },
-    },
-
-    -- my plugins
 
     -- stylua: ignore
     {

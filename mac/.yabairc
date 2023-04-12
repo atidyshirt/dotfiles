@@ -6,33 +6,33 @@ sudo yabai --load-sa
 gruvInactive=32302f
 gruvActive=62554A
 
-yabai -m config window_placement             second_child
-yabai -m config split_ratio                  0.50
-yabai -m config mouse_modifier               fn
-yabai -m config mouse_action1                move
-yabai -m config mouse_action2                resize
+yabai -m config window_placement second_child
+yabai -m config split_ratio 0.50
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
 
-yabai -m config layout                       bsp
-yabai -m config external_bar                 all:39:0
-yabai -m config top_padding                  15
-yabai -m config bottom_padding               15
-yabai -m config left_padding                 15
-yabai -m config right_padding                15
-yabai -m config window_gap                   15
+yabai -m config layout bsp
+yabai -m config external_bar all:39:0
+yabai -m config top_padding 15
+yabai -m config bottom_padding 15
+yabai -m config left_padding 15
+yabai -m config right_padding 15
+yabai -m config window_gap 15
 
-yabai -m config window_border                on
-yabai -m config window_border_width          4
-yabai -m config active_window_border_color   0xff$gruvActive
-yabai -m config insert_feedback_color        0xff$gruvActive
-yabai -m config normal_window_border_color   0xff$gruvInactive
-yabai -m config window_opacity               off
-yabai -m config active_window_opacity        0.92
-yabai -m config normal_window_opacity        0.92
-yabai -m config window_border_blur           off
-yabai -m config window_border_hidpi          off
-yabai -m config window_shadow                off
+yabai -m config window_border on
+yabai -m config window_border_width 4
+yabai -m config active_window_border_color 0xff$gruvActive
+yabai -m config insert_feedback_color 0xff$gruvActive
+yabai -m config normal_window_border_color 0xff$gruvInactive
+yabai -m config window_opacity off
+yabai -m config active_window_opacity 0.92
+yabai -m config normal_window_opacity 0.92
+yabai -m config window_border_blur off
+yabai -m config window_border_hidpi off
+yabai -m config window_shadow off
 
-yabai -m config window_animation_duration    0.20
+yabai -m config window_animation_duration 0.20
 
 yabai -m rule --add app=Spotify --space 6
 yabai -m rule --add app=Discord --space 6
@@ -47,4 +47,3 @@ yabai -m rule --add app=BetterTouchTool manage=off
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
-

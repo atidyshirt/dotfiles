@@ -16,27 +16,16 @@ return {
             options = {
                 theme = "auto",
                 globalstatus = true,
-                disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha", "grapple" } },
+                disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
                 component_separators = "",
                 section_separators = "",
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = {
-                    -- stylua: ignore
-                    {
-                        function() local key = require("grapple").key() return "  [" .. key .. "]" end,
-                        cond = function() return require("grapple").exists() end,
-                    },
-                },
+                lualine_b = {},
                 lualine_c = { "diagnostics" },
                 lualine_x = {
                     -- stylua: ignore
-                    {
-                        function() return require("noice").api.status.mode.get() end,
-                        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-                        color = fg("Constant"),
-                    },
                     {
                         "diff",
                         symbols = {
