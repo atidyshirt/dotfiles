@@ -81,4 +81,15 @@ return {
         end,
     },
     { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+
+    -- local history
+    {
+        "dinhhuy258/vim-local-history",
+        config = function()
+            local path = os.getenv("XDG_CONFIG_HOME") or "~/.config"
+            vim.g.local_history_path = path .. "/.local-history"
+            vim.g.local_history_max_changes = 100
+        end,
+        build = ":UpdateRemotePlugins",
+    },
 }
