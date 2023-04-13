@@ -86,7 +86,7 @@ return {
     {
         "dinhhuy258/vim-local-history",
         config = function()
-            local path = os.getenv("XDG_CONFIG_HOME") or "~/.config"
+            local path = os.getenv("HOME") .. "/.config"
             vim.g.local_history_path = path .. "/.local-history"
             vim.g.local_history_max_changes = 100
         end,
