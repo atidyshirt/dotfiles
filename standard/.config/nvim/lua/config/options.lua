@@ -23,6 +23,9 @@ vim.opt.tabstop = 4
 opt.updatetime = 250
 opt.timeoutlen = 400
 
+-- cursorcolumn
+opt.colorcolumn = "120"
+
 -- Folding (from nvim-ufo)
 vim.opt.foldcolumn = "1"
 vim.opt.foldlevel = 99

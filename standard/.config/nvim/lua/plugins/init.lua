@@ -33,6 +33,18 @@ return {
     },
 
     {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-treesitter/nvim-treesitter" },
+        },
+        config = function()
+            require("refactoring").setup({})
+            require("telescope").load_extension("refactoring")
+        end,
+    },
+
+    {
         "notjedi/nvim-rooter.lua",
         config = function()
             require("nvim-rooter").setup({
@@ -81,6 +93,8 @@ return {
         end,
     },
     { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+
+    { "Bekaboo/deadcolumn.nvim", config = true },
 
     -- local history
     {

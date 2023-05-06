@@ -20,6 +20,7 @@ require("lazy").setup({
         { import = "plugins.lang" },
         { import = "plugins" },
     },
+    autoformat = false,
     defaults = {
         lazy = false,
         version = false,
