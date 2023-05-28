@@ -3,12 +3,19 @@
 # tmux attatch
 alias ts='tmux a || tmux new-session -s workspace'
 
+function doesCommandExist() {
+    command -v "$1" &> /dev/null
+}
+
 # MacOS override for brew to update sketchybar
 function brew() {
-	command brew "$@"
-	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-		sketchybar --trigger brew_update
-	fi
+    if doesCommandExist brew
+    then
+    command brew "$@"
+    if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+	sketchybar --trigger brew_update
+    fi
+fi
 }
 
 # curl into work over SOCKS proxy hosted on localhost:1080
@@ -17,66 +24,87 @@ alias curl-atlnz='curl --socks5-hostname localhost:1080'
 ## `cd` changes
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='exa --icons'
+if doesCommandExist exa
+then
+    alias ls='exa --icons'
+fi
 
 # Neovim + Coding
-alias vi='vmux'
-alias svi='sudo nvim'
-alias vgit='vmux -c :0G'
-alias lg='lazygit'
-alias ld='lazydocker'
-alias gc='git clone'
-alias dotfiles='stow --target="$HOME" --dir="$HOME/projects/dotfiles"'
+
+if doesCommandExist nvim
+then
+    if doesCommandExist vmux
+    then
+	alias vi='vmux'
+	alias vgit='vmux -c :0G'
+    else
+	alias vi='nvim'
+	alias vgit='nvim -c :0G'
+    fi
+    alias svi='sudo nvim'
+    alias arc='nvim ~/dev_scripts/aliases'
+    alias trc='nvim ~/.config/kitty/kitty.conf'
+    alias zrc='nvim ~/.zshrc'
+fi
+
+if doesCommandExist lazygit
+then
+    alias lg='lazygit'
+fi
+
+if doesCommandExist lazydocker
+then
+    alias ld='lazydocker'
+fi
+
+if doesCommandExist stow
+then
+    alias dotfiles='stow --target="$HOME" --dir="$HOME/projects/dotfiles"'
+fi
+
+if doesCommandExist git
+then
+    alias gc='git clone'
+fi
 alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
 
-# Config Files
-alias arc='nvim ~/dev_scripts/aliases'
-alias trc='nvim ~/.config/kitty/kitty.conf'
-alias zrc='nvim ~/.zshrc'
-
-# Functions
-loggrep() {
-	grep "$@" | awk '{ gsub("error|Error|fail|Fail", "\033[1;33m&\033[0m"); gsub("success|succeeded|Success|Succeeded", "\033[1;36m&\033[0m"); print }'
-}
-
-gdir() {
-	cat * | grep "$1" | sort | bat
-}
-
-o() {
+if doesCommandExist fzf
+then
+    o() {
 	selected=$(
-		find \
-			~/projects ~/.config \
-			-mindepth 1 -maxdepth 1 -type d |
-			sed -r "s/^\/home\/[^\/]+\///g" |
-			fzf --border=rounded --reverse --prompt="  ➡️  " --ansi \
-				--header="🚀 Finder" --header-first \
-				--pointer="🔥" \
-				--padding 1,0 --margin 0,2,1,2 \
-				--color="prompt:blue,prompt:bold,border:green,border:dim" \
-				--color="fg+:yellow" \
-				--color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
-				--color="info:green" \
-				--preview='\
-                            gitdir="$(echo {})$(echo "/.git")" ;\
-                            if [ -e $gitdir ] ;\
-                            then ;\
-                                projectname=$(basename {}) ;\
-                                commitcount=$(git --git-dir=$gitdir \
-                                              rev-list --all --count) ;\
-                                printf "\e[0;93m\e[1;34m $projectname \e[0m\n" ;\
-                                printf "\e[0;93m\e[0;34m branch\e[0m  " ;\
-                                git --git-dir=$gitdir \
-                                rev-parse --abbrev-ref HEAD ;\
-                                printf "\e[0;93m\e[0;34m commits\e[0m " ;\
-                                echo $commitcount ;\
-                                echo ;\
-                            fi;
-                            exa -1 --icons -T -L 3 \
-                            --group-directories-first -l --no-permissions --git-ignore\
-                            --no-user --no-filesize --changed --no-time {} ;\
-                            ' \
-				--preview-window=border-left,50%
-	)
-	cd $selected &>/dev/null
-}
+	find \
+	    ~/projects ~/.config \
+	    -mindepth 1 -maxdepth 1 -type d |
+	    sed -r "s/^\/home\/[^\/]+\///g" |
+	    fzf --border=rounded --reverse --prompt="  ➡️  " --ansi \
+	    --header="🚀 Finder" --header-first \
+	    --pointer="🔥" \
+	    --padding 1,0 --margin 0,2,1,2 \
+	    --color="prompt:blue,prompt:bold,border:green,border:dim" \
+	    --color="fg+:yellow" \
+	    --color="hl:underline,hl+:underline,hl:magenta,hl+:magenta" \
+	    --color="info:green" \
+	    --preview='\
+	    gitdir="$(echo {})$(echo "/.git")" ;\
+	    if [ -e $gitdir ] ;\
+	    then ;\
+		projectname=$(basename {}) ;\
+		commitcount=$(git --git-dir=$gitdir \
+		rev-list --all --count) ;\
+		printf "\e[0;93m\e[1;34m $projectname \e[0m\n" ;\
+		printf "\e[0;93m\e[0;34m branch\e[0m  " ;\
+		git --git-dir=$gitdir \
+		rev-parse --abbrev-ref HEAD ;\
+		printf "\e[0;93m\e[0;34m commits\e[0m " ;\
+		echo $commitcount ;\
+		echo ;\
+	    fi;
+		    exa -1 --icons -T -L 3 \
+			--group-directories-first -l --no-permissions --git-ignore\
+			--no-user --no-filesize --changed --no-time {} ;\
+			' \
+			--preview-window=border-left,50%
+		    )
+		    cd $selected &>/dev/null
+		}
+fi
