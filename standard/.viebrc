@@ -1,0 +1,49 @@
+" vim: ft=vim
+
+" Settings
+"
+set guinavbar=oninput
+set guitabbar=never
+" set guihidetimeout=1200
+set adblocker=update
+set cache=clearonquit
+set devtoolsposition=window
+set downloadmethod=automatic
+set downloadpath=~/Downloads/
+
+imap <C-e> <editWithVim>
+emap <C-k> <nextSuggestion>
+emap <C-j> <prevSuggestion>
+cmap <C-k> <nextSuggestion>
+cmap <C-j> <prevSuggestion>
+
+set searchwords=
+set searchwords+=dd~https://duckduckgo.com/?q=%s
+set searchwords+=i~https://duckduckgo.com/?q=%s&iax=images&ia=images
+set searchwords+=gh~https://github.com/search?q=%s
+set searchwords+=gm~https://www.google.com/maps?hl=en&q=%s
+set searchwords+=r~https://reddit.com/r/%s
+set searchwords+=gse~https://german.stackexchange.com/search?q=%s
+set searchwords+=ardse~https://arduino.stackexchange.com/search?q=%s
+set searchwords+=secse~https://security.stackexchange.com/search?q=%s
+set searchwords+=movse~https://movies.stackexchange.com/search?q=%s
+set searchwords+=ebse~https://ebooks.stackexchange.com/search?q=%s
+set searchwords+=muse~https://music.stackexchange.com/search?q=%s
+set searchwords+=gdse~https://graphicdesign.stackexchange.com/search?q=%s
+set searchwords+=cgise~https://computergraphics.stackexchange.com/search?q=%s
+set searchwords+=vidse~https://video.stackexchange.com/search?q=%s
+set searchwords+=puzse~https://puzzling.stackexchange.com/search?q=%s
+set searchwords+=hbse~https://homebrew.stackexchange.com/search?q=%s
+set searchwords+=mechse~https://mechanics.stackexchange.com/search?q=%s
+set searchwords+=econse~https://economics.stackexchange.com/search?q=%s
+set searchwords+=finse~https://money.stackexchange.com/search?q=%s
+set searchwords+=philse~https://philosophy.stackexchange.com/search?q=%s
+set searchwords+=imdb~imdb.com/find?ref_=nv_sr_fn&q=%s&s=all
+set searchwords+=nasa~https://nasasearch.nasa.gov/search?query=%s
+set searchwords+=snd~https://soundcloud.com/search?q=%s
+set searchwords+=genius~https://genius.com/search?q=%s
+set searchwords+=nyt~https://www.nytimes.com/search?query=%s
+set searchwords+=bbc~https://www.bbc.co.uk/search?q=%s
+
+" Colors
+colorscheme gruvbox

@@ -33,6 +33,13 @@ return {
     },
 
     {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup()
+        end,
+    },
+
+    {
         "ThePrimeagen/refactoring.nvim",
         requires = {
             { "nvim-lua/plenary.nvim" },

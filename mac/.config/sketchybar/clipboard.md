@@ -47,11 +47,11 @@ that is located on the device storage.
 class Clipboard:
     def __init__(self, file: str) -> None:
         self.file = file
-        try: 
+        try:
             with open(self.file, 'r') as openfile:
                 json_object = json.load(openfile)
-        except: 
-            json_object = { "clipboard": [] }
+        except OSError:
+            json_object = {"clipboard": []}
         self.storage = json_object
 ```
 
@@ -103,11 +103,11 @@ by ![Sketchybar](https://github.com/FelixKratz/SketchyBar).
             options += [
                 'sketchybar',
                 '-m',
-                "--remove", 
+                "--remove",
                 '/clipboard.template.[0-5]/',
                 '--add',
                 'item',
-                f'clipboard.template.0', 
+                f'clipboard.template.0',
                 'popup.clipboard',
                 '--set',
                 f'clipboard.template.0',
@@ -119,11 +119,11 @@ by ![Sketchybar](https://github.com/FelixKratz/SketchyBar).
             options += [
                 'sketchybar',
                 '-m',
-                "--remove", 
+                "--remove",
                 '/clipboard.template.[0-5]/',
                 '--add',
                 'item',
-                f'clipboard.template.{clip}', 
+                f'clipboard.template.{clip}',
                 'popup.clipboard',
                 '--set',
                 f'clipboard.template.{clip}',

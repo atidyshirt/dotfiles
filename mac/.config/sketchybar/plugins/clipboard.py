@@ -2,14 +2,15 @@
 import json
 import subprocess
 
+
 class Clipboard:
     def __init__(self, file: str) -> None:
         self.file = file
-        try: 
+        try:
             with open(self.file, 'r') as openfile:
                 json_object = json.load(openfile)
-        except: 
-            json_object = { "clipboard": [] }
+        except OSError:
+            json_object = {"clipboard": []}
         self.storage = json_object
 
     def write_to_clipboard(self) -> None:
@@ -18,13 +19,13 @@ class Clipboard:
             outfile.write(json_object)
 
     def add_to_clipboard(self) -> bool:
-        clip = subprocess.check_output("pbpaste").decode('utf-8').strip()
-        if clip not in self.storage["clipboard"]:
+        clipboard = subprocess.check_output("pbpaste").decode('utf-8').strip()
+        if clipboard not in self.storage["clipboard"]:
             if len(self.storage["clipboard"]) < 5:
-                self.storage["clipboard"].append(clip)
+                self.storage["clipboard"].append(clipboard)
             else:
                 self.storage["clipboard"].pop(0)
-                self.storage["clipboard"].append(clip)
+                self.storage["clipboard"].append(clipboard)
             return True
         return False
 
@@ -34,14 +35,14 @@ class Clipboard:
             options += [
                 'sketchybar',
                 '-m',
-                "--remove", 
+                "--remove",
                 '/clipboard.template.[0-5]/',
                 '--add',
                 'item',
-                f'clipboard.template.0', 
+                'clipboard.template.0',
                 'popup.clipboard',
                 '--set',
-                f'clipboard.template.0',
+                'clipboard.template.0',
                 'icon="Clipboard: "',
                 'label="nothing has been copied"'
             ]
@@ -50,11 +51,11 @@ class Clipboard:
             options += [
                 'sketchybar',
                 '-m',
-                "--remove", 
+                "--remove",
                 '/clipboard.template.[0-5]/',
                 '--add',
                 'item',
-                f'clipboard.template.{clip}', 
+                f'clipboard.template.{clip}',
                 'popup.clipboard',
                 '--set',
                 f'clipboard.template.{clip}',
@@ -63,7 +64,9 @@ class Clipboard:
                 f'label={self.storage["clipboard"][clip]}',
                 '--set',
                 f'clipboard.template.{clip}',
-                 f"""click_script=`echo '{self.storage["clipboard"][clip]}' | pbcopy` """
+                f"""click_script=`echo '{
+                self.storage["clipboard"][clip]
+                }' | pbcopy` """
                 'drawing=on',
                 'label.width=120',
                 'background.corner_radius=12',
@@ -74,11 +77,11 @@ class Clipboard:
             try:
                 subprocess.call(options)
             except subprocess.CalledProcessError as e:
-                print ("write_to_clipboard.ERROR: ", e.output)
+                print("write_to_clipboard.ERROR: ", e.output)
+
 
 if __name__ == "__main__":
     clipboard = Clipboard("/Users/jordanp/.config/.clipboard_storage.json")
     if clipboardHasChanged := clipboard.add_to_clipboard():
         clipboard.write_to_clipboard()
         clipboard.draw_clipboard()
-

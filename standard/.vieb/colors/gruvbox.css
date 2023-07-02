@@ -1,0 +1,270 @@
+:root {
+  --bg: #32302f;
+  --fg: #d4be98;
+
+  --tab-background: #32302f;
+  --visible-tab: #32302f;
+  --tab-scrollbar: none;
+
+  --mode-normal-fg: #383838;
+  --mode-command-fg: #62554A;
+  --mode-follow-fg: #d4be98;
+  --mode-insert-fg: #7daea3;
+  --mode-explore-fg: #62554A;
+  --mode-search-fg: #ea6962;
+  --mode-pointer-fg: #5f7d9b;
+  --mode-pointer-bg: #d8a657;
+  --mode-visual-fg: #83a598;
+  --mode-visual-bg: #e78a4e;
+
+  --suggestions-border: #62554a;
+  --suggestions-bg: #484848;
+  --suggestions-selected: #686868;
+  --suggestions-url: #7daea3;
+  --suggestions-file: #d4be98;
+  --notification-border: #62554a;
+  --notification-date: #a9b665;
+  --notification-permission: #a89984;
+  --notification-error: #ea6962;
+  --notification-warning: #d38a73;
+  --notification-info: #7daea3;
+  --notification-success: #a9b665;
+
+  /* follow mode */
+  --follow-text: #262626;
+  --follow-url-bg: #7daea3;
+  --follow-url-border: #62554a;
+  --follow-click-bg: #ea6962;
+  --follow-click-border: #62554a;
+  --follow-insert-bg: #a9b665;
+  --follow-insert-border: #62554a;
+  --follow-onclick-bg: #ea6962;
+  --follow-onclick-border: #62554a;
+  --follow-other-bg: #e78a4e;
+  --follow-other-border: #62554a;
+
+
+  /* special pages */
+  --link-color: #458488;
+  --link-underline: var(--link-color);
+  --scrollbar-bg: none;
+  --scrollbar-thumb: none;
+  --button-disabled: #a89984;
+  --code-fg: #d4be98;
+  --code-bg: #32302f;
+  --special-page-element-bg: #383838;
+  --special-page-element-border: #928374;
+  --input-unfocused: #383838;
+  --input-focused: #32302f;
+  --download-progress-fg: #d4be98;
+  --download-progress-bg: #282828;
+  --helppage-h1: #a9b665;
+  --helppage-h2: #7daea3;
+  --helppage-h3: #c18f78;
+  --code-command: #62554A;
+  --helppage-countable: #a9b665;
+}
+
+/* general */
+#tabs .status {
+  filter: invert(0.4);
+}
+
+/* special pages */
+#pointer,
+#cookiespage img,
+#downloadspage img,
+#historypage img {
+  filter: invert(1);
+}
+#historypage img.favicon {
+  filter: none;
+}
+
+[current-mode="normal"] {
+  --mode-fg: var(--mode-normal-fg);
+}
+[current-mode="command"] {
+  --mode-fg: var(--mode-command-fg);
+}
+[current-mode="insert"] {
+  --mode-fg: var(--mode-insert-fg);
+}
+[current-mode="follow"] {
+  --mode-fg: var(--mode-follow-fg);
+}
+[current-mode="explore"] {
+  --mode-fg: var(--mode-explore-fg);
+}
+[current-mode="search"] {
+  --mode-fg: var(--mode-search-fg);
+}
+[current-mode="pointer"] {
+  --mode-fg: var(--mode-pointer-fg);
+}
+[current-mode="visual"] {
+  --mode-fg: var(--mode-visual-fg);
+}
+
+/* navbar && tabbar */
+#url {
+  background: #32302f;
+}
+
+#navbar,
+#tabs {
+  background: #32302f;
+}
+#tabs > span {
+  color: var(--fg);
+}
+
+body {
+  --mode-theme-bg: var(--mode-fg);
+}
+body[current-mode="normal"] {
+  --mode-theme-bg: #32302f;
+}
+#navbar,
+#tabs {
+  background: var(--mode-theme-bg);
+}
+
+body #mode {
+  color: #32302f;
+}
+body[current-mode="normal"] #mode {
+  color: var(--fg);
+}
+body[current-mode="pointer"] #mode {
+  color: var(--fg);
+}
+body[current-mode="follow"] #mode {
+  color: var(--fg);
+}
+body[current-mode="command"] #mode {
+  color: var(--fg);
+}
+body[current-mode="explore"] #mode {
+  color: var(--fg);
+}
+body[current-mode="visual"] #mode {
+  color: var(--mode-visual-fg);
+}
+body[current-mode="insert"] #mode {
+  color: var(--mode-insert-fg);
+}
+body[current-mode="search"] #mode {
+  color: var(--mode-search-fg);
+}
+[current-mode="normal"] #url {
+  background: #32302f;
+  color: var(--fg);
+}
+
+/* pages container */
+.webview {
+  pointer-events: none;
+  position: fixed;
+  display: none;
+}
+#page-container,
+#current-page,
+.visible-page {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+#pages.multiple .webview {
+  border: solid 0.3em transparent;
+  box-sizing: border-box;
+}
+#pages.multiple #current-page {
+  border-color: var(--mode-command-fg);
+}
+#pagelayout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+#pagelayout * {
+  flex: 1;
+}
+#pagelayout.hor,
+#pagelayout .hor {
+  flex-direction: row;
+  display: flex;
+}
+#pagelayout.ver,
+#pagelayout .ver {
+  flex-direction: column;
+  display: flex;
+}
+
+
+/* Single-letter mode indicators */
+#mode {
+  position: fixed;
+  bottom: 0.2em;
+  left: 0.2em;
+  width: 1ch;
+  overflow: hidden;
+  font-size: 150%;
+}
+#mode-suggestions {
+  display: none;
+}
+/* Full-width navbar */
+#mode-container {
+  width: 2.5ch;
+}
+
+/* hide logo */
+#logo {
+  display: none;
+}
+
+/*
+      Flipped
+		*/
+/* general */
+#app {
+  flex-direction: column-reverse;
+}
+#url-hover {
+  bottom: 4em;
+}
+#suggest-dropdown {
+  top: auto;
+  bottom: 2.1em;
+  flex-direction: column-reverse;
+}
+.bottomright {
+  right: 0.7em;
+  bottom: 4em;
+}
+.bottomleft {
+  left: 0.7em;
+  bottom: 4em;
+}
+.topright {
+  right: 0.7em;
+  top: 0.7em;
+}
+.topleft {
+  left: 0.7em;
+  top: 0.7em;
+}
+/* hidden bars */
+#app.tabshidden #url-hover,
+#app.navigationhidden #url-hover {
+  bottom: 2em;
+}
+#app.tabshidden.navigationhidden #url-hover {
+  bottom: 0;
+}
+#app.navigationhidden #suggest-dropdown {
+  top: auto;
+  bottom: 0.1em;
+}
