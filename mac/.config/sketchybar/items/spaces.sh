@@ -2,12 +2,12 @@
 
 
 SPACE_ICONS=(
-  ":vim:" 
-  ":terminal:" 
-  ":google_chrome:" 
-  ":slack:" 
-  ":spotify:" 
-  ":git_hub:" 
+  ":vim:"
+  ":trello:"
+  ":google_chrome:"
+  ":slack:"
+  ":spotify:"
+  ":git_hub:"
 )
 SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
 
