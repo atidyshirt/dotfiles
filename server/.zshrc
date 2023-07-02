@@ -1,6 +1,6 @@
 source ~/.config/zsh/zsh-snap/znap.zsh
 
-export EDITOR='nvim'
+export EDITOR='vim'
 export VMUX_EDITOR='nvim'
 export VMUX_REALEDITOR_NVIM='/opt/homebrew/bin/nvim'
 
