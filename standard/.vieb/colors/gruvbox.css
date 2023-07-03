@@ -7,10 +7,10 @@
   --tab-scrollbar: none;
 
   --mode-normal-fg: #383838;
-  --mode-command-fg: #62554A;
+  --mode-command-fg: #62554a;
   --mode-follow-fg: #d4be98;
   --mode-insert-fg: #7daea3;
-  --mode-explore-fg: #62554A;
+  --mode-explore-fg: #62554a;
   --mode-search-fg: #ea6962;
   --mode-pointer-fg: #5f7d9b;
   --mode-pointer-bg: #d8a657;
@@ -43,6 +43,9 @@
   --follow-other-bg: #e78a4e;
   --follow-other-border: #62554a;
 
+  /* insert mode */
+  --url-hover-fg: none;
+  --url-hover-bg: none;
 
   /* special pages */
   --link-color: #458488;
@@ -61,7 +64,7 @@
   --helppage-h1: #a9b665;
   --helppage-h2: #7daea3;
   --helppage-h3: #c18f78;
-  --code-command: #62554A;
+  --code-command: #62554a;
   --helppage-countable: #a9b665;
 }
 
@@ -202,7 +205,6 @@ body[current-mode="search"] #mode {
   display: flex;
 }
 
-
 /* Single-letter mode indicators */
 #mode {
   position: fixed;
@@ -232,9 +234,6 @@ body[current-mode="search"] #mode {
 #app {
   flex-direction: column-reverse;
 }
-#url-hover {
-  bottom: 4em;
-}
 #suggest-dropdown {
   top: auto;
   bottom: 2.1em;
@@ -256,15 +255,16 @@ body[current-mode="search"] #mode {
   left: 0.7em;
   top: 0.7em;
 }
+
 /* hidden bars */
 #app.tabshidden #url-hover,
 #app.navigationhidden #url-hover {
-  bottom: 2em;
+  visibility: hidden;
 }
 #app.tabshidden.navigationhidden #url-hover {
-  bottom: 0;
+  visibility: hidden;
 }
 #app.navigationhidden #suggest-dropdown {
   top: auto;
-  bottom: 0.1em;
+  bottom: 0;
 }
