@@ -30,5 +30,7 @@ set searchwords+=genius~https://genius.com/search?q=%s
 set searchwords+=nyt~https://www.nytimes.com/search?query=%s
 set searchwords+=bbc~https://www.bbc.co.uk/search?q=%s
 
-" Colors
+" Colors (By default turn off dark reader but configure the bg)
+set nodarkreader
+set darkreaderbg=#262626
 colorscheme gruvbox
