@@ -25,6 +25,22 @@ function tunnel-forwarding() {
 
 }
 
+function watch() {
+    if [[ -n "$1" && -n "$2" ]]; then
+	npx nodemon --exec $1 $2
+    elif [[ -n "$1" ]]; then
+	npx nodemon $1
+    else
+	echo "Usage:"
+	echo "\t watch <program-file-path>"
+	echo "\t watch <language> <program-file-path>"
+	echo ""
+	echo "Parameters:"
+	echo "\t language:  Provide the language binary, If the language is not specified it will default to 'node'"
+	echo "\t program-file-path:  The path of the file/directory to run"
+    fi
+}
+
 ## ----------------- ALIASES -------------------------
 
 alias ..='cd ..'
