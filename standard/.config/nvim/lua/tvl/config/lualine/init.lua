@@ -21,16 +21,15 @@ local function setup()
       refresh = {
         statusline = 1000,
         tabline = 1000,
-        -- winbar = 100,
       },
     },
     sections = {
       lualine_a = { cpn.branch },
       lualine_b = { cpn.diagnostics },
-      lualine_c = {},
-      lualine_x = { cpn.diff },
-      lualine_y = { cpn.position, cpn.filetype },
-      lualine_z = { cpn.spaces, cpn.mode },
+      lualine_c = { cpn.diff },
+      lualine_x = {},
+      lualine_y = { cpn.position },
+      lualine_z = { cpn.mode },
     },
     inactive_sections = {
       lualine_a = {},

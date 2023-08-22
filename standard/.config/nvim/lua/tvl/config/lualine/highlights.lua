@@ -14,13 +14,13 @@ local function generate(config, palette)
   local float = config.float
   local colorful = config.colorful
   if colorful then
-    palette.yellow = util.get_highlight_value("String").foreground or "#ffff00"
-    palette.white = util.get_highlight_value("Normal").foreground or "#ffffff"
-    palette.red = util.get_highlight_value("DiagnosticError").foreground or "#ff0000"
-    palette.orange = util.get_highlight_value("DiagnosticWarn").foreground or "#ff7700"
-    palette.blue = util.get_highlight_value("DiagnosticHint").foreground or "#00ffff"
-    palette.magenta = util.get_highlight_value("Statement").foreground or "#ff00ff"
-    palette.green = util.get_highlight_value("healthSuccess").foreground or "#00ff00"
+    palette.yellow = util.get_highlight_value("String").foreground or "#d8a657"
+    palette.white = util.get_highlight_value("Normal").foreground or "#e6dfdc"
+    palette.red = util.get_highlight_value("DiagnosticError").foreground or "#ea6962"
+    palette.orange = util.get_highlight_value("DiagnosticWarn").foreground or "#e78a4e"
+    palette.blue = util.get_highlight_value("DiagnosticHint").foreground or "#7daea3"
+    palette.magenta = util.get_highlight_value("Statement").foreground or "#d3869b"
+    palette.green = util.get_highlight_value("healthSuccess").foreground or "#89b482"
   end
   return {
     SLGitIcon = {
@@ -97,8 +97,8 @@ M.custom = function(config)
   local palette = {
     float_background = util.get_highlight_value("Pmenu").background,
     editor_bg = util.get_highlight_value("Normal").background or "NONE",
-    statusbar_bg = statusline_hl.background or "#000000",
-    statusbar_fg = statusline_hl.foreground or "#505050",
+    statusbar_bg = statusline_hl.background or "#282828",
+    statusbar_fg = statusline_hl.foreground or "#a89984",
   }
   local groups = generate(config, palette)
 

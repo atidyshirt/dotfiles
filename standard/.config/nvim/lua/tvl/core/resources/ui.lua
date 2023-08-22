@@ -41,7 +41,7 @@ return {
     event = "VeryLazy",
     opts = {
       float = true,
-      separator = "bubble", -- bubble | triangle
+      separator = "square",
       ---@type any
       colorful = true,
     },
