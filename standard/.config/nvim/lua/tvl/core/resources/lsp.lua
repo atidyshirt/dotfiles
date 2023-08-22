@@ -101,9 +101,10 @@ return {
         -- You can then register sources by passing a sources list into your setup function:
         -- using `with()`, which modifies a subset of the source's default options
         sources = {
-          -- formatting.prettier,
+          formatting.prettier,
           formatting.eslint_d,
-          diagnostics.eslint_d,
+          -- TODO: re-introduce once we identify reasones for short-comings
+          -- diagnostics.eslint_d,
           code_actions.eslint_d,
           formatting.stylua,
           formatting.markdownlint,

@@ -128,7 +128,7 @@ return {
       { "<leader>fk", "<cmd> Telescope keymaps <CR>" },
     },
   },
-  
+
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -212,7 +212,7 @@ return {
     },
   },
 
-{
+  {
     "liangxianzhe/nap.nvim",
     commit = "925921b",
     opts = {
@@ -361,19 +361,15 @@ return {
     end,
   },
 
-    {
-        "numToStr/Comment.nvim",
-        module = "Comment",
-        keys = { "gc", "gb" },
-        config = function()
-            vim.keymap.set("n", "<leader>/", function()
-                require("Comment.api").toggle.linewise.current()
-            end)
-            vim.keymap.set(
-                "v",
-                "<leader>/",
-                "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>"
-            )
-        end,
-    },
+  {
+    "numToStr/Comment.nvim",
+    module = "Comment",
+    keys = { "gc", "gb" },
+    config = function()
+      vim.keymap.set("n", "<leader>/", function()
+        require("Comment.api").toggle.linewise.current()
+      end)
+      vim.keymap.set("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
+    end,
+  },
 }
