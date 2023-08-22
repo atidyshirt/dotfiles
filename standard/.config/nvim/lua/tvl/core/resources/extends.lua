@@ -1,17 +1,25 @@
 return {
+    { "unblevable/quick-scope" },
+    { "tpope/vim-fugitive" },
+    { "tpope/vim-surround" },
+    { "tpope/vim-sleuth" },
     {
-        "Wansmer/treesj",
-        keys = {
-            {
-                "<leader>lj",
-                "<cmd>TSJToggle<cr>",
-                desc = "Split / Join",
-            },
-        },
-        opts = { use_default_keymaps = false },
+        "alexghergh/nvim-tmux-navigation",
+        config = function()
+            require("nvim-tmux-navigation").setup({
+                disable_when_zoomed = true, -- defaults to false
+                keybindings = {
+                    left = "<C-h>",
+                    down = "<C-j>",
+                    up = "<C-k>",
+                    right = "<C-l>",
+                    last_active = "<C-\\>",
+                    next = "<C-Space>",
+                },
+            })
+        end,
     },
 
-    -- stylua: ignore
     {
         "ThePrimeagen/harpoon",
         config = true,
@@ -32,14 +40,8 @@ return {
         },
     },
 
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-    },
 
-    {
+{
         "ThePrimeagen/refactoring.nvim",
         requires = {
             { "nvim-lua/plenary.nvim" },
@@ -88,71 +90,11 @@ return {
             },
         },
         config = function()
-            require("refactoring").setup()
+            require("refactoring").setup({})
             require("telescope").load_extension("refactoring")
         end,
-    },
-
-    {
-        "notjedi/nvim-rooter.lua",
-        config = function()
-            require("nvim-rooter").setup({
-                rooter_patterns = {
-                    ".git",
-                },
-                trigger_patterns = { "*" },
-                manual = false,
-            })
-        end,
-    },
-
-    {
-        "max397574/better-escape.nvim",
-        event = "InsertEnter",
-        config = function()
-            require("better_escape").setup()
-        end,
-    },
-
-    {
-        "atidyshirt/markdown-literate",
-        config = function()
-            require("markdown-literate").setup()
-        end,
-    },
-
-    { "unblevable/quick-scope" },
-    { "tpope/vim-fugitive" },
-    { "tpope/vim-surround" },
-    { "tpope/vim-sleuth" },
-    {
-        "alexghergh/nvim-tmux-navigation",
-        config = function()
-            require("nvim-tmux-navigation").setup({
-                disable_when_zoomed = true, -- defaults to false
-                keybindings = {
-                    left = "<C-h>",
-                    down = "<C-j>",
-                    up = "<C-k>",
-                    right = "<C-l>",
-                    last_active = "<C-\\>",
-                    next = "<C-Space>",
-                },
-            })
-        end,
-    },
-    { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+  },
+    
 
     { "Bekaboo/deadcolumn.nvim", config = true },
-
-    -- local history
-    {
-        "dinhhuy258/vim-local-history",
-        config = function()
-            local path = os.getenv("HOME") .. "/.config"
-            vim.g.local_history_path = path .. "/.local-history"
-            vim.g.local_history_max_changes = 100
-        end,
-        build = ":UpdateRemotePlugins",
-    },
 }
