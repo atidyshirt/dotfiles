@@ -172,21 +172,16 @@ return {
     opts = {
       sign = {
         enabled = true,
-        -- Priority of the gutter sign
         priority = 20,
       },
       status_text = {
         enabled = true,
-        -- Text to provide when code actions are available
         text = "status_text",
-        -- Text to provide when no actions are available
         text_unavailable = "",
       },
       autocmd = {
         enabled = true,
-        -- see :help autocmd-pattern
         pattern = { "*" },
-        -- see :help autocmd-events
         events = { "CursorHold", "CursorHoldI", "LspAttach" },
       },
     },
@@ -211,7 +206,6 @@ return {
         progress = { enabled = false },
         hover = { enabled = false },
         signature = { enabled = false },
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,

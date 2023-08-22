@@ -6,6 +6,11 @@ local servers = {
       },
     },
   },
+  eslint = {
+    settings = {
+      workingDirectory = { mode = "auto" },
+    },
+  },
   clangd = {},
   cssls = {},
   html = {},

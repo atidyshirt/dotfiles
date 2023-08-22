@@ -342,7 +342,6 @@ return {
         ft_ignore = { "neo-tree" },
         segments = {
           {
-            -- line number
             text = { " ", builtin.lnumfunc },
             condition = { true, builtin.not_empty },
             click = "v:lua.ScLa",
