@@ -16,6 +16,9 @@ keymap("n", "<leader>X", ":%bd!|e#<CR>", opts)
 -- Clear search with <esc>
 keymap( "n", "<esc>", "<cmd>noh<cr><esc>", opts)
 
+vim.cmd([[ command! -nargs=* AsyncRunWithNotify :AsyncRun -post=echom\ 'async-task:\ '\ .\ g:asyncrun_status <args> ]])
+
+keymap( "n", "<leader>c", ":AsyncRunWithNotify ", opts)
 
 ------------------------ MARKDOWN ----------------------------
 keymap("n", "<leader>tp", ":!pandoc % -o %<.pdf --template eisvogel --listings", opts)

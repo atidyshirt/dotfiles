@@ -18,7 +18,6 @@ return {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
     priority = 1000,
-    keys = { { "<leader>c", "<cmd>MonokaiProSelect<cr>", desc = "Select Moonokai pro filter" } },
     config = function()
       local monokai = require("monokai-pro")
       monokai.setup({

@@ -2,6 +2,7 @@ return {
   { "unblevable/quick-scope" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
+  { "skywind3000/asyncrun.vim" },
   { "tpope/vim-sleuth" },
   {
     "alexghergh/nvim-tmux-navigation",

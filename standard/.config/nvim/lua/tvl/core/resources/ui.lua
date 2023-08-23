@@ -200,11 +200,12 @@ return {
           search_down = { icon = "  󰄼" },
           search_up = { icon = "  " },
           lua = { icon = "  " },
+          async_job = { pattern = "^:%s*AsyncRunWithNotify ", icon = "  " },
         },
       },
       lsp = {
         progress = { enabled = false },
-        hover = { enabled = false },
+        hover = { enabled = false, silent = true },
         signature = { enabled = false },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -46,21 +46,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
-  pattern = "?*",
-  group = Util.augroup("remember_folds"),
-  callback = function()
-    vim.cmd([[silent! mkview 1]])
-  end,
-})
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = "?*",
-  group = Util.augroup("remember_folds"),
-  callback = function()
-    vim.cmd([[silent! loadview 1]])
-  end,
-})
-
 -- fix comment
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   group = Util.augroup("comment_newline"),
@@ -89,13 +74,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = Util.augroup("clear_term"),
   callback = function()
     vim.cmd([[echon '']])
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "help" },
-  callback = function()
-    vim.cmd([[wincmd L]])
   end,
 })
 

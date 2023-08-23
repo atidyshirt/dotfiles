@@ -84,3 +84,6 @@ if vim.g.neovide then
   vim.opt.guifont = "Cascadia Code:h10" -- the font used in graphical neovim applications
   vim.g.neovide_scale_factor = 1
 end
+
+-- AsyncRun
+vim.g.asyncrun_silent = 0
