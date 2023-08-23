@@ -47,7 +47,6 @@ return {
         override = function(c)
           return {
             ColorColumn = { bg = c.editor.background },
-            -- Mine
             DashboardRecent = { fg = c.base.magenta },
             DashboardProject = { fg = c.base.blue },
             DashboardConfiguration = { fg = c.base.white },
@@ -55,7 +54,6 @@ return {
             DashboardLazy = { fg = c.base.cyan },
             DashboardServer = { fg = c.base.yellow },
             DashboardQuit = { fg = c.base.red },
-            -- Codeium Icon
             CmpItemKindVariable = { fg = "#09B6A2" },
           }
         end,
