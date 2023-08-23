@@ -31,7 +31,12 @@ M.branch = {
     if vim.bo.filetype == "toggleterm" then
       str = prev_branch
     elseif str == "" or str == nil then
-      str = "!=vcs"
+      icon = hl_str(" ", "SLGitIcon", "SLBranchName")
+      str = "Workspace"
+    return hl_str(config.separator_icon.left, "SLSeparator")
+      .. hl_str(icon, "SLGitIcon")
+      .. hl_str(truncate(str, 10), "SLBranchName")
+      .. hl_str(config.separator_icon.right, "SLSeparator", "SLSeparator")
     end
     prev_branch = str
     local icon = hl_str("  ", "SLGitIcon", "SLBranchName")
