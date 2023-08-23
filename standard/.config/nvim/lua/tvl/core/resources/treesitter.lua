@@ -30,20 +30,10 @@ return {
       highlight = { enable = true },
       indent = { enable = true, disable = { "yaml", "python", "html" } },
       context_commentstring = { enable = true },
-      rainbow = {
-        enable = true,
-        query = "rainbow-parens",
-        disable = { "jsx", "html" },
-      },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
-  },
-
-  {
-    "HiPhish/nvim-ts-rainbow2",
-    event = "BufReadPost",
   },
 
   {
