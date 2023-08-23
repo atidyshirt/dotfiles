@@ -196,11 +196,11 @@ return {
         enabled = true,
         view = "cmdline",
         format = {
-          cmdline = { icon = "  " },
+          cmdline = { icon = "  " },
           search_down = { icon = "  󰄼" },
           search_up = { icon = "  " },
           lua = { icon = "  " },
-          async_job = { pattern = "^:%s*AsyncRunWithNotify ", icon = "  " },
+          async_job = { pattern = "^:%s*AsyncRunWithNotify ", icon = "  " },
         },
       },
       lsp = {
