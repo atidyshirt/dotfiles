@@ -77,12 +77,15 @@ ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
 alt - d : yabai -m window --toggle zoom-parent; \
     sketchybar --trigger window_focus
 
+# Kitty toggle fullscreen
+shift + alt - f : frida -q -l ~/.config/osx_injection/displayOverNotch.js -e "toggleFullScreen()" $(osascript -e 'tell application "System Events" to get unix id of first application process whose frontmost is true')
+
 # toggle window fullscreen zoom
 alt - f : yabai -m window --toggle zoom-fullscreen; \
     sketchybar --trigger window_focus
 
 # toggle window native fullscreen
-shift + alt - f : yabai -m window --toggle native-fullscreen
+# shift + alt - f : yabai -m window --toggle native-fullscreen
 
 alt - t : yabai -m window --toggle float; \
           yabai -m window --grid 4:4:1:1:2:2; \

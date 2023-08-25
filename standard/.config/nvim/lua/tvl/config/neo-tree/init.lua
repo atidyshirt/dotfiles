@@ -20,7 +20,6 @@ local config = {
       { source = "filesystem", display_name = "󰉓" },
       { source = "buffers", display_name = "󰈙" },
       { source = "git_status", display_name = "" },
-      -- { source = "document_symbols", display_name = "o" },
       { source = "diagnostics", display_name = "󰒡" },
     },
   },

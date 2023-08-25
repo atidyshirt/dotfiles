@@ -10,7 +10,7 @@ return {
       {
         "<leader>e",
         function()
-          require("neo-tree.command").execute({ toggle = true, position = "left", dir = require("tvl.util").get_root() })
+          require("neo-tree.command").execute({ toggle = true, position = "left" })
         end,
         desc = "Explorer (root dir)",
         remap = true,
@@ -20,7 +20,7 @@ return {
         function()
           require("neo-tree.command").execute({
             toggle = true,
-            position = "float",
+            position = "left",
             dir = Util.get_root(),
           })
         end,
