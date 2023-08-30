@@ -39,7 +39,19 @@ return {
       },
     },
   },
-  
+
+  {
+    "Wansmer/treesj",
+    keys = {
+      {
+        "<leader>lj",
+        "<cmd>TSJToggle<cr>",
+        desc = "Split / Join",
+      },
+    },
+    opts = { use_default_keymaps = false },
+  },
+
   {
     "hrsh7th/nvim-cmp",
     version = false,
