@@ -1,36 +1,36 @@
-#!/bin/sh
+#!/bin/bash
 
 zen_on() {
-  sketchybar --set github.bell drawing=off \
+  sketchybar --set wifi drawing=off \
              --set apple.logo drawing=off \
-             --set '/cpu.*/' drawing=off \
              --set calendar icon.drawing=off \
-             --set system.yabai drawing=off \
              --set separator drawing=off \
+             --set activity drawing=off \
+             --set swap drawing=off \
+             --set disk drawing=off \
+             --set ram drawing=off \
+             --set cpu drawing=off \
              --set front_app drawing=off \
-             --set volume_alias drawing=off \
+             --set volume_icon drawing=off \
              --set spotify.anchor drawing=off \
              --set spotify.play updates=off \
-             --set brew drawing=off \
-             --set clipboard drawing=off \
-             --set divider drawing=off \
-             --bar padding_left=18
+             --set brew drawing=off
 }
 
 zen_off() {
-  sketchybar --set github.bell drawing=on \
+  sketchybar --set wifi drawing=on \
              --set apple.logo drawing=on \
-             --set '/cpu.*/' drawing=on \
+             --set activity drawing=on \
+             --set swap drawing=on \
+             --set disk drawing=on \
+             --set ram drawing=on \
+             --set cpu drawing=on \
              --set calendar icon.drawing=on \
              --set separator drawing=on \
              --set front_app drawing=on \
-             --set system.yabai drawing=on \
-             --set volume_alias drawing=on \
+             --set volume_icon drawing=on \
              --set spotify.play updates=on \
-             --set clipboard drawing=on \
-             --set brew drawing=on \
-             --set divider drawing=on \
-             --bar padding_left=7
+             --set brew drawing=on
 }
 
 if [ "$1" = "on" ]; then

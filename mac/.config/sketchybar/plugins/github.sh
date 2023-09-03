@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 update() {
-  source "$HOME/.config/sketchybar/colors.sh"
-  source "$HOME/.config/sketchybar/icons.sh"
+  source "$CONFIG_DIR/colors.sh"
+  source "$CONFIG_DIR/icons.sh"
 
   NOTIFICATIONS="$(gh api notifications)"
   COUNT="$(echo "$NOTIFICATIONS" | jq 'length')"
@@ -32,7 +32,7 @@ update() {
 
     if [ "${repo}" = "" ] && [ "${title}" = "" ]; then
       repo="Note"
-      title="No notifications"
+      title="No new notifications"
     fi 
     case "${type}" in
       "'Issue'") COLOR=$GREEN; ICON=$GIT_ISSUE; URL="$(gh api "$(echo "${url}" | sed -e "s/^'//" -e "s/'$//")" | jq .html_url)"
@@ -51,20 +51,23 @@ update() {
       args+=(--set github.bell icon.color=$COLOR)
     fi
     
+    notification=(
+      label="$(echo "$title" | sed -e "s/^'//" -e "s/'$//")"
+      icon="$ICON $(echo "$repo" | sed -e "s/^'//" -e "s/'$//"):"
+      icon.padding_left="$PADDING"
+      label.padding_right="$PADDING"
+      icon.color=$COLOR
+      position=popup.github.bell
+      icon.background.color=$COLOR
+      drawing=on
+      click_script="open $URL; sketchybar --set github.bell popup.drawing=off"
+    )
+
     args+=(--clone github.notification.$COUNTER github.template \
-           --set github.notification.$COUNTER label="$(echo "$title" | sed -e "s/^'//" -e "s/'$//")" \
-                                            icon="$ICON $(echo "$repo" | sed -e "s/^'//" -e "s/'$//"):" \
-                                            icon.padding_left="$PADDING" \
-                                            label.padding_right="$PADDING" \
-                                            icon.color=$COLOR \
-                                            position=popup.github.bell \
-                                            icon.background.color=$COLOR \
-                                            drawing=on \
-                                            click_script="open $URL;
-                                                          sketchybar --set github.bell popup.drawing=off")
+           --set github.notification.$COUNTER "${notification[@]}")
   done <<< "$(echo "$NOTIFICATIONS" | jq -r '.[] | [.repository.name, .subject.latest_comment_url, .subject.type, .subject.title] | @sh')"
 
-  sketchybar -m "${args[@]}"
+  sketchybar -m "${args[@]}" > /dev/null
 
   if [ $COUNT -gt $PREV_COUNT ] 2>/dev/null || [ "$SENDER" = "forced" ]; then
     sketchybar --animate tanh 15 --set github.bell label.y_offset=5 label.y_offset=0

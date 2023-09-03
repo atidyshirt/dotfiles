@@ -67,8 +67,17 @@ local config = {
         ["f"] = "filter_on_submit",
         ["<c-x>"] = "clear_filter",
         ["a"] = { "add", config = { show_path = "relative" } }, -- "none", "relative", "absolute"
+        ["D"] = "diff_two_files",
       },
     },
+    git_status = {
+      window = {
+        mappings = {
+          ["D"] = "diff_two_files",
+        },
+      },
+    },
+
     filtered_items = {
       hide_dotfiles = false,
       hide_gitignored = false,
@@ -80,6 +89,37 @@ local config = {
     group_empty_dirs = true, -- when true, empty folders will be grouped together
   },
   async_directory_scan = "always",
+}
+
+config.commands = {
+  diff_two_files = function(state)
+    local node = state.tree:get_node()
+    local log = require("neo-tree.log")
+    state.clipboard = state.clipboard or {}
+    if diff_Node and diff_Node ~= tostring(node.id) then
+      local current_Diff = node.id
+      require("neo-tree.utils").open_file(state, diff_Node, open)
+      vim.cmd("vert diffs " .. current_Diff)
+      log.info("Diffing " .. diff_Name .. " against " .. node.name)
+      diff_Node = nil
+      current_Diff = nil
+      state.clipboard = {}
+      require("neo-tree.ui.renderer").redraw(state)
+    else
+      local existing = state.clipboard[node.id]
+      if existing and existing.action == "diff" then
+        state.clipboard[node.id] = nil
+        diff_Node = nil
+        require("neo-tree.ui.renderer").redraw(state)
+      else
+        state.clipboard[node.id] = { action = "diff", node = node }
+        diff_Name = state.clipboard[node.id].node.name
+        diff_Node = tostring(state.clipboard[node.id].node.id)
+        log.info("Diff source file " .. diff_Name)
+        require("neo-tree.ui.renderer").redraw(state)
+      end
+    end
+  end,
 }
 
 config.filesystem.components = require("tvl.config.neo-tree.sources.filesystem.components")
