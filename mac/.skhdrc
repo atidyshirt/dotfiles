@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
-alt + shift - return : open -na "/Applications/Vieb.app"
-alt - return : open -na "/Applications/Google Chrome.app"
+alt - return : open -na "/Applications/Safari.app"
+alt + shift - return : open -na "/Applications/Google Chrome.app"
 alt - m : open -na /Applications/mpv.app $(pbpaste)
 
 alt - x : yabai -m window --focus recent

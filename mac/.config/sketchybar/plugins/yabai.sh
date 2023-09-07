@@ -23,7 +23,7 @@ window_state() {
     LAST_STACK_INDEX=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
     ICON+=$YABAI_STACK
     LABEL="$(printf "[%s/%s]" "$STACK_INDEX" "$LAST_STACK_INDEX")"
-    COLOR=$RED
+    COLOR=$ORANGE
   fi
 
   args=(--animate sin 10 --bar border_color=$COLOR
