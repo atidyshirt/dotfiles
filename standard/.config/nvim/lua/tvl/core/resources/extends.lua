@@ -216,14 +216,14 @@ return {
     "imNel/monorepo.nvim",
     keys = {
       {
-        "<leader>fp",
+        "<leader>ws",
         function()
           require("telescope").extensions.monorepo.monorepo()
         end,
         { silent = true, expr = false },
       },
       {
-        "<leader>pa",
+        "<leader>wa",
         function()
           require("monorepo").toggle_project()
         end,
