@@ -183,5 +183,63 @@ return {
     end,
   },
 
-  { "Bekaboo/deadcolumn.nvim", config = true },
+  {
+    "Bekaboo/deadcolumn.nvim",
+    config = function()
+      require("deadcolumn").setup({
+        scope = "line",
+        modes = { "i", "ic", "ix", "R", "Rc", "Rx", "Rv", "Rvc", "Rvx" },
+        blending = {
+          threshold = 0.50,
+          colorcode = "#ea6962",
+          hlgroup = {
+            "Normal",
+            "background",
+          },
+        },
+        warning = {
+          alpha = 0.4,
+          offset = 0,
+          colorcode = "#ea6962",
+          hlgroup = {
+            "Error",
+            "background",
+          },
+        },
+        extra = {
+          follow_tw = nil,
+        },
+      })
+    end,
+  },
+  {
+    "imNel/monorepo.nvim",
+    keys = {
+      {
+        "<leader>fp",
+        function()
+          require("telescope").extensions.monorepo.monorepo()
+        end,
+        { silent = true, expr = false },
+      },
+      {
+        "<leader>p",
+        function()
+          require("monorepo").toggle_project()
+        end,
+        { silent = true, expr = false },
+      },
+    },
+    config = function()
+      require("monorepo").setup({
+        {
+          silent = false, -- Supresses vim.notify messages
+          autoload_telescope = true, -- Automatically loads the telescope extension at setup
+          data_path = vim.fn.stdpath("data"), -- Path that monorepo.json gets saved to
+        },
+      })
+      require("telescope").load_extension("monorepo")
+    end,
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  },
 }

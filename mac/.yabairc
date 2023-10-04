@@ -25,10 +25,10 @@ yabai -m config window_border_width 4
 yabai -m config active_window_border_color 0xff$gruvActive
 yabai -m config insert_feedback_color 0xff$gruvActive
 yabai -m config normal_window_border_color 0xff$gruvInactive
-yabai -m config window_opacity off
+yabai -m config window_opacity on
 yabai -m config active_window_opacity 0.92
 yabai -m config normal_window_opacity 0.92
-yabai -m config window_border_blur off
+yabai -m config window_border_blur on
 yabai -m config window_border_hidpi off
 yabai -m config window_shadow off
 

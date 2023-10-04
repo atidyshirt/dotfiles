@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-#!/usr/bin/env sh
-
 # Color Palette
 export BLACK=0xff32302f
 export WHITE=0xffd4be98
@@ -39,4 +37,3 @@ export POPUP_BACKGROUND_COLOR=0xff262626
 export POPUP_BORDER_COLOR=$WHITE
 
 export SHADOW_COLOR=$BLACK
-
