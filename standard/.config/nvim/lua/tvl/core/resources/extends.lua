@@ -223,7 +223,7 @@ return {
         { silent = true, expr = false },
       },
       {
-        "<leader>p",
+        "<leader>pa",
         function()
           require("monorepo").toggle_project()
         end,
