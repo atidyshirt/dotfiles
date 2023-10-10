@@ -1,12 +1,15 @@
 return {
   {
+    "hinell/lsp-timeout.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+  },
+  {
     "neovim/nvim-lspconfig",
     branch = "master",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/typescript.nvim",
     },
     keys = {
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
@@ -18,46 +21,78 @@ return {
         function()
           vim.lsp.buf.format({
             filter = function(client)
-              -- do not use default `lua_ls` to format
               local exclude_servers = { "lua_ls", "pyright", "pylsp" }
               return not vim.tbl_contains(exclude_servers, client.name)
             end,
           })
         end,
         desc = "Format",
-      },
+      }
     },
-    config = function()
-      -- special attach lsp
-      require("tvl.util").on_attach(function(client, buffer)
+
+    opts = {
+      servers = {
+        cssls = {},
+        html = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+              misc = {
+                parameters = {
+                  "--log-level=trace",
+                },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
+            },
+          },
+        },
+      },
+      attach_handlers = {},
+    },
+    config = function(_, opts)
+      local Util = require("tvl.util")
+      Util.on_attach(function(client, buffer)
         require("tvl.config.lsp.navic").attach(client, buffer)
         require("tvl.config.lsp.keymaps").attach(client, buffer)
         require("tvl.config.lsp.inlayhints").attach(client, buffer)
         require("tvl.config.lsp.gitsigns").attach(client, buffer)
-        require("tvl.config.lsp.python").attach(client, buffer)
       end)
 
       -- diagnostics
-      for name, icon in pairs(require("tvl.core.icons").diagnostics) do
-        local function firstUpper(s)
-          return s:sub(1, 1):upper() .. s:sub(2)
-        end
-        name = "DiagnosticSign" .. firstUpper(name)
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-      end
       vim.diagnostic.config(require("tvl.config.lsp.diagnostics")["on"])
 
-      local servers = require("tvl.config.lsp.servers")
+      local servers = opts.servers
       local ext_capabilites = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require("tvl.util").capabilities(ext_capabilites)
 
       local function setup(server)
-        if servers[server] and servers[server].disabled then
-          return
-        end
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
+        if opts.attach_handlers[server] then
+          local callback = function(client, buffer)
+            if client.name == server then
+              opts.attach_handlers[server](client, buffer)
+            end
+          end
+          Util.on_attach(callback)
+        end
         require("lspconfig")[server].setup(server_opts)
       end
 
@@ -92,31 +127,35 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
-    config = function()
+    root_has_file = function(files)
+      return function(utils)
+        return utils.root_has_file(files)
+      end
+    end,
+    opts = function(plugin)
+      local root_has_file = plugin.root_has_file
       local null_ls = require("null-ls")
       local formatting = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
-      local code_actions = null_ls.builtins.code_actions
-      null_ls.setup({
+      local stylua_root_files = { "stylua.toml", ".stylua.toml" }
+      local modifier = {
+        stylua_formatting = {
+          condition = root_has_file(stylua_root_files),
+        },
+      }
+      return {
         debug = false,
         -- You can then register sources by passing a sources list into your setup function:
         -- using `with()`, which modifies a subset of the source's default options
         sources = {
-          formatting.prettier,
-          formatting.eslint_d,
-          -- TODO: re-introduce once we identify reasones for short-comings
-          -- diagnostics.eslint_d,
-          code_actions.eslint_d,
-          formatting.stylua,
+          formatting.stylua.with(modifier.stylua_formatting),
           formatting.markdownlint,
           formatting.beautysh.with({ extra_args = { "--indent-size", "2" } }),
-          formatting.black.with({ extra_args = { "--line-length", "120" } }),
-          diagnostics.flake8.with({
-            extra_args = { "--ignore=E501,E402,E722,F821,W503,W292,E203" },
-            filetypes = { "python" },
-          }),
         },
-      })
+      }
+    end,
+    config = function(_, opts)
+      local null_ls = require("null-ls")
+      null_ls.setup(opts)
     end,
   },
 
@@ -125,18 +164,11 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
-        "eslint_d",
-        "prettier",
         "stylua",
-        "google_java_format",
-        "black",
-        "flake8",
         "markdownlint",
         "beautysh",
       },
       automatic_setup = true,
     },
   },
-
-  "mfussenegger/nvim-jdtls",
 }
