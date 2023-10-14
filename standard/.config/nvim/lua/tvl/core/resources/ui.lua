@@ -192,12 +192,22 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
       },
+      messages = {
+        enabled = false,
+      },
       routes = {
+
         {
           filter = {
             event = "msg_show",
             find = "%d+L, %d+B",
           },
+        },
+        {
+          filter = {
+            find = "No information available",
+          },
+          opts = { skip = true },
         },
       },
     },
