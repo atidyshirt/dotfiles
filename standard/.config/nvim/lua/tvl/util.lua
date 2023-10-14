@@ -205,6 +205,7 @@ M.generate_borderchars = function(type, order, opts)
   local borderchars = {}
 
   local extractDirections = (function()
+    ---@type integer?
     local index = 1
     return function()
       if index == nil then

@@ -1,9 +1,5 @@
 return {
   {
-    "hinell/lsp-timeout.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-  },
-  {
     "neovim/nvim-lspconfig",
     branch = "master",
     event = { "BufReadPre", "BufNewFile" },
