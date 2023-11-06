@@ -8,7 +8,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
     keys = {
-      { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+      { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", mode = {"n", "v"}, desc = "Code Action" },
       { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
       { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
       { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
