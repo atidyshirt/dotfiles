@@ -121,8 +121,6 @@ return {
       { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
       { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
       { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementations" },
-      { "<leader>ff", "<cmd> Telescope find_files <CR>" },
-      { "<leader>fw", "<cmd> Telescope live_grep <CR>" },
       { "<leader>fb", "<cmd> Telescope buffers <CR>" },
       { "<leader>fo", "<cmd> Telescope oldfiles <CR>" },
       { "<leader>fk", "<cmd> Telescope keymaps <CR>" },
