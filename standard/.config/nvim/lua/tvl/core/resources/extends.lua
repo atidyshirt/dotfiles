@@ -213,7 +213,7 @@ return {
     end,
   },
   {
-    "smartpde/neoscopes",
+    "atidyshirt/neoscopes",
     opts = {
       enable_scopes_from_npm = true,
       scopes = {
@@ -228,6 +228,8 @@ return {
           scopes.add(scope)
         end
       end
+
+      scopes.set_current('root')
 
       vim.keymap.set("n", "<leader>ws", function()
         require("neoscopes").select {}
