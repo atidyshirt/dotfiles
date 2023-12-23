@@ -101,7 +101,7 @@ return {
           ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         }),
         sources = cmp.config.sources({
-          { name = "codeium" },
+          -- { name = "codeium" },
           { name = "nvim_lsp", keyword_length = 2 },
           { name = "luasnip" },
           { name = "buffer", keyword_length = 3 },
@@ -151,11 +151,13 @@ return {
     end,
   },
 
-  {
-    "jcdickinson/codeium.nvim",
-    event = { "InsertEnter", "CmdlineEnter" },
-    config = function()
-      require("codeium").setup({})
-    end,
-  },
+  { "folke/neodev.nvim", opts = {} }
+
+  -- {
+  --   "jcdickinson/codeium.nvim",
+  --   event = { "InsertEnter", "CmdlineEnter" },
+  --   config = function()
+  --     require("codeium").setup({})
+  --   end,
+  -- },
 }
