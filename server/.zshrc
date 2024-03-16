@@ -1,5 +1,3 @@
-source ~/.config/zsh/zsh-snap/znap.zsh
-
 export EDITOR='vim'
 export VMUX_EDITOR='nvim'
 export VMUX_REALEDITOR_NVIM='/opt/homebrew/bin/nvim'
@@ -27,6 +25,6 @@ elif [[ -f ../.projectconfig && -r ../.projectconfig ]]; then
 fi
 
 # Plugins
-znap source zsh-users/zsh-autosuggestions
-bindkey '^[[Z' autosuggest-accept
-znap source zsh-users/zsh-syntax-highlighting
+# znap source zsh-users/zsh-autosuggestions
+# bindkey '^[[Z' autosuggest-accept
+# znap source zsh-users/zsh-syntax-highlighting

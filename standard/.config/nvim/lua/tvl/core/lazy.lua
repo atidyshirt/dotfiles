@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 -- load lazy
 require("lazy").setup({
   spec = "tvl.core.resources",
+  concurrency = 10,
   defaults = {
     lazy = false,
     -- version = false, -- always use the latest git commit
