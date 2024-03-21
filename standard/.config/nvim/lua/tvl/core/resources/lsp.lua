@@ -161,16 +161,102 @@ return {
     opts = {},
   },
 
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   opts = {
+  --     ensure_installed = {
+  --       "stylua",
+  --       "markdownlint",
+  --       "beautysh",
+  --     },
+  --     automatic_setup = true,
+  --   },
+  -- },
+
   {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "markdownlint",
-        "beautysh",
-      },
-      automatic_setup = true,
-    },
-  },
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers", -- This is the important bit!
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          -- ["core.integrations.telescope"] = {},
+          ["core.highlights"] = {
+            config = {
+              highlights = {
+                headings = {
+                  ["1"] = {
+                    title = "+TSTitle",
+                    prefix = "+TSTitle",
+                  },
+                },
+                quotes = {
+                  ["1"] = {
+                    prefix = "+Grey",
+                    content = "+Grey",
+                  },
+                },
+              },
+            },
+          },
+          ["core.keybinds"] = {
+            config = {
+              hook = function(keybinds)
+                local leader = keybinds.leader
+
+                -- hop-link
+                keybinds.remap_key("norg", "n", "<CR>", "<CR><CR>")
+
+                -- new note
+                keybinds.remap_key("norg", "n", leader .. "nn", "ZZ")
+              end,
+            }
+          },
+          ["core.concealer"] = {
+            config = {
+              icon_preset = "diamond",
+              markup_preset = "dimmed",
+              dim_code_blocks = {
+                enabled = false,
+              },
+            },
+          },
+          ["core.completion"] = {
+            config = {
+              engine = "nvim-cmp",
+            },
+          },
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/projects/notes",
+              },
+              autodetect = true,
+              autochdir = true,
+            },
+          },
+          ["core.esupports.metagen"] = {
+            config = {
+              type = "<leader>om",
+            },
+          },
+          ["core.presenter"] = {
+            config = {
+              zen_mode = "zen-mode",
+            }
+          },
+          ["core.qol.toc"] = {},
+          ["core.export"] = {},
+          ["core.export.markdown"] = {
+            config = {
+              extensions = "all",
+            },
+          },
+        },
+      }
+    end,
+  }
+
+
 }
