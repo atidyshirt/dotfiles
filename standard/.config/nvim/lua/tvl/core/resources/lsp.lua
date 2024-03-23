@@ -161,21 +161,9 @@ return {
     opts = {},
   },
 
-  -- {
-  --   "jay-babu/mason-null-ls.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   opts = {
-  --     ensure_installed = {
-  --       "stylua",
-  --       "markdownlint",
-  --       "beautysh",
-  --     },
-  --     automatic_setup = true,
-  --   },
-  -- },
-
   {
-    "nvim-neorg/neorg",
+    dir = "~/projects/neorg-as-org",
+    -- "nvim-neorg/neorg",
     build = ":Neorg sync-parsers", -- This is the important bit!
     config = function()
       require("neorg").setup {
@@ -255,6 +243,17 @@ return {
           },
         },
       }
+      vim.keymap.set("n", "<leader>ne", ":Neorg export to-file ", { desc = "Export file" })
+      vim.keymap.set("n", "<leader>nt", "<cmd>Neorg tangle current-file<cr>", { desc = "Tangle file" })
+      vim.keymap.set("n", "<leader>ni", "<cmd>Neorg inject-metadata<cr>", { desc = "Inject" })
+      vim.keymap.set("n", "<leader>nu", "<cmd>Neorg update-metadata<cr>", { desc = "Update" })
+      vim.keymap.set("n", "<leader>nr", "<cmd>Neorg toc right<cr>", { desc = "Open ToC (right)" })
+      vim.keymap.set(
+        "n",
+        "<leader>nq",
+        "<cmd>Neorg toc qflist<cr>",
+        { desc = "Open ToC (quickfix list)" }
+      )
     end,
   }
 
