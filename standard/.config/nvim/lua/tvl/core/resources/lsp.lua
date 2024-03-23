@@ -162,8 +162,7 @@ return {
   },
 
   {
-    dir = "~/projects/neorg-as-org",
-    -- "nvim-neorg/neorg",
+    "nvim-neorg/neorg",
     build = ":Neorg sync-parsers", -- This is the important bit!
     config = function()
       require("neorg").setup {
