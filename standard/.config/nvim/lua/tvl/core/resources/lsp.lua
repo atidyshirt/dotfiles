@@ -125,13 +125,50 @@ return {
   },
 
   {
+    "folke/zen-mode.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      window = {
+        width = function()
+          return math.min(120, vim.o.columns * 0.75)
+        end,
+      },
+      options = {
+        number = false,
+        relativenumber = false,
+        foldcolumn = "0",
+        list = false,
+        showbreak = "NONE",
+        signcolumn = "no",
+      },
+      plugins = {
+        options = {
+          cmdheight = 1,
+          laststatus = 0,
+        },
+      },
+    }
+  },
+
+  {
     "nvim-neorg/neorg",
-    dependencies = { "nvim-neorg/neorg-telescope" },
+    dependencies = {
+      "nvim-neorg/neorg-telescope",
+      "tamton-aquib/neorg-jupyter",
+      "folke/zen-mode.nvim",
+    },
     cmd = { "Neorg" },
     config = function()
       require("neorg").setup {
         load = {
           ["core.defaults"] = {},
+          ["core.presenter"] = {
+          config = {
+            zen_mode = "zen-mode",
+            }
+          },
           ["core.integrations.telescope"] = {},
           ["core.highlights"] = {
             config = {
@@ -151,6 +188,7 @@ return {
               },
             },
           },
+          ["external.jupyter"] = {},
           ["core.concealer"] = {
             config = {
               icon_preset = "varied",
