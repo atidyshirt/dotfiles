@@ -61,6 +61,7 @@ return {
         }),
         sources = cmp.config.sources({
           -- { name = "codeium" },
+          { name = "neorg" },
           { name = "nvim_lsp", keyword_length = 2 },
           { name = "luasnip" },
           { name = "buffer", keyword_length = 3 },

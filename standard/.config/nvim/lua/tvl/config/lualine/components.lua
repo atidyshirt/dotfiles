@@ -130,7 +130,6 @@ M.filetype = {
       "packer",
       "neogitstatus",
       "NvimTree",
-      "Trouble",
       "lir",
       "Outline",
       "spectre_panel",

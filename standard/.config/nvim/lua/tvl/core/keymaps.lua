@@ -30,6 +30,13 @@ keymap("n", "<leader>q", ":lua ToggleQFix()<CR>", { silent = true })
 
 ------------------------ MARKDOWN ----------------------------
 keymap("n", "<leader>tp", ":!pandoc % -o %<.pdf --template eisvogel --listings", opts)
+vim.keymap.set("n", "<leader>nI", "<cmd>Neorg index<cr>", { desc = "Neorg index" })
+vim.keymap.set("n", "<leader>nt", "<cmd>Neorg journal today<cr>", { desc = "Neorg today" })
+vim.keymap.set("n", "<leader>nf", "<cmd>Telescope neorg find_norg_files<cr>", { desc = "Search Note Files" })
+vim.keymap.set("n", "<leader>nw", "<cmd>Telescope neorg find_linkable<cr>", { desc = "Search Notes" })
+vim.keymap.set("n", "<leader>nl", "<cmd>Telescope neorg insert_link<cr>", { desc = "Tangle file" })
+vim.keymap.set("n", "<leader>nr", "<cmd>Neorg toc right<cr>", { desc = "Open ToC (right)" })
+vim.keymap.set("n", "<leader>tv", "<cmd>Neorg keybind all core.looking-glass.magnify-code-block<cr>", { desc = "View code block" })
 
 -------------------- Stay in indent mode ------------------------
 keymap("v", "<", "<gv", opts)

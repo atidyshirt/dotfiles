@@ -16,6 +16,12 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+-- Increase conceal level for norg
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.norg"},
+  command = "set conceallevel=3"
+})
+
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = Util.augroup("close_with_q"),

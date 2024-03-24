@@ -118,43 +118,6 @@ return {
     end,
   },
 
-  -- formatters
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   dependencies = { "mason.nvim" },
-  --   root_has_file = function(files)
-  --     return function(utils)
-  --       return utils.root_has_file(files)
-  --     end
-  --   end,
-  --   opts = function(plugin)
-  --     local root_has_file = plugin.root_has_file
-  --     local null_ls = require("null-ls")
-  --     local formatting = null_ls.builtins.formatting
-  --     local stylua_root_files = { "stylua.toml", ".stylua.toml" }
-  --     local modifier = {
-  --       stylua_formatting = {
-  --         condition = root_has_file(stylua_root_files),
-  --       },
-  --     }
-  --     return {
-  --       debug = false,
-  --       -- You can then register sources by passing a sources list into your setup function:
-  --       -- using `with()`, which modifies a subset of the source's default options
-  --       sources = {
-  --         formatting.stylua.with(modifier.stylua_formatting),
-  --         formatting.markdownlint,
-  --         formatting.beautysh.with({ extra_args = { "--indent-size", "2" } }),
-  --       },
-  --     }
-  --   end,
-  --   config = function(_, opts)
-  --     local null_ls = require("null-ls")
-  --     null_ls.setup(opts)
-  --   end,
-  -- },
-
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -163,12 +126,13 @@ return {
 
   {
     "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers", -- This is the important bit!
+    dependencies = { "nvim-neorg/neorg-telescope" },
+    cmd = { "Neorg" },
     config = function()
       require("neorg").setup {
         load = {
           ["core.defaults"] = {},
-          -- ["core.integrations.telescope"] = {},
+          ["core.integrations.telescope"] = {},
           ["core.highlights"] = {
             config = {
               highlights = {
@@ -187,25 +151,30 @@ return {
               },
             },
           },
-          ["core.keybinds"] = {
-            config = {
-              hook = function(keybinds)
-                local leader = keybinds.leader
-
-                -- hop-link
-                keybinds.remap_key("norg", "n", "<CR>", "<CR><CR>")
-
-                -- new note
-                keybinds.remap_key("norg", "n", leader .. "nn", "ZZ")
-              end,
-            }
-          },
           ["core.concealer"] = {
             config = {
-              icon_preset = "diamond",
-              markup_preset = "dimmed",
+              icon_preset = "varied",
               dim_code_blocks = {
-                enabled = false,
+                enabled = true,
+              },
+              icons = {
+                delimiter = {
+                  horizontal_line = {
+                    highlight = "@neorg.delimiters.horizontal_line",
+                  },
+                },
+                code_block = {
+                  content_only = true,
+                  width = "content",
+                  padding = {
+                    left = 1,
+                    right = 1,
+                  },
+                  conceal = false,
+
+                  nodes = { "ranged_verbatim_tag" },
+                  insert_enabled = true,
+                },
               },
             },
           },
@@ -219,21 +188,25 @@ return {
               workspaces = {
                 notes = "~/projects/notes",
               },
+              default_workspace = "notes",
               autodetect = true,
               autochdir = true,
             },
           },
           ["core.esupports.metagen"] = {
             config = {
-              type = "<leader>om",
+              type = "auto",
             },
           },
-          ["core.presenter"] = {
+          ["core.looking-glass"] = {},
+          ["core.qol.todo_items"] = {},
+          ["core.integrations.nvim-cmp"] = {},
+          ["core.qol.toc"] = {
             config = {
-              zen_mode = "zen-mode",
-            }
+              close_split_on_jump = true,
+              toc_split_placement = "right",
+            },
           },
-          ["core.qol.toc"] = {},
           ["core.export"] = {},
           ["core.export.markdown"] = {
             config = {
@@ -242,19 +215,6 @@ return {
           },
         },
       }
-      vim.keymap.set("n", "<leader>ne", ":Neorg export to-file ", { desc = "Export file" })
-      vim.keymap.set("n", "<leader>nt", "<cmd>Neorg tangle current-file<cr>", { desc = "Tangle file" })
-      vim.keymap.set("n", "<leader>ni", "<cmd>Neorg inject-metadata<cr>", { desc = "Inject" })
-      vim.keymap.set("n", "<leader>nu", "<cmd>Neorg update-metadata<cr>", { desc = "Update" })
-      vim.keymap.set("n", "<leader>nr", "<cmd>Neorg toc right<cr>", { desc = "Open ToC (right)" })
-      vim.keymap.set(
-        "n",
-        "<leader>nq",
-        "<cmd>Neorg toc qflist<cr>",
-        { desc = "Open ToC (quickfix list)" }
-      )
     end,
   }
-
-
 }
