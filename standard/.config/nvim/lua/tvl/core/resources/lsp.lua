@@ -151,15 +151,24 @@ return {
       },
     }
   },
+  
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
 
   {
     "nvim-neorg/neorg",
     dependencies = {
+      "vhyrro/luarocks.nvim",
       "nvim-neorg/neorg-telescope",
       "tamton-aquib/neorg-jupyter",
       "folke/zen-mode.nvim",
     },
-    cmd = { "Neorg" },
+    lazy = false,
+    version = "*",
+    -- cmd = { "Neorg" },
     config = function()
       require("neorg").setup {
         load = {
