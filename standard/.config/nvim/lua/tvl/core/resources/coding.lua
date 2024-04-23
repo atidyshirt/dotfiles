@@ -11,6 +11,8 @@ return {
     opts = { use_default_keymaps = false },
   },
 
+  { "vitalk/vim-shebang" },
+
   {
     "hrsh7th/nvim-cmp",
     version = false,
