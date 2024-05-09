@@ -27,7 +27,7 @@ yabai -m config window_border_blur off
 yabai -m config window_border_hidpi off
 yabai -m config window_shadow off
 
-yabai -m config window_animation_duration 0.15
+yabai -m config window_animation_duration 0.20
 yabai -m config insert_feedback_color 0xff$gruvActive
 
 yabai -m rule --add app="^System Preferences$" manage=off
