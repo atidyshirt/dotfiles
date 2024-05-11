@@ -16,6 +16,7 @@ PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 
 # Keybinds
 source ~/dev_scripts/aliases
+eval "$(fzf --zsh)"
 bindkey -v
 
 if [[ -f .projectconfig && -r .projectconfig ]]; then
@@ -23,8 +24,3 @@ if [[ -f .projectconfig && -r .projectconfig ]]; then
 elif [[ -f ../.projectconfig && -r ../.projectconfig ]]; then
     cd .. && source .projectconfig && cd - &> /dev/null
 fi
-
-# Plugins
-# znap source zsh-users/zsh-autosuggestions
-# bindkey '^[[Z' autosuggest-accept
-# znap source zsh-users/zsh-syntax-highlighting
