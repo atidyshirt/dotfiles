@@ -1,5 +1,6 @@
 local Util = require("tvl.util")
 local Icons = require("tvl.core.icons")
+local ignore_patterns = require("tvl.ignore_patterns")
 
 return {
   {
@@ -40,11 +41,21 @@ return {
     end,
   },
 
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     opts = {
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        }
+      },
       defaults = {
         prompt_prefix = "   ",
         selection_caret = "  ",
@@ -52,55 +63,7 @@ return {
         dynamic_preview_title = true,
         hl_result_eol = true,
         sorting_strategy = "ascending",
-        file_ignore_patterns = {
-          ".git/",
-          "target/",
-          "docs/",
-          "vendor/*",
-          "%.lock",
-          "__pycache__/*",
-          "%.sqlite3",
-          "%.ipynb",
-          "node_modules/*",
-          "%.svg",
-          "%.otf",
-          "%.ttf",
-          "%.webp",
-          ".dart_tool/",
-          ".github/",
-          ".gradle/",
-          ".idea/",
-          ".settings/",
-          ".vscode/",
-          "__pycache__/",
-          "build/",
-          "gradle/",
-          "node_modules/",
-          "%.pdb",
-          "%.dll",
-          "%.class",
-          "%.exe",
-          "%.cache",
-          "%.ico",
-          "%.pdf",
-          "%.dylib",
-          "%.jar",
-          "%.docx",
-          "%.met",
-          "smalljre_*/*",
-          ".vale/",
-          "%.burp",
-          "%.mp4",
-          "%.mkv",
-          "%.rar",
-          "%.zip",
-          "%.7z",
-          "%.tar",
-          "%.bz2",
-          "%.epub",
-          "%.flac",
-          "%.tar.gz",
-        },
+        file_ignore_patterns = ignore_patterns,
         results_title = "",
         layout_config = {
           horizontal = {
@@ -125,6 +88,9 @@ return {
       { "<leader>fo", "<cmd> Telescope oldfiles <CR>" },
       { "<leader>fk", "<cmd> Telescope keymaps <CR>" },
     },
+    config = function()
+        require('telescope').load_extension('fzf')
+      end
   },
 
   {
