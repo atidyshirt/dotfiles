@@ -15,9 +15,10 @@ zstyle ':vcs_info:*' stagedstr ' +'
 PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 
 # Keybinds
+set -o vi
+bindkey -v
 source ~/dev_scripts/aliases
 eval "$(fzf --zsh)"
-bindkey -v
 
 if [[ -f .projectconfig && -r .projectconfig ]]; then
     source .projectconfig &> /dev/null

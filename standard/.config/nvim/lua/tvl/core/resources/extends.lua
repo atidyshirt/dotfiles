@@ -248,8 +248,9 @@ return {
         }
       end
       _G.neoscopes_live_grep = function()
-        require("telescope.builtin").live_grep {
+        require("telescope.builtin").grep_string {
           search_dirs = get_search_dirs(),
+          search=""
         }
       end
 
