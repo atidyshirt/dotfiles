@@ -14,16 +14,16 @@ return {
     },
     keys = {
       {
-        "<C-n>",
+        "<Tab>",
         function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<C-n>"
+          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<Tab>"
         end,
         expr = true,
         silent = true,
         mode = "i",
       },
-      { "<C-n>",   function() require("luasnip").jump(1) end,  mode = "s" },
-      { "<C-p>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+      { "<Tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
+      { "<S-Tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
 
@@ -79,8 +79,6 @@ return {
           ["<C-l>"] = cmp.mapping.confirm({ select = true }),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         }),
         sources = cmp.config.sources({
           { name = "neorg" },
