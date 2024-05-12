@@ -11,20 +11,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- load lazy
 require("lazy").setup({
-  spec = "tvl.core.resources",
+  spec = {
+    { import = "tvl.core.resources.defaults.core" },
+    { import = "tvl.core.resources.defaults.lsp" },
+    { import = "tvl.core.resources.defaults.extras" },
+    { import = "tvl.core.resources.ui" },
+    { import = "tvl.core.resources.extensions" },
+  },
   concurrency = 10,
   defaults = {
     lazy = false,
-    -- version = false, -- always use the latest git commit
-    version = "*", -- try installing the latest stable version for plugins that support semver
+    version = "*",
   },
   install = { colorscheme = { "gruvbox-material" } },
   checker = { enabled = false, notify = false },
   performance = {
     rtp = {
-      -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
         "tarPlugin",

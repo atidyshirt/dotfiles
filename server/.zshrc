@@ -18,7 +18,6 @@ PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
 set -o vi
 bindkey -v
 source ~/dev_scripts/aliases
-eval "$(fzf --zsh)"
 
 if [[ -f .projectconfig && -r .projectconfig ]]; then
     source .projectconfig &> /dev/null

@@ -1,47 +1,5 @@
 return {
   {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_snipmate").lazy_load()
-      end,
-    },
-    opts = {
-      history = true,
-      delete_check_events = "TextChanged",
-    },
-    keys = {
-      {
-        "<Tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<Tab>"
-        end,
-        expr = true,
-        silent = true,
-        mode = "i",
-      },
-      { "<Tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
-      { "<S-Tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    },
-  },
-
-  {
-    "Wansmer/treesj",
-    keys = {
-      {
-        "<leader>lj",
-        "<cmd>TSJToggle<cr>",
-        desc = "Split / Join",
-      },
-    },
-    opts = { use_default_keymaps = false },
-  },
-
-  { "vitalk/vim-shebang" },
-
-  {
     "hrsh7th/nvim-cmp",
     version = false,
     event = "BufEnter",
@@ -105,32 +63,4 @@ return {
       }
     end,
   },
-
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  {
-    'dmmulroy/tsc.nvim',
-    config = function ()
-      require('tsc').setup()
-    end
-  },
-
-  {
-    "ray-x/lsp_signature.nvim",
-    event = { "InsertEnter" },
-    opts = {
-      floating_window = false, -- show hint in a floating window, set to false for virtual text only mode
-      floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
-      hint_scheme = "Comment", -- highlight group for the virtual text
-    },
-  },
-
-  {
-    "glepnir/lspsaga.nvim",
-    lazy = true,
-    config = function()
-      require("lspsaga").setup({})
-    end,
-  },
-
-  { "folke/neodev.nvim", opts = {} }
 }

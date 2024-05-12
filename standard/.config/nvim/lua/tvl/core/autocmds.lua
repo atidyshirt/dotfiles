@@ -70,7 +70,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
       local project_name = project_dir[#project_dir]
       return project_name
     end
-
     vim.opt.titlestring = get_project_dir()
   end,
 })
@@ -89,14 +88,6 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     vim.opt_local["number"] = false
     vim.opt_local["signcolumn"] = "no"
     vim.opt_local["foldcolumn"] = "0"
-  end,
-})
-
--- fix comment on new line
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = { "*" },
-  callback = function()
-    vim.cmd([[set formatoptions-=cro]])
   end,
 })
 
