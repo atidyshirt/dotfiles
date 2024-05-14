@@ -1,5 +1,3 @@
-local Util = require("tvl.util")
-
 return {
   {
     'stevearc/oil.nvim',
