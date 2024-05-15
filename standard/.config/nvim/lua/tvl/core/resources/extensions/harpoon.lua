@@ -12,8 +12,10 @@ return {
         ["tmux"] = {
           select = function(list_item, list)
             local list_index = utils.get_index_of_string(list_item.value, list);
-            local term_index = utils.get_tmux_terminal_index(list_index);
-            tmux.send_command(term_index, list_item.value)
+            if list_index ~= nil then
+              local term_index = utils.get_tmux_terminal_index(list_index);
+              tmux.send_command(term_index, list_item.value)
+            end
           end
         }
       })

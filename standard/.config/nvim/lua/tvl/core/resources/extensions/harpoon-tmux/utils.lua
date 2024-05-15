@@ -32,7 +32,6 @@ return {
         return index;
       end
     end
-      error("failed to find index")
     return nil;
   end;
 
