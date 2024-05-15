@@ -6,11 +6,14 @@ return {
     config = function ()
       local harpoon = require("harpoon");
       local tmux = require("tvl.core.resources.extensions.harpoon-tmux.tmux");
+      local utils = require("tvl.core.resources.extensions.harpoon-tmux.utils");
 
       harpoon:setup({
         ["tmux"] = {
-          select = function(list_item)
-            tmux.send_command(1, list_item.value)
+          select = function(list_item, list)
+            local list_index = utils.get_index_of_string(list_item.value, list);
+            local term_index = utils.get_tmux_terminal_index(list_index);
+            tmux.send_command(term_index, list_item.value)
           end
         }
       })
