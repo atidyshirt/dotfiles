@@ -1,9 +1,9 @@
 local utils = require('tvl.core.resources.extensions.harpoon-tmux.utils');
 
-local TmuxApi = {}
+local tmux_api = {}
 local tmux_windows = {}
 
-TmuxApi.create_terminal = function ()
+tmux_api.create_terminal = function ()
   local window_id
   local out, ret, _ = utils.get_os_command_output({
     "tmux",
@@ -21,7 +21,7 @@ TmuxApi.create_terminal = function ()
   return window_id
 end;
 
-TmuxApi.terminal_exists = function(window_id)
+tmux_api.terminal_exists = function(window_id)
   local exists = false
   local window_list, _, _ = utils.get_os_command_output({
     "tmux",
@@ -36,7 +36,7 @@ TmuxApi.terminal_exists = function(window_id)
   return exists
 end;
 
-TmuxApi.find_terminal = function (args)
+tmux_api.find_terminal = function (args)
   if type(args) == "number" then
     args = { idx = args }
   end
@@ -45,11 +45,11 @@ TmuxApi.find_terminal = function (args)
   local window_exists
 
   if window_handle then
-    window_exists = TmuxApi.terminal_exists(window_handle.window_id)
+    window_exists = tmux_api.terminal_exists(window_handle.window_id)
   end
 
   if not window_handle or not window_exists then
-    local window_id = TmuxApi.create_terminal()
+    local window_id = tmux_api.create_terminal()
     if window_id == nil then
       error("Failed to find and create tmux window.")
       return
@@ -62,7 +62,7 @@ TmuxApi.find_terminal = function (args)
   return window_handle
 end;
 
-TmuxApi.clear_all = function ()
+tmux_api.clear_all = function ()
   for _, window in pairs(tmux_windows) do
     utils.get_os_command_output({
       "tmux",
@@ -74,4 +74,4 @@ TmuxApi.clear_all = function ()
   tmux_windows = {}
 end;
 
-return TmuxApi;
+return tmux_api;

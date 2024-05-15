@@ -1,5 +1,5 @@
-local TmuxApi = require('tvl.core.resources.extensions.harpoon-tmux.tmux-api');
-local Utils = require('tvl.core.resources.extensions.harpoon-tmux.utils');
+local tmux_api = require('tvl.core.resources.extensions.harpoon-tmux.tmux-api');
+local utils = require('tvl.core.resources.extensions.harpoon-tmux.utils');
 
 local harpoon_tmux_group = vim.api.nvim_create_augroup(
   "HARPOON_TMUX",
@@ -11,11 +11,11 @@ local default_options = {
 }
 
 --- @class HarpoonTmux
-local HarpoonTmux = {}
+local harpoon_tmux = {}
 
-HarpoonTmux.go_to_terminal = function (idx)
-  local window_handle = TmuxApi.find_terminal(idx)
-  local _, ret, stderr = Utils.get_os_command_output({
+harpoon_tmux.go_to_terminal = function (idx)
+  local window_handle = tmux_api.find_terminal(idx)
+  local _, ret, stderr = utils.get_os_command_output({
     "tmux",
     "select-window",
     "-t",
@@ -27,10 +27,10 @@ HarpoonTmux.go_to_terminal = function (idx)
   end
 end;
 
-HarpoonTmux.send_command = function (idx, cmd, ...)
-  local window_handle = TmuxApi.find_terminal(idx)
+harpoon_tmux.send_command = function (idx, cmd, ...)
+  local window_handle = tmux_api.find_terminal(idx)
   if cmd then
-    local _, ret, stderr = Utils.get_os_command_output({
+    local _, ret, stderr = utils.get_os_command_output({
       "tmux",
       "send-keys",
       "-t",
@@ -47,25 +47,25 @@ end;
 --- @param list_name string The name of the harpoon list
 --- @param options table|nil (Optional) Options for HarpoonTmux.
 --- @return table Returns list construction for harpoon
-HarpoonTmux.build_list = function (list_name, options)
+harpoon_tmux.build_list = function (list_name, options)
   local merged_opts = setmetatable(options or {}, { __index = default_options })
   if merged_opts.tmux_autoclose_windows then
     vim.api.nvim_create_autocmd("VimLeave", {
-      callback = function() TmuxApi.clear_all() end,
+      callback = function() tmux_api.clear_all() end,
       group = harpoon_tmux_group,
     })
   end
   return {
     [list_name] = {
       select = function(list_item, list)
-        local list_index = Utils.get_index_of_string(list_item.value, list);
+        local list_index = utils.get_index_of_string(list_item.value, list);
         if list_index ~= nil then
-          local term_index = Utils.get_tmux_terminal_index(list_index);
-          HarpoonTmux.send_command(term_index, list_item.value)
+          local term_index = utils.get_tmux_terminal_index(list_index);
+          harpoon_tmux.send_command(term_index, list_item.value)
         end
       end
     }
   }
 end;
 
-return HarpoonTmux;
+return harpoon_tmux;
