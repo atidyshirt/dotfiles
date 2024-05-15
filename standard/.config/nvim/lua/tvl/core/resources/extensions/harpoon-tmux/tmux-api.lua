@@ -59,8 +59,19 @@ TmuxApi.find_terminal = function (args)
     }
     tmux_windows[args.idx] = window_handle
   end
-
   return window_handle
-end
+end;
+
+TmuxApi.clear_all = function ()
+  for _, window in pairs(tmux_windows) do
+    utils.get_os_command_output({
+      "tmux",
+      "kill-window",
+      "-t",
+      window.window_id,
+    }, vim.loop.cwd())
+  end
+  tmux_windows = {}
+end;
 
 return TmuxApi;

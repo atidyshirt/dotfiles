@@ -5,20 +5,11 @@ return {
     branch = "harpoon2",
     config = function ()
       local harpoon = require("harpoon");
-      local tmux = require("tvl.core.resources.extensions.harpoon-tmux.tmux");
-      local utils = require("tvl.core.resources.extensions.harpoon-tmux.utils");
+      local HarpoonTmux = require("tvl.core.resources.extensions.harpoon-tmux.tmux");
 
-      harpoon:setup({
-        ["tmux"] = {
-          select = function(list_item, list)
-            local list_index = utils.get_index_of_string(list_item.value, list);
-            if list_index ~= nil then
-              local term_index = utils.get_tmux_terminal_index(list_index);
-              tmux.send_command(term_index, list_item.value)
-            end
-          end
-        }
-      })
+      local harpoon_tmux_list_name = 'tmux';
+
+      harpoon:setup(HarpoonTmux.build_list(harpoon_tmux_list_name))
 
       vim.keymap.set("n", "ga", function() harpoon:list():add() end)
       vim.keymap.set("n", "gm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
@@ -27,10 +18,10 @@ return {
       vim.keymap.set("n", "gl", function() harpoon:list():select(3) end)
       vim.keymap.set("n", "g;", function() harpoon:list():select(4) end)
 
-      vim.keymap.set("n", "gt", function() tmux.go_to_terminal(1) end)
-      vim.keymap.set("n", "gy", function() tmux.go_to_terminal(2) end)
+      vim.keymap.set("n", "gt", function() HarpoonTmux.go_to_terminal(1) end)
+      vim.keymap.set("n", "gy", function() HarpoonTmux.go_to_terminal(2) end)
 
-      vim.keymap.set("n", "<leader><space>m", function() harpoon.ui:toggle_quick_menu(harpoon:list('tmux')) end)
+      vim.keymap.set("n", "<leader><space>m", function() harpoon.ui:toggle_quick_menu(harpoon:list(harpoon_tmux_list_name)) end)
       vim.keymap.set("n", "<leader><space>j", function() harpoon:list('tmux'):select(1) end)
       vim.keymap.set("n", "<leader><space>k", function() harpoon:list('tmux'):select(2) end)
       vim.keymap.set("n", "<leader><space>l", function() harpoon:list('tmux'):select(3) end)
