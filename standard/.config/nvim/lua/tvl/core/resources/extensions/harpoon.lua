@@ -1,15 +1,16 @@
 return {
   {
     "ThePrimeagen/harpoon",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "atidyshirt/harpoon-tmux",
+    },
     branch = "harpoon2",
     config = function ()
       local harpoon = require("harpoon");
-      local harpoon_tmux = require("tvl.core.resources.extensions.harpoon-tmux.tmux");
+      local harpoon_tmux = require("harpoon-tmux");
 
-      local tmux_list_name = 'tmux';
-
-      harpoon:setup(harpoon_tmux.build_list(tmux_list_name))
+      harpoon:setup({ ['tmux'] = harpoon_tmux.build_list() })
 
       vim.keymap.set("n", "ga", function() harpoon:list():add() end)
       vim.keymap.set("n", "gm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
@@ -21,7 +22,7 @@ return {
       vim.keymap.set("n", "gt", function() harpoon_tmux.go_to_terminal(1) end)
       vim.keymap.set("n", "gy", function() harpoon_tmux.go_to_terminal(2) end)
 
-      vim.keymap.set("n", "<leader><space>m", function() harpoon.ui:toggle_quick_menu(harpoon:list(tmux_list_name)) end)
+      vim.keymap.set("n", "<leader><space>m", function() harpoon.ui:toggle_quick_menu(harpoon:list('tmux')) end)
       vim.keymap.set("n", "<leader><space>j", function() harpoon:list('tmux'):select(1) end)
       vim.keymap.set("n", "<leader><space>k", function() harpoon:list('tmux'):select(2) end)
       vim.keymap.set("n", "<leader><space>l", function() harpoon:list('tmux'):select(3) end)
