@@ -100,7 +100,7 @@ return {
 
       local available = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
 
-      local ensure_installed = {}
+      local ensure_installed = { 'vtsls', 'lua_ls' }
       for server, server_opts in pairs(servers) do
         if server_opts then
           if not vim.tbl_contains(available, server) then

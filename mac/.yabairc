@@ -32,7 +32,7 @@ yabai -m config insert_feedback_color 0xff$gruvActive
 
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app=Dashlane manage=off
-yabai -m rule --add app=Spotify manage=off
+yabai -m rule --add app=Spotify manage=on
 yabai -m rule --add app=Godot manage=off
 yabai -m rule --add app=Discord manage=off
 yabai -m rule --add app=Übersicht manage=off
@@ -41,5 +41,3 @@ yabai -m rule --add app=BetterTouchTool manage=off
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
-
-borders style=square active_color=0xff$gruvActive inactive_color=0xff$gruvInactive width=8.0 2>/dev/null 1>&2 &

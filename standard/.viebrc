@@ -12,13 +12,14 @@ set downloadpath=~/Downloads/
 
 " Mappings
 imap <C-e> <editWithVim>
-emap <C-k> <nextSuggestion>
-emap <C-j> <prevSuggestion>
-cmap <C-k> <nextSuggestion>
-cmap <C-j> <prevSuggestion>
+emap <C-k> <prevSuggestion>
+emap <C-j> <nextSuggestion>
+cmap <C-k> <prevSuggestion>
+cmap <C-j> <nextSuggestion>
 
 set searchwords=
 set searchwords+=dd~https://duckduckgo.com/?q=%s
+set searchwords+=goog~https://www.google.com/search?q=%s
 set searchwords+=img~https://duckduckgo.com/?q=%s&iax=images&ia=images
 set searchwords+=git~https://github.com/search?q=%s
 set searchwords+=maps~https://www.google.com/maps?hl=en&q=%s
@@ -29,8 +30,3 @@ set searchwords+=imdb~imdb.com/find?ref_=nv_sr_fn&q=%s&s=all
 set searchwords+=genius~https://genius.com/search?q=%s
 set searchwords+=nyt~https://www.nytimes.com/search?query=%s
 set searchwords+=bbc~https://www.bbc.co.uk/search?q=%s
-
-" Colors (By default turn off dark reader but configure the bg)
-set nodarkreader
-set darkreaderbg=#262626
-colorscheme gruvbox
