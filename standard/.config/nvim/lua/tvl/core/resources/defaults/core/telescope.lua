@@ -1,21 +1,11 @@
 local ignore_patterns = require("tvl.ignore_patterns")
 
 return {
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false,
     opts = {
-      extensions = {
-        fzf = {
-          fuzzy = true,
-          override_generic_sorter = true,
-          override_file_sorter = true,
-          case_mode = "smart_case",
-        }
-      },
       defaults = {
         prompt_prefix = "   ",
         selection_caret = "  ",
@@ -48,8 +38,5 @@ return {
       { "<leader>fo", "<cmd> Telescope oldfiles <CR>" },
       { "<leader>fk", "<cmd> Telescope keymaps <CR>" },
     },
-    config = function()
-        require('telescope').load_extension('fzf')
-      end
   },
 }

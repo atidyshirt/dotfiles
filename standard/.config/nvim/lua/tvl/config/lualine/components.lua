@@ -24,7 +24,7 @@ end
 local prev_branch = ""
 M.branch = {
   "branch",
-  icons_enabled = vim.g.nerd_font_enabled,
+  icons_enabled = false,
   icon = hl_str("", "SLGitIcon", "SLBranchName"),
   colored = false,
   fmt = function(str)
