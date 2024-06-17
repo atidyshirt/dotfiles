@@ -1,6 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
+    enabled = vim.g.nerd_font_enabled,
     event = "VeryLazy",
     opts = {
       float = true,

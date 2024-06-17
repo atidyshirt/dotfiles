@@ -24,7 +24,7 @@ end
 local prev_branch = ""
 M.branch = {
   "branch",
-  icons_enabled = false,
+  icons_enabled = vim.g.nerd_font_enabled,
   icon = hl_str("", "SLGitIcon", "SLBranchName"),
   colored = false,
   fmt = function(str)
@@ -122,7 +122,7 @@ M.mode = {
 local prev_filetype = ""
 M.filetype = {
   "filetype",
-  icons_enabled = false,
+  icons_enabled = vim.g.nerd_font_enabled,
   icons_only = false,
   fmt = function(str)
     local ui_filetypes = {

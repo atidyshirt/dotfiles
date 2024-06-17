@@ -26,26 +26,16 @@ local config = {
   default_component_configs = {
     indent = {
       indent_size = 2,
-      padding = 1, -- extra padding on left hand side
-      -- indent guides
+      padding = 1,
       with_markers = true,
       indent_marker = "│",
       last_indent_marker = "└",
-      -- expander config, needed for nesting files
-      with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+      with_expanders = true,
       expander_collapsed = "",
       expander_expanded = "",
       expander_highlight = "NeoTreeExpander",
     },
-    icon = {
-      folder_closed = "",
-      folder_open = "",
-      folder_empty = "",
-      folder_empty_open = "",
-      -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-      -- then these will never be used.
-      default = " ",
-    },
+    icon = Icons.directory,
     modified = { symbol = "" },
     git_status = { symbols = Icons.git },
     diagnostics = { symbols = Icons.diagnostics },

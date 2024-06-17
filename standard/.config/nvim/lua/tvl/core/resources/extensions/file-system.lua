@@ -20,6 +20,11 @@ return {
     keys = {
       { "<leader>e", ":Oil<cr>", desc = "Explorer (Oil)", remap = true },
     },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      {
+        "nvim-tree/nvim-web-devicons",
+        enabled = vim.g.nerd_font_enabled
+      },
+    },
   },
 }

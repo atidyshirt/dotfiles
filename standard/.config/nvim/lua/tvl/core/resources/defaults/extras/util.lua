@@ -5,6 +5,12 @@ return {
   { "tpope/vim-sleuth" },
 
   {
+    'echasnovski/mini.ai',
+    version = '*',
+    config = true,
+  },
+
+  {
     'numToStr/Comment.nvim',
     opts = {
     },
@@ -28,7 +34,11 @@ return {
 
   {
     "nvim-tree/nvim-web-devicons",
+    enabled = vim.g.nerd_font_enabled,
     lazy = true,
+    config = function ()
+      require("nvim-web-devicons").setup()
+    end
   },
 
   { "vitalk/vim-shebang" },

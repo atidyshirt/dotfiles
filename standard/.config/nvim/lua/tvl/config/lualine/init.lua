@@ -9,7 +9,7 @@ local function setup()
   require("lualine").setup({
     options = {
       theme = theme,
-      icons_enabled = true,
+      icons_enabled = vim.g.nerd_font_enabled,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {

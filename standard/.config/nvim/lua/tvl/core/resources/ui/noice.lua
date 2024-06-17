@@ -1,6 +1,7 @@
 return {
   {
     "folke/noice.nvim",
+    enabled = vim.g.nerd_font_enabled,
     event = "VeryLazy",
     opts = {
       cmdline = {
