@@ -1,6 +1,7 @@
 return {
   {
     "luukvbaal/statuscol.nvim",
+    enabled = vim.g.nerd_font_enabled,
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       local builtin = require("statuscol.builtin")

@@ -5,6 +5,8 @@ source $HOME/dev_scripts/utils
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias ls='ls --color'
+
 if doesCommandExist exa
 then
   alias ls='exa --icons'

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neorg/neorg",
+    enabled = vim.g.luarocks_enabled,
     dependencies = {
       "vhyrro/luarocks.nvim",
       "nvim-neorg/neorg-telescope",
@@ -107,6 +108,7 @@ return {
 
   {
     "vhyrro/luarocks.nvim",
+    enabled = vim.g.luarocks_enabled,
     priority = 1000,
     config = true,
   },
