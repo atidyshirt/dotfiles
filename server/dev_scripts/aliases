@@ -33,6 +33,13 @@ then
   alias ld='lazydocker'
 fi
 
+if doesCommandExist edit_current_line
+then
+  autoload -Uz edit-command-line
+  zle -N edit-command-line
+  bindkey '^e' edit-command-line
+fi
+
 if doesCommandExist stow
 then
   alias dotfiles='stow --target="$HOME" --dir="$HOME/projects/dotfiles"'

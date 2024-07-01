@@ -38,6 +38,14 @@ function watch() {
   fi
 }
 
+function edit_current_line() {
+    local line
+    zle -R "Edit current line: "
+    read -e -i "$BUFFER" line
+    echo "$line" | $EDITOR
+    zle accept-line
+}
+
 if doesCommandExist fzf
 then
   function o() {

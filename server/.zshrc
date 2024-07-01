@@ -1,4 +1,4 @@
-export EDITOR='vim'
+export EDITOR='nvim'
 export VMUX_EDITOR='nvim'
 export VMUX_REALEDITOR_NVIM='/opt/homebrew/bin/nvim'
 
