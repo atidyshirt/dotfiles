@@ -21,11 +21,11 @@ wofi_command="wofi --show dmenu \
 uptime=$(uptime -p | sed -e 's/up //g')
 
 ## Entries
-shutdown=" Shutdown"
-reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+shutdown="⏻  Shutdown"
+reboot="󰜉  Restart"
+lock="  Lock"
+suspend="󰒲  Sleep"
+logout="󰍃  Logout"
 
 # Ask for confirmation
 cdialog () {
@@ -39,7 +39,6 @@ open_menu () {
 	chosen="$(echo -e "$options" | $wofi_command --prompt "UP - $uptime")"
 	case $chosen in
 		$shutdown)
-			cdialog
 			if [[ "$?" == 0 ]]; then
 				systemctl poweroff
 			else
@@ -47,7 +46,6 @@ open_menu () {
 			fi
 			;;
 		$reboot)
-			cdialog
 			if [[ "$?" == 0 ]]; then
 				systemctl reboot
 			else
@@ -58,7 +56,6 @@ open_menu () {
 			~/.config/hypr/scripts/lockscreen
 			;;
 		$suspend)
-			cdialog
 			if [[ "$?" == 0 ]]; then
 				mpc -q pause
 				amixer set Master mute
@@ -69,7 +66,6 @@ open_menu () {
 			fi
 			;;
 		$logout)
-			cdialog
 			if [[ "$?" == 0 ]]; then
 				kill -9 -1
 			else
