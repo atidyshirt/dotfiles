@@ -1,26 +1,54 @@
-/* 
- * Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
- * Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-*/
-
 /** ********** Fonts ********** **/
 * {
-    font-family: "JetBrains Mono", "Iosevka Nerd Font", archcraft, sans-serif;
-    font-size: 16px;
+    font-family: "FiraCode Nerd Font Mono";
+    font-size: 10px;
 }
 
 /** ********** Waybar Window ********** **/
 window#waybar {
-    background-color: #282828;
+	background-color: #282828;
 	color: #282828;
-    border-bottom: 2px solid #313244;
-    transition-property: background-color;
-    transition-duration: .5s;
+	border-bottom: 2px solid #282828;
+	transition-property: background-color;
+	transition-duration: .5s;
 }
 
 window#waybar.hidden {
     opacity: 0.5;
 }
+
+button {
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    transition-duration: .1s;
+    background: inherit;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: #282828;
+}
+
+#workspaces button.persistent {
+    color: #ebebeb;
+}
+
+#workspaces button.active {
+    color: #62554A;
+}
+
+#workspaces {
+	background-color: #282828;
+	color: #ebebeb;
+	margin-right: 6px;
+	padding: 2px 8px;
+	transition-property: background-color;
+	transition-duration: .5s;
+}
+
 
 /** ********** Backlight ********** **/
 #backlight {
@@ -40,18 +68,18 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        color: #000000;
+        color: #ebebeb;
     }
 }
 
 #battery.critical:not(.charging) {
 	background-color: #ea6962;
-    color: #ea6962;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+	color: #ea6962;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 /** ********** Clock ********** **/
@@ -138,7 +166,7 @@ window#waybar.hidden {
 }
 
 /** Common style **/
-#backlight, 
+#backlight,
 #battery,
 #clock,
 #cpu,

@@ -60,5 +60,5 @@ fi
 
 if doesCommandExist fzf
 then
-  eval "$(fzf --$(basename $SHELL))"
+  eval $(fzf --$(basename $SHELL))
 fi

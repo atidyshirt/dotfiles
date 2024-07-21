@@ -16,7 +16,7 @@ done
 /usr/lib/xfce-polkit/xfce-polkit &
 
 # Set wallpaper
-swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/home_gruvbox_comfy_brown.jpg &
+swaybg --output '*' --mode fill --image ~/.config/hypr/wallpapers/miramare.png &
 
 # Apply themes
 ~/.config/hypr/scripts/gtkthemes &
