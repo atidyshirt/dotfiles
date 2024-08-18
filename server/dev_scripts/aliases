@@ -62,3 +62,8 @@ if doesCommandExist fzf
 then
   eval $(fzf --$(basename $SHELL))
 fi
+
+if doesCommandExist atuin
+then
+  eval "$(atuin init zsh)"
+fi

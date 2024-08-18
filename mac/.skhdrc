@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty -d ~
-alt - return : open "/Applications/Vieb.app"
+alt - return : open "/Applications/Safari.app"
 alt + shift - return : open -na "/Applications/Google Chrome.app"
 alt - m : mpv $(pbpaste)
 
@@ -75,9 +75,6 @@ ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
 
 alt - d : yabai -m window --toggle zoom-parent; \
     sketchybar --trigger window_focus
-
-# Kitty toggle fullscreen
-shift + alt - f : frida -q -l ~/.config/osx_injection/displayOverNotch.js -e "toggleFullScreen()" $(osascript -e 'tell application "System Events" to get unix id of first application process whose frontmost is true')
 
 # toggle window fullscreen zoom
 alt - f : yabai -m window --toggle zoom-fullscreen; \
