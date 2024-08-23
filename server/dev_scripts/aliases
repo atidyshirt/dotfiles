@@ -7,11 +7,6 @@ alias ...='cd ../..'
 
 alias ls='ls --color'
 
-if doesCommandExist exa
-then
-  alias ls='exa --icons'
-fi
-
 # Neovim + Coding
 if doesCommandExist nvim
 then
