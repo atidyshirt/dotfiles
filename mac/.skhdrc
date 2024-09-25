@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty -d ~
+cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
 alt - return : open "/Applications/Safari.app"
 alt + shift - return : open -na "/Applications/Google Chrome.app"
 alt - m : mpv $(pbpaste)
@@ -43,7 +43,6 @@ shift + cmd - k : yabai -m window --insert north
 shift + cmd - l : yabai -m window --insert east
 shift + cmd - i : yabai -m window --insert stack
 
-# Useful for switching window stack for a specific parent/child node pair
 alt - e : yabai -m window --toggle split
 
 alt - 1 : yabai -m space --focus  1
@@ -68,7 +67,6 @@ ctrl + alt - 1  : yabai -m display --focus 1
 ctrl + alt - 2  : yabai -m display --focus 2
 ctrl + alt - 3  : yabai -m display --focus 3
 
-# send window to monitor and follow focus
 ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
@@ -76,12 +74,8 @@ ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
 alt - d : yabai -m window --toggle zoom-parent; \
     sketchybar --trigger window_focus
 
-# toggle window fullscreen zoom
 alt - f : yabai -m window --toggle zoom-fullscreen; \
     sketchybar --trigger window_focus
-
-# toggle window native fullscreen
-# shift + alt - f : yabai -m window --toggle native-fullscreen
 
 alt - t : yabai -m window --toggle float; \
           yabai -m window --grid 4:4:1:1:2:2; \
@@ -91,6 +85,4 @@ shift + alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 20:20:1:1:18:18; \
           sketchybar --trigger window_focus
 
-alt - p : yabai -m window --toggle sticky;\
-          yabai -m window --toggle topmost;\
-          yabai -m window --toggle pip
+alt - p : yabai -m window --toggle border --toggle sticky --toggle topmost --toggle pip

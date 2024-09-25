@@ -1,43 +1,58 @@
 #!/usr/bin/env sh
 
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
-
 gruvInactive=32302f
 gruvActive=62554A
 
-yabai -m config window_placement second_child
-yabai -m config split_ratio 0.50
-yabai -m config mouse_modifier fn
-yabai -m config mouse_action1 move
-yabai -m config mouse_action2 resize
+# necessary to load scripting-addition during startup on macOS Big Sur
+# *yabai --load-sa* is configured to run through sudo without a password
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-yabai -m config layout bsp
-yabai -m config external_bar all:40:0
-yabai -m config top_padding 14
-yabai -m config bottom_padding 14
-yabai -m config left_padding 14
-yabai -m config right_padding 14
-yabai -m config window_gap 18
+yabai -m space 1 --label code
+yabai -m space 2 --label extra
+yabai -m space 3 --label web
+yabai -m space 4 --label messaging
+yabai -m space 5 --label media
 
-yabai -m config window_opacity off
-yabai -m config active_window_opacity 0.92
-yabai -m config normal_window_opacity 0.92
-yabai -m config window_border_blur off
-yabai -m config window_border_hidpi off
-yabai -m config window_shadow off
-
-yabai -m config window_animation_duration 0.20
-yabai -m config insert_feedback_color 0xff$gruvActive
-
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app=Dashlane manage=off
-yabai -m rule --add app=Spotify manage=on
-yabai -m rule --add app=Godot manage=off
-yabai -m rule --add app=Discord manage=off
-yabai -m rule --add app=Übersicht manage=off
-yabai -m rule --add app=BetterTouchTool manage=off
+yabai -m rule --add app="^(Safari|Google Chrome)$" space=web
+yabai -m rule --add app="^Spotify$" space=media
+yabai -m rule --add app="^(System Preferences)$" manage=off
+yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
+
+yabai -m config                                 \
+    external_bar                off:41:0        \
+    mouse_follows_focus         on              \
+    focus_follows_mouse         autoraise       \
+    window_placement            second_child    \
+    window_topmost              off             \
+    window_shadow               off             \
+    window_animation_duration   0.25            \
+    window_opacity_duration     0.25            \
+    active_window_opacity       0.98            \
+    normal_window_opacity       0.95            \
+    window_opacity              on              \
+    insert_feedback_color       0xff$gruvActive \
+    window_border_width         4               \
+    window_border_radius        12              \
+    window_border_blur          on              \
+    window_border_hidpi         on              \
+    window_border               on              \
+    split_ratio                 0.50            \
+    split_type                  auto            \
+    auto_balance                off             \
+    top_padding                 14              \
+    bottom_padding              14              \
+    left_padding                14              \
+    right_padding               14              \
+    window_gap                  18              \
+    layout                      bsp             \
+    mouse_modifier              fn              \
+    mouse_action1               move            \
+    mouse_action2               resize          \
+    mouse_drop_action           swap            \
