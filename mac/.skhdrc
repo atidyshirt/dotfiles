@@ -1,88 +1,85 @@
 #!/usr/bin/env sh
 
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
-alt - return : open "/Applications/Safari.app"
-alt + shift - return : open -na "/Applications/Google Chrome.app"
-alt - m : mpv $(pbpaste)
+cmd - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~ &> /dev/null;
+alt - return : open "/Applications/Safari.app";
+alt + shift - return : open -na "/Applications/Google Chrome.app";
+alt - m : mpv $(pbpaste);
 
-alt - x : yabai -m window --focus recent
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+alt - x : yabai -m window --focus recent;
+alt - h : yabai -m window --focus west;
+alt - j : yabai -m window --focus south;
+alt - k : yabai -m window --focus north;
+alt - l : yabai -m window --focus east;
 
-alt - tab         : yabai -m window --focus stack.next
-alt + shift - tab : yabai -m window --focus stack.prev
+alt - tab         : yabai -m window --focus stack.next;
+alt + shift - tab : yabai -m window --focus stack.prev;
 
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+shift + alt - h : yabai -m window --swap west;
+shift + alt - j : yabai -m window --swap south;
+shift + alt - k : yabai -m window --swap north;
+shift + alt - l : yabai -m window --swap east;
 
-shift + ctrl - a : yabai -m window --move rel:-60:0
-shift + ctrl - s : yabai -m window --move rel:0:60
-shift + ctrl - w : yabai -m window --move rel:0:-60
-shift + ctrl - d : yabai -m window --move rel:60:0
+shift + ctrl - a : yabai -m window --move rel:-60:0;
+shift + ctrl - s : yabai -m window --move rel:0:60;
+shift + ctrl - w : yabai -m window --move rel:0:-60;
+shift + ctrl - d : yabai -m window --move rel:60:0;
 
-# increase window size
-shift + alt - a : yabai -m window --resize left:-60:0
-shift + alt - s : yabai -m window --resize bottom:0:60
-shift + alt - w : yabai -m window --resize top:0:-60
-shift + alt - d : yabai -m window --resize right:60:0
+# increase window size;
+shift + alt - a : yabai -m window --resize left:-60:0;
+shift + alt - s : yabai -m window --resize bottom:0:60;
+shift + alt - w : yabai -m window --resize top:0:-60;
+shift + alt - d : yabai -m window --resize right:60:0;
 
-# decrease window size
-shift + cmd - a : yabai -m window --resize left:60:0
-shift + cmd - s : yabai -m window --resize bottom:0:-60
-shift + cmd - w : yabai -m window --resize top:0:60
-shift + cmd - d : yabai -m window --resize right:-60:0
+# decrease window size;
+shift + cmd - a : yabai -m window --resize left:60:0;
+shift + cmd - s : yabai -m window --resize bottom:0:-60;
+shift + cmd - w : yabai -m window --resize top:0:60;
+shift + cmd - d : yabai -m window --resize right:-60:0;
 
-# set insertion point in focused container
-shift + cmd - h : yabai -m window --insert west
-shift + cmd - j : yabai -m window --insert south
-shift + cmd - k : yabai -m window --insert north
-shift + cmd - l : yabai -m window --insert east
-shift + cmd - i : yabai -m window --insert stack
+# set insertion point in focused container;
+shift + cmd - h : yabai -m window --insert west;
+shift + cmd - j : yabai -m window --insert south;
+shift + cmd - k : yabai -m window --insert north;
+shift + cmd - l : yabai -m window --insert east;
+shift + cmd - i : yabai -m window --insert stack;
 
-alt - e : yabai -m window --toggle split
+alt - e : yabai -m window --toggle split;
 
-alt - 1 : yabai -m space --focus  1
-alt - 2 : yabai -m space --focus  2
-alt - 3 : yabai -m space --focus  3
-alt - 4 : yabai -m space --focus  4
-alt - 5 : yabai -m space --focus  5
-alt - 6 : yabai -m space --focus  6
+alt - 1 : yabai -m space --focus  1;
+alt - 2 : yabai -m space --focus  2;
+alt - 3 : yabai -m space --focus  3;
+alt - 4 : yabai -m space --focus  4;
+alt - 5 : yabai -m space --focus  5;
+alt - 6 : yabai -m space --focus  6;
 
-shift + cmd - 1 : yabai -m window --space  1 && yabai -m space --focus 1
-shift + cmd - 2 : yabai -m window --space  2 && yabai -m space --focus 2
-shift + cmd - 3 : yabai -m window --space  3 && yabai -m space --focus 3
-shift + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4
-shift + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5
-shift + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6
+shift + cmd - 1 : yabai -m window --space  1 && yabai -m space --focus 1;
+shift + cmd - 2 : yabai -m window --space  2 && yabai -m space --focus 2;
+shift + cmd - 3 : yabai -m window --space  3 && yabai -m space --focus 3;
+shift + cmd - 4 : yabai -m window --space  4 && yabai -m space --focus 4;
+shift + cmd - 5 : yabai -m window --space  5 && yabai -m space --focus 5;
+shift + cmd - 6 : yabai -m window --space  6 && yabai -m space --focus 6;
 
-shift + alt - z : yabai -m space --layout bsp
-shift + alt - x : yabai -m space --layout float
-shift + alt - c : yabai -m space --layout stack
+shift + alt - z : yabai -m space --layout bsp;
+shift + alt - x : yabai -m space --layout float;
+shift + alt - c : yabai -m space --layout stack;
 
-ctrl + alt - 1  : yabai -m display --focus 1
-ctrl + alt - 2  : yabai -m display --focus 2
-ctrl + alt - 3  : yabai -m display --focus 3
+ctrl + alt - 1  : yabai -m display --focus 1;
+ctrl + alt - 2  : yabai -m display --focus 2;
+ctrl + alt - 3  : yabai -m display --focus 3;
 
-ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
-ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
-ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3
+ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1;
+ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2;
+ctrl + cmd - 3  : yabai -m window --display 3; yabai -m display --focus 3;
 
 alt - d : yabai -m window --toggle zoom-parent; \
-    sketchybar --trigger window_focus
-
+    sketchybar --trigger window_focus;
 alt - f : yabai -m window --toggle zoom-fullscreen; \
-    sketchybar --trigger window_focus
+    sketchybar --trigger window_focus;
 
 alt - t : yabai -m window --toggle float; \
           yabai -m window --grid 4:4:1:1:2:2; \
-          sketchybar --trigger window_focus
+          sketchybar --trigger window_focus;
 
 shift + alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 20:20:1:1:18:18; \
-          sketchybar --trigger window_focus
-
-alt - p : yabai -m window --toggle border --toggle sticky --toggle topmost --toggle pip
+          sketchybar --trigger window_focus;

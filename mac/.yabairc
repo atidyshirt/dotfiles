@@ -26,8 +26,8 @@ yabai -m signal --add event=window_destroyed active=yes action="yabai -m query -
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
 yabai -m config                                 \
-    external_bar                off:41:0        \
-    mouse_follows_focus         on              \
+    external_bar                all:41:0        \
+    mouse_follows_focus         off             \
     focus_follows_mouse         autoraise       \
     window_placement            second_child    \
     window_topmost              off             \
@@ -36,7 +36,7 @@ yabai -m config                                 \
     window_opacity_duration     0.25            \
     active_window_opacity       0.98            \
     normal_window_opacity       0.95            \
-    window_opacity              on              \
+    window_opacity              off             \
     insert_feedback_color       0xff$gruvActive \
     window_border_width         4               \
     window_border_radius        12              \
