@@ -83,3 +83,5 @@ alt - t : yabai -m window --toggle float; \
 shift + alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 20:20:1:1:18:18; \
           sketchybar --trigger window_focus;
+
+alt - p : yabai -m window --toggle pip --toggle sticky --toggle topmost

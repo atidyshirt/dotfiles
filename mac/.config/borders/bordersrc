@@ -1,0 +1,17 @@
+#!/bin/bash
+
+gruvInactive=32302f
+gruvActive=62554A
+
+options=(
+	style=square
+	active_color=0xff$gruvActive
+	inactive_color=0xff$gruvInactive
+	ax_focus=on
+	hidpi=on
+	width=8.0
+	blacklist="mpv,stremio"
+	hidpi=off
+)
+
+borders "${options[@]}"
