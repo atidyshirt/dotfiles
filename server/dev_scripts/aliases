@@ -62,3 +62,11 @@ if doesCommandExist atuin
 then
   eval "$(atuin init zsh)"
 fi
+
+# Lazy Load expensive commands
+NVM_BOOTSTRAP='
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+'
+lazyload nvm $NVM_BOOTSTRAP

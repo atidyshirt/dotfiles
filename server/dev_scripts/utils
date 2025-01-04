@@ -4,6 +4,18 @@ function doesCommandExist() {
   command -v "$1" &> /dev/null
 }
 
+# Lazyload aliases to utilities with some bootstrap
+function lazyload() {
+  local command="$1"
+  shift # left shift on function args
+  local bootstrap="$*"
+  eval "$command() {
+    unset -f $command
+    $bootstrap
+    $command \"\$@\"
+  }"
+}
+
 function brew() {
   if doesCommandExist brew
   then
