@@ -7,7 +7,6 @@ alias ...='cd ../..'
 
 alias ls='ls --color'
 
-# Neovim + Coding
 if doesCommandExist nvim
 then
   alias vi='nvim'
@@ -26,6 +25,8 @@ fi
 if doesCommandExist lazydocker
 then
   alias ld='lazydocker'
+  alias initmongo6=$'docker run --hostname 127.0.0.1 -d -p 27017:27017 --name vista_mongo mongo:6.0.19 --replSet vista --logappend; sleep 2 && docker cp $HOME/dev_scripts/mongoInit.js vista_mongo:mongoInit.js && docker exec vista_mongo mongosh mongoInit.js'
+  alias initmongo5=$'docker run --hostname 127.0.0.1 -d -p 27017:27017 --name vista_mongo mongo:5.0.17 --replSet vista --logappend; sleep 2 && docker cp $HOME/dev_scripts/mongoInit.js vista_mongo:mongoInit.js && docker exec vista_mongo mongosh mongoInit.js'
 fi
 
 if doesCommandExist edit_current_line
