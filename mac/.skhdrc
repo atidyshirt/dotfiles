@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty -d ~ &> /dev/null;
+cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm &> /dev/null;
 alt - return : open "/Applications/Safari.app";
 alt + shift - return : open -na "/Applications/Google Chrome.app";
 alt - m : mpv $(pbpaste);

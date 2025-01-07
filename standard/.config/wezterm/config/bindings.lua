@@ -13,17 +13,11 @@ elseif platform.is_win or platform.is_linux then
 end
 
 local keys = {
-   -- misc/useful --
-   { key = 'F1', mods = 'NONE', action = 'ActivateCopyMode' },
-   { key = 'F2', mods = 'NONE', action = act.ActivateCommandPalette },
-   { key = 'F3', mods = 'NONE', action = act.ShowLauncher },
-   { key = 'F4', mods = 'NONE', action = act.ShowTabNavigator },
-   { key = 'F11', mods = 'NONE', action = act.ToggleFullScreen },
-   { key = 'F12', mods = 'NONE', action = act.ShowDebugOverlay },
    { key = 'f', mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = '' }) },
-
-   { key = 'c', mods = 'SUPER', action = act.CopyTo('Clipboard') },
-   { key = 'v', mods = 'SUPER', action = act.PasteFrom('Clipboard') },
+   { key = 'c', mods = mod.SUPER, action = act.CopyTo('Clipboard') },
+   { key = 'v', mods = mod.SUPER, action = act.PasteFrom('Clipboard') },
+   { key = 'q', mods = mod.SUPER, action = wezterm.action.QuitApplication },
+   { key = 'w', mods = mod.SUPER, action = act.CloseCurrentTab { confirm = false }, },
 }
 
 local mouse_bindings = {

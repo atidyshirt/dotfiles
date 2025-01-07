@@ -1,6 +1,5 @@
 return {
    automatically_reload_config = true,
-   exit_behavior = 'CloseOnCleanExit',
    status_update_interval = 1000,
 
    scrollback_lines = 10000,
