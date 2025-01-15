@@ -4,12 +4,16 @@ local action = wezterm.action
 
 local mod = {}
 
+mod.CONTROL = 'CTRL'
+
 if platform.is_mac then
    mod.SUPER = 'SUPER'
    mod.SUPER_REV = 'SUPER|CTRL'
+   mod.COMMAND_OR_CONTROL = 'SUPER'
 elseif platform.is_win or platform.is_linux then
    mod.SUPER = 'ALT' -- to not conflict with Windows key shortcuts
    mod.SUPER_REV = 'ALT|CTRL'
+   mod.COMMAND_OR_CONTROL = 'CTRL'
 end
 
 local keys = {
@@ -17,16 +21,16 @@ local keys = {
    { key = 'w', mods = mod.SUPER, action = action.CloseCurrentTab { confirm = false }, },
    { key = 'q', mods = mod.SUPER, action = action.QuitApplication },
 
-   { key = 'c', mods = 'CTRL', action = action.CopyTo('Clipboard') },
-   { key = 'v', mods = 'CTRL', action = action.PasteFrom('Clipboard') },
-   { key = ']', mods = 'CTRL', action = action.ActivateCopyMode },
+   { key = 'c', mods = mod.COMMAND_OR_CONTROL, action = action.CopyTo('Clipboard') },
+   { key = 'v', mods = mod.COMMAND_OR_CONTROL, action = action.PasteFrom('Clipboard') },
+   { key = ']', mods = mod.CONTROL, action = action.ActivateCopyMode },
 }
 
 local mouse_bindings = {
    -- Ctrl-click will open the link under the mouse cursor
    {
       event = { Up = { streak = 1, button = 'Left' } },
-      mods = 'CTRL',
+      mods = mod.COMMAND_OR_CONTROL,
       action = action.OpenLinkAtMouseCursor,
    },
    -- Move mouse will only select text and not copy text to clipboard
