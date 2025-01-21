@@ -6,6 +6,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias ls='ls --color'
+alias sortGrep="sed 's/^[^ ]* //' | sort"
 
 if doesCommandExist nvim
 then
