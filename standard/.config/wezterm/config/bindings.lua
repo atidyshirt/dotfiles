@@ -5,6 +5,7 @@ local action = wezterm.action
 local mod = {}
 
 mod.CONTROL = 'CTRL'
+mod.CONTROL_SHIFT = 'CTRL|SHIFT'
 
 if platform.is_mac then
    mod.SUPER = 'SUPER'
@@ -21,9 +22,8 @@ local keys = {
    { key = 'w', mods = mod.SUPER, action = action.CloseCurrentTab { confirm = false }, },
    { key = 'q', mods = mod.SUPER, action = action.QuitApplication },
 
-   { key = 'c', mods = mod.COMMAND_OR_CONTROL, action = action.CopyTo('Clipboard') },
-   { key = 'v', mods = mod.COMMAND_OR_CONTROL, action = action.PasteFrom('Clipboard') },
-   { key = ']', mods = mod.CONTROL, action = action.ActivateCopyMode },
+   { key = 'c', mods = mod.CONTROL_SHIFT, action = action.CopyTo('Clipboard') },
+   { key = 'v', mods = mod.CONTROL_SHIFT, action = action.PasteFrom('Clipboard') },
 }
 
 local mouse_bindings = {
