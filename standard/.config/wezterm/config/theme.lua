@@ -18,7 +18,7 @@ end
 local function update_tmux_theme(scheme)
    local command = '';
    local home = os.getenv("HOME")
-   local file_path = home .. "/.config/tmux/topbar.conf"
+   local file_path = home .. "/.tmux.conf"
    if scheme == 'dark' then
       command = table.concat({
          "sed",

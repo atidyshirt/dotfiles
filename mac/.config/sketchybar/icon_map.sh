@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 ### START-OF-ICON-MAP
 function __icon_map() {
     case "$1" in
@@ -746,6 +747,9 @@ function __icon_map() {
         ;;
    "WebStorm")
         icon_result=":web_storm:"
+        ;;
+   "Webull Desktop")
+        icon_result=":webull:"
         ;;
    "微信" | "WeChat")
         icon_result=":wechat:"
