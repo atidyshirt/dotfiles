@@ -65,21 +65,7 @@ then
   eval "$(atuin init zsh)"
 fi
 
-if doesCommandExist nvm
+if doesCommandExist mise
 then
-  lazy_load_nvm() {
-    unset -f node nvm
-    export NVM_DIR=~/.nvm
-    [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-  }
-
-  node() {
-    lazy_load_nvm
-    node $@
-  }
-
-  nvm() {
-    lazy_load_nvm
-    node $@
-  }
+  eval "$($(which mise) activate zsh)"
 fi
