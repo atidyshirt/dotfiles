@@ -6,5 +6,3 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
-
