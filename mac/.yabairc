@@ -15,9 +15,9 @@ yabai -m space 4 --label messaging
 yabai -m space 5 --label media
 
 yabai -m rule --add app="^(Safari|Google Chrome)$" space=web
-yabai -m rule --add app="^Spotify$" space=media
 yabai -m rule --add app="^(System Preferences)$" manage=off
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
+yabai -m rule --add app="^Spotify$" scratchpad=spotify grid=20:20:1:1:18:18
 
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"

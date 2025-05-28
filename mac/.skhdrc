@@ -3,6 +3,7 @@
 cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm &> /dev/null;
 alt - return : open "/Applications/Safari.app";
 alt + shift - return : open -na "/Applications/Google Chrome.app";
+alt + shift - m : yabai -m window --toggle spotify || open  -a Spotify
 alt - m : mpv $(pbpaste);
 
 alt - x : yabai -m window --focus recent;
@@ -85,3 +86,6 @@ shift + alt - t : yabai -m window --toggle float;\
           sketchybar --trigger window_focus;
 
 alt - p : yabai -m window --toggle pip --toggle sticky --toggle topmost
+
+# scratchpad
+cmd + shift - r : yabai -m window --scratchpad recover
