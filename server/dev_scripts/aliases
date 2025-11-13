@@ -1,5 +1,7 @@
 #!/bin/bash
 
+autoload -Uz compinit; compinit
+
 source $HOME/dev_scripts/utils
 
 alias ..='cd ..'
@@ -48,6 +50,21 @@ then
   alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
 fi
 
+if doesCommandExist orb
+then
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
+
+if doesCommandExist op
+then
+  source <(op completion zsh)
+fi
+
+if doesCommandExist kubectl
+then
+  source <(kubectl completion zsh)
+fi
+
 if doesCommandExist tmux
 then
   alias ts='tmux a || tmux new-session -s workspace'
@@ -60,12 +77,12 @@ then
   eval $(fzf --$(basename $SHELL))
 fi
 
-if doesCommandExist atuin
-then
-  eval "$(atuin init zsh)"
-fi
-
+# Slow to load, lazyload on mise setup
 if doesCommandExist mise
 then
-  eval "$($(which mise) activate zsh)"
+  mise() {
+    unset -f mise
+    eval "$($(which mise) activate zsh)"
+    mise "$@"
+  }
 fi

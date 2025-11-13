@@ -4,6 +4,17 @@ function doesCommandExist() {
   command -v "$1" &> /dev/null
 }
 
+function safe_source_completion() {
+  local bin=$1
+  # Try to capture output first to avoid partial execution on errors
+  local output
+  output=$("$bin" completion zsh 2>/dev/null || "$bin" completions zsh 2>/dev/null)
+  if [[ -n $output ]]; then
+    # Source the captured output inline
+    source <(echo "$output")
+  fi
+}
+
 # Lazyload aliases to utilities with some bootstrap
 function lazyload() {
   local command="$1"

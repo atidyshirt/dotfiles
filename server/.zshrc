@@ -7,25 +7,28 @@ if [ -d "$HOME/.config/neovim" ]; then
     export NVIM_APPNAME="neovim"
 fi
 
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '(%F{blue}%b%c%u%F{white})'
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr ' •'
-zstyle ':vcs_info:*' stagedstr ' +'
-PROMPT='%(?.%F{green}λ.%F{red}! %?)%f [%B%F{240}%1~%f%b] '
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Keybinds
+# completion
+autoload -Uz compinit
+compinit
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 set -o vi
 bindkey -v
 source ~/dev_scripts/aliases
 
-if [[ -f .projectconfig && -r .projectconfig ]]; then
-    source .projectconfig &> /dev/null
-elif [[ -f ../.projectconfig && -r ../.projectconfig ]]; then
-    cd .. && source .projectconfig && cd - &> /dev/null
-fi
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+bindkey -M viins '^R' history-incremental-search-backward
