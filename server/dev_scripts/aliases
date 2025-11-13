@@ -65,6 +65,11 @@ then
   source <(kubectl completion zsh)
 fi
 
+if doesCommandExist atuin
+then
+  eval "$(atuin init zsh)"
+fi
+
 if doesCommandExist tmux
 then
   alias ts='tmux a || tmux new-session -s workspace'
