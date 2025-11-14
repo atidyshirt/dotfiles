@@ -1,14 +1,9 @@
 #!/bin/bash
 
-autoload -Uz compinit; compinit
-
 source $HOME/dev_scripts/utils
 
 alias ..='cd ..'
 alias ...='cd ../..'
-
-alias ls='ls --color'
-alias sortGrep="sed 's/^[^ ]* //' | sort"
 
 if doesCommandExist nvim
 then
@@ -28,8 +23,6 @@ fi
 if doesCommandExist lazydocker
 then
   alias ld='lazydocker'
-  alias initmongo6=$'docker run --hostname 127.0.0.1 -d -p 27017:27017 --name vista_mongo mongo:6.0.19 --replSet vista --logappend; sleep 2 && docker cp $HOME/dev_scripts/mongoInit.js vista_mongo:mongoInit.js && docker exec vista_mongo mongosh mongoInit.js'
-  alias initmongo5=$'docker run --hostname 127.0.0.1 -d -p 27017:27017 --name vista_mongo mongo:5.0.17 --replSet vista --logappend; sleep 2 && docker cp $HOME/dev_scripts/mongoInit.js vista_mongo:mongoInit.js && docker exec vista_mongo mongosh mongoInit.js'
 fi
 
 if doesCommandExist edit_current_line
@@ -65,21 +58,10 @@ then
   source <(kubectl completion zsh)
 fi
 
-if doesCommandExist atuin
-then
-  eval "$(atuin init zsh)"
-fi
-
 if doesCommandExist tmux
 then
   alias ts='tmux a || tmux new-session -s workspace'
   alias curl-atlnz='curl --socks5-hostname localhost:1080' # work bind
-fi
-
-
-if doesCommandExist fzf
-then
-  eval $(fzf --$(basename $SHELL))
 fi
 
 # Slow to load, lazyload on mise setup
@@ -90,4 +72,9 @@ then
     eval "$($(which mise) activate zsh)"
     mise "$@"
   }
+fi
+
+if doesCommandExist atuin
+then
+  eval "$(atuin init zsh)"
 fi

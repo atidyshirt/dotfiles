@@ -2,6 +2,7 @@ return {
    automatically_reload_config = true,
    status_update_interval = 1000,
 
+   audible_bell = "Disabled",
    scrollback_lines = 10000,
    canonicalize_pasted_newlines = 'CarriageReturn',
 

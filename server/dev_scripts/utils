@@ -4,17 +4,6 @@ function doesCommandExist() {
   command -v "$1" &> /dev/null
 }
 
-function safe_source_completion() {
-  local bin=$1
-  # Try to capture output first to avoid partial execution on errors
-  local output
-  output=$("$bin" completion zsh 2>/dev/null || "$bin" completions zsh 2>/dev/null)
-  if [[ -n $output ]]; then
-    # Source the captured output inline
-    source <(echo "$output")
-  fi
-}
-
 # Lazyload aliases to utilities with some bootstrap
 function lazyload() {
   local command="$1"
@@ -42,22 +31,6 @@ function tunnel-forwarding() {
     ssh -L ${2}:localhost:${2} ${1}
   else
     echo "Usage: tunnel-forwarding <ssh-host> <port-to-forward>"
-  fi
-}
-
-function watch() {
-  if [[ -n "$1" && -n "$2" ]]; then
-    npx nodemon --exec $1 $2
-  elif [[ -n "$1" ]]; then
-    npx nodemon $1
-  else
-    echo "Usage:"
-    echo "\t watch <program-file-path>"
-    echo "\t watch <language> <program-file-path>"
-    echo ""
-    echo "Parameters:"
-    echo "\t language:  Provide the language binary, If the language is not specified it will default to 'node'"
-    echo "\t program-file-path:  The path of the file/directory to run"
   fi
 }
 
