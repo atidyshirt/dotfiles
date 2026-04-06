@@ -28,7 +28,7 @@
       forAllSystems = f: lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
     in
     {
-      darwinConfigurations.dotfiles-mac = darwin.lib.darwinSystem {
+      darwinConfigurations."${username}@macbook" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit dotfilesRoot username; };
         modules = [
