@@ -16,7 +16,7 @@ export VMUX_EDITOR='nvim'
 export VMUX_REALEDITOR_NVIM='/opt/homebrew/bin/nvim'
 
 # prefer the `neovim` .config dir if it exists over `nvim`
-if [ -d "$HOME/.config/neovim" ]; then
+ if [ -d "$HOME/.config/neovim" ]; then
     export NVIM_APPNAME="neovim"
 fi
 
@@ -27,5 +27,9 @@ fi
 function zvm_after_init() {
    bindkey -e
    set -o vi
-   source ~/dev_scripts/aliases
+   source $HOME/dev_scripts/aliases
+   source $HOME/.config/op/plugins.sh
 }
+
+# opencode
+export PATH=/Users/jordanp/.opencode/bin:$PATH
