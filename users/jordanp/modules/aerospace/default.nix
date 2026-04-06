@@ -19,7 +19,6 @@ in
 {
   home.activation.teardownDarwinDesktopXdgTrees = lib.hm.dag.entryBefore [ "linkGeneration" ] ''
     rm -rf "${config.xdg.configHome}/borders"
-    rm -rf "${config.xdg.configHome}/startpage_osx"
   '';
 
   home.packages = with pkgs; [
@@ -37,15 +36,6 @@ in
     recursive = true;
     force = true;
   };
-
-  xdg.configFile."startpage_osx" = {
-    source = dotfilesRoot + "/config/startpage_osx";
-    recursive = true;
-    force = true;
-  };
-
-  xdg.configFile."startpage_config.json".source =
-    dotfilesRoot + "/config/startpage_config.json";
 
   # Run the app binary (long-lived), not `open`, so KeepAlive does not respawn a finished `open` process.
   launchd.agents.org-nix-aerospace = {

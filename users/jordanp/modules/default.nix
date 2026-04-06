@@ -28,6 +28,7 @@
     stateVersion = "24.11";
     sessionVariables = {
       EDITOR = "nvim";
+      NVIM_APPNAME = "neovim";
       SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
     };
   };
