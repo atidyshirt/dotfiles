@@ -1,0 +1,147 @@
+config-version = 2
+# Login startup is handled by Home Manager LaunchAgent (users/jordanp/modules/aerospace/default.nix).
+start-at-login = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+automatically-unhide-macos-hidden-apps = true
+persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+accordion-padding = 30
+on-focused-monitor-changed = []
+on-mode-changed = []
+
+
+after-startup-command = [
+    'exec-and-forget defaults write -g CGDisableWindowShadows -bool true',
+    'exec-and-forget killall Dock',
+    'exec-and-forget @borders_bin@'
+]
+exec-on-workspace-change = [
+  '@bash_bin@',
+  '-c',
+  '@sketchybar_bin@ --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+on-focus-changed = [
+  'exec-and-forget @sketchybar_bin@ --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+[gaps]
+    inner.horizontal = 8
+    inner.vertical = 8
+    outer.left = 8
+    outer.bottom = 8
+    outer.top = 8
+    outer.right = 8
+
+[key-mapping]
+preset = 'qwerty'
+
+# Optional: launch or place apps when they appear
+# AeroSpace works best when rules are paired with reopening the app after reload.
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace web'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace web'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'layout floating'
+
+[mode.main.binding]
+# Launchers
+cmd-enter = 'exec-and-forget /Applications/WezTerm.app/Contents/MacOS/wezterm'
+alt-enter = 'exec-and-forget open "/Applications/Arc.app"'
+alt-shift-enter = 'exec-and-forget open -na "/Applications/Safari.app"'
+alt-shift-m = 'exec-and-forget open -a Spotify'
+alt-m = 'exec-and-forget mpv $(pbpaste)'
+
+# Focus
+alt-x = 'workspace-back-and-forth'
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Window cycling
+alt-tab = 'focus right'
+alt-shift-tab = 'focus left'
+
+# Move windows
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Layout toggles
+alt-e = 'layout floating tiling'
+shift-alt-z = 'layout tiles horizontal vertical'
+shift-alt-x = 'layout floating tiling'
+shift-alt-c = 'layout accordion horizontal vertical'
+
+# Focus workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+
+# Move window to workspace and follow it
+shift-cmd-1 = 'move-node-to-workspace 1'
+shift-cmd-2 = 'move-node-to-workspace 2'
+shift-cmd-3 = 'move-node-to-workspace 3'
+shift-cmd-4 = 'move-node-to-workspace 4'
+shift-cmd-5 = 'move-node-to-workspace 5'
+shift-cmd-6 = 'move-node-to-workspace 6'
+
+# Monitor focus
+ctrl-alt-1 = 'focus-monitor 1'
+ctrl-alt-2 = 'focus-monitor 2'
+ctrl-alt-3 = 'focus-monitor 3'
+
+# Move focused window to monitor
+ctrl-cmd-1 = 'move-node-to-monitor 1'
+ctrl-cmd-2 = 'move-node-to-monitor 2'
+ctrl-cmd-3 = 'move-node-to-monitor 3'
+
+# Window state
+alt-f = 'fullscreen --no-outer-gaps'
+alt-t = 'layout floating tiling'
+shift-alt-t = 'layout floating tiling'
+alt-p = 'layout floating tiling'
+
+# Scratchpad-style recovery
+cmd-shift-r = 'workspace-back-and-forth'
+
+# Service mode
+alt-z = 'mode resize'
+alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+r = ['reload-config', 'mode main']
+f = ['layout tiling accordion', 'layout accordion tiling', 'mode main']
+m = ['close-all-windows-but-current', 'mode main']
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+
+[mode.resize.binding]
+esc = 'mode main'
+enter = 'mode main'
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+minus = 'resize smart -50'
+equal = 'resize smart +50'
+b = 'balance-sizes'

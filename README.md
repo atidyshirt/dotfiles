@@ -1,42 +1,17 @@
-# Stow Dotfiles
+# Dotfiles (Nix)
 
-### MACOS
+macOS and Linux configs are driven by **Nix flakes**, **nix-darwin** (Mac), and **Home Manager**. Older **GNU Stow + Homebrew Bundle** flows are removed so packages are not declared twice.
+
+**→ Install / update:** [docs/nix-guide.md](./docs/nix-guide.md)  
+Index: [docs/README.md](./docs/README.md)
+
+### macOS
 
 **Showcase**
 
 ![Mac Preview](./preview-mac.png)
 
-**Installation**
-
-```sh { tangle: ./install/install_mac.sh }
-# Installing homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Using Stow to stow both the standard and macOS dotfiles
-gh repo clone atidyshirt/dotfiles
-cd dotfiles
-stow -t=$HOME standard mac
-
-# Install dependencies from Brewfile in ~/ directory
-cd
-brew bundle
-```
-
-**Extra dependencies**
-
-To have tmux sessions running a single neovim instance per-session, I use [vmux](https://github.com/jceb/vmux) to
-accomplish this; this can be installed using the following method:
-
-```bash
-pip3 install vmux
-```
-
-To get the most out of the tmux integration, we should install the [tmux plugin manager](https://github.com/tmux-plugins/tpm),
-the quick installation method is to use the following command:
-
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
+**Apply this flake** (repeat after edits): use **`nix run`** with the nix-darwin rev pinned in **`flake.lock`** — see [docs/nix-guide.md](./docs/nix-guide.md). `darwin-rebuild` is often not on **`PATH`**; that workflow does not rely on it.
 
 ### Linux
 
@@ -44,25 +19,27 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ![Linux Preview](./preview-linux.png)
 
-**Installation**
-
-Ensure you have installed the dependencies via package manager on system.
-
-- If you are on archcraft, use the following commands to do so:
-  - `sudo pacman -S archcraft-i3wm`
-  - `yay -S rofi polybar picom kitty exa gh neovim tmux stow nvim-packer-git`
-  - Alternatively you can install exa, kitty, neovim, tmux, stow from `homebrew`
-
-```sh { tangle: ./install/install_linux.sh }
-# Installing homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Using Stow to stow both the standard and macOS dotfiles
-gh repo clone atidyshirt/dotfiles
-cd dotfiles
-stow -t=$HOME standard linux
-
-# Install dependencies from Brewfile in ~/ directory
-cd
-brew bundle
+```sh
+home-manager switch --flake .#jordanp@generic-linux
 ```
+
+Use `jordanp@generic-linux-aarch64` on ARM Linux. See [docs/nix-guide.md](./docs/nix-guide.md).
+
+### Repo layout
+
+| Path | Contents |
+|------|-----------|
+| `users/jordanp/config/` | App configs: cross-platform (nvim, wezterm, …); **Linux** (hypr, rofi, …); **macOS** (sketchybar assets, aerospace, borders, startpage). |
+| `users/jordanp/home/` | Dotfiles linked into `$HOME` (`.zshrc`, `.zprofile`, `.tmux.conf`, …). |
+| `users/jordanp/bin/` | Linked wholesale to **`~/.bin`** (on `PATH` via `.zprofile`). |
+| `users/jordanp/modules/` | HM entrypoints: `default.nix`, `linux.nix`, `darwin.nix`; subdirs mirror `config/*` (e.g. `tmux/`, `wezterm/`, `sketchybar/`). |
+| `users/jordanp/packages.nix` | Shared `home.packages` for every host. |
+| `machines/` | Host composition: `darwin.nix` (nix-darwin + macOS-only HM imports), `nixos.nix` (extra HM modules for Linux standalone). |
+| `nix/` | macOS system module: `darwin-system.nix`. |
+| `scripts/` | Non-HM extras (e.g. `scripts/legacy/`) |
+
+**Layout:** `flake.nix` sets **`dotfilesRoot`** to **`users/jordanp`** so HM paths stay short (`config/…`, `home/…` relative to that tree). **machines/** chooses which modules run on each OS (similar in spirit to [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config)).
+
+Legacy `server/` shell snippets live under `scripts/legacy/` for reference. macOS Brewfile snapshot: `docs/Brewfile.mac-legacy`.
+
+Linux: `users/jordanp/modules/linux.nix` (via `machines/nixos.nix`) pulls in `hypr/`, `rofi/`, `picom/`, `libinput-gestures/`. macOS: `users/jordanp/modules/darwin.nix` (from `machines/darwin.nix`) pulls in `sketchybar/` and `aerospace/`.

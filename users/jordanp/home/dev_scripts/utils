@@ -1,0 +1,25 @@
+# Sourced from ~/.zshrc via dev_scripts/aliases — keep POSIX/zsh-friendly.
+
+function doesCommandExist() {
+  command -v "$1" &> /dev/null
+}
+
+# Lazy-load a command: first call runs bootstrap, then the real binary.
+function lazyload() {
+  local command="$1"
+  shift
+  local bootstrap="$*"
+  eval "$command() {
+    unset -f $command
+    $bootstrap
+    $command \"\$@\"
+  }"
+}
+
+function tunnel-forwarding() {
+  if [[ -n "$1" && -n "$2" ]]; then
+    ssh -L "${2}:localhost:${2}" "${1}"
+  else
+    echo "Usage: tunnel-forwarding <ssh-host> <port-to-forward>"
+  fi
+}
