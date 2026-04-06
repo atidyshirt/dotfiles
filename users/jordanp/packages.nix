@@ -14,6 +14,8 @@
       lua5_4
       nodejs_24
       python313
+      ripgrep
+      fzf
       zig
       rustc
       cargo
