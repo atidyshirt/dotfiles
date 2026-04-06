@@ -32,20 +32,21 @@ programs.starship = {
   enable = true;
   enableZshIntegration = true;
   settings = {
-    add_newline = false;
-    format = "$directory $git_branch $git_status $character";
-    right_format = "";
+    add_newline = true;
+    format = "$directory$git_branch$git_status$character";  # No spaces here
+    right_format = " ";
     directory = {
       home_symbol = "~";
       truncation_length = 6;
       truncate_to_repo = false;
       style = "blue";
+      format = "[$home$path]($style) ";
     };
     git_branch = {
-      format = "[$branch](purple)";
+      format = "[$branch](purple) ";  # Single space after branch
     };
     git_status = {
-      format = "([$ahead_behind](yellow) )";
+      format = "([$ahead_behind](yellow)) ";  # NO trailing space here!
       ahead = "⇡";
       behind = "⇣";
       diverged = "⇕";
