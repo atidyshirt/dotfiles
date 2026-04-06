@@ -76,8 +76,11 @@ let
       clang
     ];
     text = ''
+      SB=${lib.escapeShellArg (lib.getExe pkgs.sketchybar)}
+      # Register app-icon font before the long-lived process starts (survives kickstart/reload races).
+      "$SB" --load-font "${config.home.homeDirectory}/Library/Fonts/sketchybar-app-font.ttf" 2>/dev/null || true
       export PATH="${pkgs.lua5_5}/bin:$PATH"
-      exec sketchybar --config "${config.home.homeDirectory}/.config/sketchybar/sketchybarrc"
+      exec "$SB" --config "${config.home.homeDirectory}/.config/sketchybar/sketchybarrc"
     '';
   };
 in
@@ -112,6 +115,18 @@ in
     mv "$tmp" "$dst"
   '';
 
+  # Build native helpers after the config tree exists and symlinks are in place.
+  # Run after linkGeneration (which is after sketchybarConfigCopy) so we never race HM.
+  home.activation.sketchybarHelpersBuild = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    set -eu
+    export PATH="${lib.makeBinPath [ pkgs.clang pkgs.gnumake ]}:$PATH"
+    make -C "${config.xdg.configHome}/sketchybar/helpers"
+    # Sketchybar may still have cwd on a deleted inode after config copy; restart so shells getcwd works.
+    if ! /bin/launchctl kickstart -k "gui/$(id -u)/org.nix-sketchybar" 2>/dev/null; then
+      ${lib.getExe pkgs.sketchybar} --reload
+    fi
+  '';
+
   launchd.agents.org-nix-sketchybar = {
     enable = true;
     config = {
@@ -119,12 +134,15 @@ in
       ProgramArguments = [ "${sketchybarLaunch}/bin/sketchybar-launch" ];
       RunAtLoad = true;
       KeepAlive = true;
-      WorkingDirectory = "${config.home.homeDirectory}/.config/sketchybar";
+      WorkingDirectory = config.home.homeDirectory;
       StandardOutPath = "${config.home.homeDirectory}/Library/Logs/sketchybar.stdout.log";
       StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/sketchybar.stderr.log";
+      # Like Homebrew’s sketchybar service: UTF-8 locale + interactive scheduling (man launchd.plist).
+      ProcessType = "Interactive";
       EnvironmentVariables = {
         HOME = config.home.homeDirectory;
         USER = username;
+        LANG = "en_US.UTF-8";
         SKETCHYBAR_BIN = lib.getExe pkgs.sketchybar;
       };
     };

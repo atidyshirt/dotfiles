@@ -8,6 +8,4 @@ sbar.bar({
   border_color = colors.bar.border,
   padding_right = 2,
   padding_left = 2,
-  sticky = true,
-  topmost = "window",
 })

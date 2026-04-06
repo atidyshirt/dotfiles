@@ -10,7 +10,6 @@ do
   local font = home .. "/Library/Fonts/sketchybar-app-font.ttf"
   os.execute(string.format("'%s' --load-font '%s' 2>/dev/null", bin:gsub("'", "'\\''"), font:gsub("'", "'\\''")))
 end
-
 sbar.begin_config()
 require("bar")
 require("default")
