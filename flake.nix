@@ -14,7 +14,7 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, home-manager, darwin, ... }:
+    _inputs@{ self, nixpkgs, home-manager, darwin, ... }:
     let
       inherit (nixpkgs) lib;
       username = "jordanp";

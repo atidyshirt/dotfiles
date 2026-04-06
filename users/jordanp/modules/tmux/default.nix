@@ -1,4 +1,3 @@
-# Mirrors config/tmux/ + ~/.tmux.conf; TPM + plugins are pinned in the Nix store (no git clone).
 {
   config,
   lib,

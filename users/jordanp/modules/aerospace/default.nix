@@ -1,4 +1,3 @@
-# AeroSpace, JankyBorders, startpage — Darwin-only (via darwin.nix).
 {
   config,
   lib,
@@ -37,7 +36,6 @@ in
     force = true;
   };
 
-  # Run the app binary (long-lived), not `open`, so KeepAlive does not respawn a finished `open` process.
   launchd.agents.org-nix-aerospace = {
     enable = true;
     config = {
@@ -51,7 +49,6 @@ in
       EnvironmentVariables = {
         HOME = config.home.homeDirectory;
         USER = username;
-        # So exec callbacks and CLI spawned from the app see the same aerospace as HM.
         PATH = lib.makeBinPath [ pkgs.aerospace ];
       };
     };

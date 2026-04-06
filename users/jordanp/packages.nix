@@ -1,4 +1,3 @@
-# Base packages on every host (versions follow flake nixpkgs pin).
 { lib, pkgs, ... }:
 {
   home.packages =

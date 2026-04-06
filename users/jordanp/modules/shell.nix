@@ -1,4 +1,3 @@
-# Zsh, Starship, and activations (packages live in ../packages.nix).
 {
   config,
   lib,
@@ -33,7 +32,7 @@ programs.starship = {
   enableZshIntegration = true;
   settings = {
     add_newline = true;
-    format = "$directory$git_branch$git_status$character";  # No spaces here
+    format = "$directory$git_branch$git_status$character";
     right_format = " ";
     directory = {
       home_symbol = "~";
@@ -43,19 +42,19 @@ programs.starship = {
       format = "[$home$path]($style) ";
     };
     git_branch = {
-      format = "[$branch](purple) ";  # Single space after branch
+      format = "[$branch](bright-black) ";
     };
     git_status = {
-      format = "([$ahead_behind](yellow)) ";  # NO trailing space here!
+      format = "([$ahead_behind](yellow)) ";
       ahead = "⇡";
       behind = "⇣";
       diverged = "⇕";
       up_to_date = "";
     };
     character = {
-      success_symbol = "[❯](white bold)";
+      success_symbol = "[❯](purple bold)";
       error_symbol = "[❯](red bold)";
-      vimcmd_symbol = "[❮](white bold)";
+      vimcmd_symbol = "[❮](purple bold)";
     };
   };
 };

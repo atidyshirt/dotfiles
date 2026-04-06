@@ -1,4 +1,3 @@
-# SketchyBar + SbarLua (built inline) + LaunchAgent. Darwin-only (via darwin.nix).
 {
   config,
   lib,
@@ -9,7 +8,7 @@
   ...
 }:
 let
-  sbarlua = pkgs.stdenv.mkDerivation rec {
+  sbarlua = pkgs.stdenv.mkDerivation {
     pname = "sbarlua";
     version = "0-unstable-2026-04-06";
 
@@ -115,8 +114,6 @@ in
     mv "$tmp" "$dst"
   '';
 
-  # Build native helpers after the config tree exists and symlinks are in place.
-  # Run after linkGeneration (which is after sketchybarConfigCopy) so we never race HM.
   home.activation.sketchybarHelpersBuild = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     set -eu
     export PATH="${lib.makeBinPath [ pkgs.clang pkgs.gnumake ]}:$PATH"
@@ -137,7 +134,6 @@ in
       WorkingDirectory = config.home.homeDirectory;
       StandardOutPath = "${config.home.homeDirectory}/Library/Logs/sketchybar.stdout.log";
       StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/sketchybar.stderr.log";
-      # Like Homebrew’s sketchybar service: UTF-8 locale + interactive scheduling (man launchd.plist).
       ProcessType = "Interactive";
       EnvironmentVariables = {
         HOME = config.home.homeDirectory;
