@@ -34,12 +34,10 @@ Use `jordanp@generic-linux-aarch64` on ARM Linux. See [docs/nix-guide.md](./docs
 | `users/jordanp/bin/` | Linked wholesale to **`~/.bin`** (on `PATH` via `.zprofile`). |
 | `users/jordanp/modules/` | HM entrypoints: `default.nix`, `linux.nix`, `darwin.nix`; subdirs mirror `config/*` (e.g. `tmux/`, `wezterm/`, `sketchybar/`). |
 | `users/jordanp/packages.nix` | Shared `home.packages` for every host. |
-| `machines/` | Host composition: `darwin.nix` (nix-darwin + macOS-only HM imports), `nixos.nix` (extra HM modules for Linux standalone). |
-| `nix/` | macOS system module: `darwin-system.nix`. |
-| `scripts/` | Non-HM extras (e.g. `scripts/legacy/`) |
+| `machines/` | Host composition: `darwin.nix` (nix-darwin system + macOS-only HM imports), `nixos.nix` (extra HM modules for Linux standalone). |
 
 **Layout:** `flake.nix` sets **`dotfilesRoot`** to **`users/jordanp`** so HM paths stay short (`config/…`, `home/…` relative to that tree). **machines/** chooses which modules run on each OS (similar in spirit to [mitchellh/nixos-config](https://github.com/mitchellh/nixos-config)).
 
-Legacy `server/` shell snippets live under `scripts/legacy/` for reference. macOS Brewfile snapshot: `docs/Brewfile.mac-legacy`.
+macOS Brewfile snapshot: `docs/Brewfile.mac-legacy`.
 
 Linux: `users/jordanp/modules/linux.nix` (via `machines/nixos.nix`) pulls in `hypr/`, `rofi/`, `picom/`, `libinput-gestures/`. macOS: `users/jordanp/modules/darwin.nix` (from `machines/darwin.nix`) pulls in `sketchybar/` and `aerospace/`.
