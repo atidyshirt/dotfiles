@@ -16,6 +16,7 @@
       "1password-cli"
       "1password-gui"
       "orbstack"
+      "raycast"
     ];
 
   nix.settings.experimental-features = [

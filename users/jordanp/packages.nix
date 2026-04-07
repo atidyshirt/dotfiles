@@ -25,6 +25,7 @@
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       _1password-gui
+      raycast
       orbstack
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
