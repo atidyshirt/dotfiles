@@ -31,7 +31,7 @@ on-focus-changed = [
     inner.vertical = 8
     outer.left = 8
     outer.bottom = 8
-    outer.top = 8
+    outer.top = 10
     outer.right = 8
 
 [key-mapping]

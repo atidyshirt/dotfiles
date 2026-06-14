@@ -3,6 +3,7 @@ local colors = require("colors")
 -- Layering like SbarLua’s example/topmost; avoid heavy blur/shadow (often reads as invisible on
 -- some macOS + wallpaper combos).
 sbar.bar({
+  display ='all',
   height = 40,
   color = colors.bar.bg,
   border_color = colors.bar.border,

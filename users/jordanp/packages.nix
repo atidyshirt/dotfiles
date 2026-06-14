@@ -7,6 +7,7 @@
       zsh
       lazygit
       lazydocker
+      devenv
       kind
       go
       jq
