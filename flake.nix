@@ -85,7 +85,7 @@
                 ;;
 
               update)
-                exec nix flake update --flake .
+                exec nix flake update --flake "$(git rev-parse --show-toplevel)"
                 ;;
 
               gc)
