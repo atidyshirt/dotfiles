@@ -19,6 +19,8 @@
       zig
       rustc
       cargo
+      pandoc
+      tectonic
       clippy
       rustfmt
       rust-analyzer

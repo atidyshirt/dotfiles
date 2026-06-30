@@ -15,6 +15,7 @@
     ./1password/default.nix
     ./tmux/default.nix
     ./wezterm/default.nix
+    ./pandoc/default.nix
   ];
 
   programs.home-manager.enable = true;
