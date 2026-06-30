@@ -63,5 +63,50 @@
       };
 
       formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
+      apps = forAllSystems (pkgs: {
+        sys = {
+          type = "app";
+          program = "${pkgs.writeShellScript "sys" ''
+            set -e
+
+            cmd="''${1:-}"
+            shift || true
+
+            case "$cmd" in
+              rebuild)
+                case "$(uname -s)" in
+                  Darwin)
+                    exec sudo darwin-rebuild switch --flake ${self}
+                    ;;
+                  Linux)
+                    exec sudo nixos-rebuild switch --flake ${self}
+                    ;;
+                esac
+                ;;
+
+              update)
+                exec nix flake update --flake .
+                ;;
+
+              gc)
+                exec nix store gc "$@"
+                ;;
+
+              clean)
+                exec nix-collect-garbage -d "$@"
+                ;;
+
+              show)
+                exec nix flake show ${self}
+                ;;
+
+              *)
+                echo "Usage: sys {rebuild|update|gc|clean|show}"
+                exit 1
+                ;;
+            esac
+          ''}";
+        };
+      });
     };
 }

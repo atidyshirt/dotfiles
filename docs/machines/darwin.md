@@ -1,60 +1,113 @@
-# macOS (nix-darwin)
+# System Setup (macOS + Linux)
 
-macOS uses **nix-darwin** with **Home Manager**. The flake target is
-**`jordanp@macbook`** (see [Repository structure](../structure.md)). System
-configuration is `machines/darwin.nix`; it imports shared Home Manager modules
-plus `users/jordanp/modules/darwin.nix` (SketchyBar, AeroSpace, and other
-macOS-only pieces).
+This repository is managed using (macOS) and NixOS/Home Manager (Linux).
 
-## Prerequisites
-
-1.  Install **Nix** with **flakes** (for example the
-    [Determinate installer](https://github.com/DeterminateSystems/nix-installer)).
-2.  Clone this repository and run **`git submodule update --init --recursive`**
-    if you use the Neovim submodule.
-3.  Edit **`flake.nix`** if you need a different **`username`** or Mac
-    **`system`** (`aarch64-darwin` vs `x86_64-darwin`).
-
-## Apply this flake
-
-### First Time Building
-
-`darwin-rebuild` is often **not** on `PATH` (and `sudo` uses root’s Nix
-config). Use **`nix run`** with the **same nix-darwin revision as `flake.lock`**:
+All system operations are exposed through a unified CLI:
 
 ```bash
-cd /path/to/dotfiles
+nix run .#sys <command>
+````
 
+This replaces manual use of:
+
+* `darwin-rebuild`
+* `nixos-rebuild`
+* manual flake revision handling
+
+---
+
+# Prerequisites
+
+## 1. Install Nix
+
+Install Nix with flakes enabled (recommended: Determinate installer).
+
+Ensure flakes are enabled:
+
+```bash
+nix --version
+```
+
+---
+
+## 2. Clone repository
+
+```bash
+git clone <repo-url> ~/projects/dotfiles
+cd ~/projects/dotfiles
+```
+
+(Optional if used)
+
+```bash
+git submodule update --init --recursive
+```
+
+---
+
+# First-time setup
+
+Run the unified system command:
+
+```bash
+nix run .#sys rebuild
+```
+
+This will:
+
+* detect your OS (macOS or Linux)
+* apply the correct system configuration
+* activate the flake-defined environment
+
+---
+
+# Daily workflow
+
+## Rebuild system
+
+```bash
+nix run .#sys rebuild
+```
+
+## Update inputs
+
+```bash
+nix run .#sys update
+```
+
+## Garbage collect store
+
+```bash
+nix run .#sys gc
+```
+
+## Clean aggressively
+
+```bash
+nix run .#sys clean
+```
+
+## Inspect flake outputs
+
+```bash
+nix run .#sys show
+```
+
+---
+
+## Initial Bootstrapping
+
+```bash
 REV=$(jq -r '.nodes.darwin.locked.rev' flake.lock)
-sudo nix run "github:LnL7/nix-darwin/${REV}#darwin-rebuild" -- switch --flake '.#jordanp@macbook'
+sudo nix run "github:LnL7/nix-darwin/${REV}#darwin-rebuild" -- switch --flake .#jordanp@macbook
 ```
 
-If **`sudo nix`** fails with flakes disabled for root, add
-**`--extra-experimental-features 'nix-command flakes'`** after `sudo nix`, or
-put **`extra-experimental-features = nix-command flakes`** in
-**`/etc/nix/nix.conf`**.
+---
 
-The **`$HOME` is not owned by you** warning under `sudo` is normal.
+# Sanity check (no activation)
 
-After you change this repo, run the same two lines again from the repo root (no
-`jq` shortcut: copy **`rev`** from **`flake.lock`** → **`nodes.darwin.locked`**).
-
-### Subsequent Rebuilds
-
-Now that we have installed the `nix-darwin` flake, and our system for the first time, subsequent builds
-can be rebuilt via the following commands:
+Build system without switching:
 
 ```bash
-sudo darwin-rebuild switch --flake '.#jordanp@macbook'
+nix build .#darwinConfigurations."jordanp@macbook".system   # macOS
 ```
-
-## Sanity build (no `sudo`, no switch)
-
-```bash
-nix build '.#darwinConfigurations."jordanp@macbook".system'
-```
-
-## See also
-
-*   [Documentation index](../index.md)
-*   [Repository structure](../structure.md)
