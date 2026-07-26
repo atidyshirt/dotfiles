@@ -45,6 +45,7 @@
               "1password"
               "1password-cli"
               "1password-gui"
+              "claude-code"
             ];
         };
         mkLinux =
@@ -72,14 +73,26 @@
             cmd="''${1:-}"
             shift || true
 
+            # Re-resolve the flake from the live checkout (not the store path
+            # baked in at build time) and always pull in git submodules -
+            # a clean tree otherwise silently drops submodule content
+            # (e.g. the nvim config), since git submodules are commit
+            # pointers, not blobs, in the superproject's git history.
+            flake_ref() {
+              echo "$(git rev-parse --show-toplevel)?submodules=1"
+            }
+
             case "$cmd" in
               rebuild)
                 case "$(uname -s)" in
                   Darwin)
-                    exec sudo darwin-rebuild switch --flake ${self}
+                    # darwin-rebuild defaults to darwinConfigurations.$(hostname),
+                    # which won't match unless this Mac is literally named
+                    # "${username}@macbook" - pin the attr explicitly instead.
+                    exec sudo darwin-rebuild switch --flake "$(flake_ref)#${username}@macbook"
                     ;;
                   Linux)
-                    exec sudo nixos-rebuild switch --flake ${self}
+                    exec sudo nixos-rebuild switch --flake "$(flake_ref)"
                     ;;
                 esac
                 ;;
@@ -97,7 +110,7 @@
                 ;;
 
               show)
-                exec nix flake show ${self}
+                exec nix flake show "$(flake_ref)"
                 ;;
 
               *)

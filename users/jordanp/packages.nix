@@ -3,28 +3,29 @@
   home.packages =
     with pkgs;
     [
-      tmux
-      zsh
-      lazygit
-      lazydocker
+      _1password-cli
+      cargo
+      claude-code
+      clippy
       devenv
-      kind
+      fzf
       go
       jq
+      kind
+      lazydocker
+      lazygit
       lua5_4
       nodejs_24
+      pandoc
       python313
       ripgrep
-      fzf
-      zig
-      rustc
-      cargo
-      pandoc
-      tectonic
-      clippy
-      rustfmt
       rust-analyzer
-      _1password-cli
+      rustc
+      rustfmt
+      tectonic
+      tmux
+      zig
+      zsh
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       _1password-gui
