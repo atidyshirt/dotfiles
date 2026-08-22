@@ -1,4 +1,7 @@
 [[ssh-keys]]
+vault = "homelab"
+
+[[ssh-keys]]
 vault = "Allied"
 
 [[ssh-keys]]
