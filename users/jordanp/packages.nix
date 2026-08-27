@@ -6,6 +6,7 @@
       _1password-cli
       cargo
       claude-code
+      tailscale
       clippy
       devenv
       fzf
