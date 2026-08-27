@@ -11,6 +11,7 @@
       devenv
       fzf
       go
+      graphify
       jq
       kind
       lazydocker
@@ -19,6 +20,7 @@
       nodejs_24
       pandoc
       python313
+      python313Packages.pip
       ripgrep
       rust-analyzer
       rustc
