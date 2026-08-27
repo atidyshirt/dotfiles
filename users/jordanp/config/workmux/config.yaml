@@ -1,0 +1,15 @@
+agent: claude
+
+panes:
+  - command: <agent>
+    focus: true
+
+dashboard:
+  commit: "Create a commit with a conventional commit message"
+  merge: "Rebase onto main and run workmux merge"
+
+# Keep permission prompts, but share what's already been granted across
+# worktrees of the same project so Claude doesn't re-ask per worktree.
+files:
+  symlink:
+    - .claude/settings.local.json

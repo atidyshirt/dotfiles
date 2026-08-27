@@ -11,6 +11,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    workmux = {
+      url = "github:raine/workmux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,7 +34,7 @@
     {
       darwinConfigurations."${username}@macbook" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { inherit dotfilesRoot username; };
+        specialArgs = { inherit dotfilesRoot username; inputs = _inputs; };
         modules = [
           ./machines/darwin.nix
           home-manager.darwinModules.home-manager
@@ -54,6 +58,7 @@
             pkgs = nixpkgs.legacyPackages.${system};
             extraSpecialArgs = {
               inherit dotfilesRoot username;
+              inputs = _inputs;
             };
             modules = [ linuxModule ] ++ import ./machines/nixos.nix;
           };

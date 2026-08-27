@@ -16,6 +16,7 @@
     ./tmux/default.nix
     ./wezterm/default.nix
     ./pandoc/default.nix
+    ./workmux/default.nix
   ];
 
   programs.home-manager.enable = true;

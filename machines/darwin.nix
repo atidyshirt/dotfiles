@@ -2,6 +2,7 @@
   pkgs,
   dotfilesRoot,
   username,
+  inputs,
   ...
 }:
 {
@@ -53,7 +54,7 @@
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "hm-backup";
   home-manager.extraSpecialArgs = {
-    inherit dotfilesRoot username;
+    inherit dotfilesRoot username inputs;
     sketchybarConfig = ../users/jordanp/config/sketchybar;
   };
   home-manager.users.${username} = {
