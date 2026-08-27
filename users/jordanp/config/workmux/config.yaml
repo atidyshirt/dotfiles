@@ -1,4 +1,5 @@
 agent: claude
+nerdfont: true
 
 panes:
   - command: <agent>
@@ -7,6 +8,8 @@ panes:
 dashboard:
   commit: "Create a commit with a conventional commit message"
   merge: "Rebase onto main and run workmux merge"
+  preview_size: 90
+  agent_columns: [number, project, worktree, git, pr, status, time, title]
 
 # Keep permission prompts, but share what's already been granted across
 # worktrees of the same project so Claude doesn't re-ask per worktree.
