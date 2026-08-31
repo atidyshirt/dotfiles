@@ -34,6 +34,7 @@
       _1password-gui
       raycast
       orbstack
+      lima
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       kubectl
