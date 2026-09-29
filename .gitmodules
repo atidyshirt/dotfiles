@@ -1,4 +1,0 @@
-[submodule "users/jordanp/config/nvim"]
-	path = users/jordanp/config/nvim
-	url = https://github.com/atidyshirt/neovim.git
-	branch = main

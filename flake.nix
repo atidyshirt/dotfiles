@@ -78,13 +78,10 @@
             cmd="''${1:-}"
             shift || true
 
-            # Re-resolve the flake from the live checkout (not the store path
-            # baked in at build time) and always pull in git submodules -
-            # a clean tree otherwise silently drops submodule content
-            # (e.g. the nvim config), since git submodules are commit
-            # pointers, not blobs, in the superproject's git history.
+            # Re-resolve the flake from the live checkout, not the store path
+            # baked in at build time.
             flake_ref() {
-              echo "$(git rev-parse --show-toplevel)?submodules=1"
+              echo "$(git rev-parse --show-toplevel)"
             }
 
             case "$cmd" in
@@ -94,10 +91,12 @@
                     # darwin-rebuild defaults to darwinConfigurations.$(hostname),
                     # which won't match unless this Mac is literally named
                     # "${username}@macbook" - pin the attr explicitly instead.
-                    exec sudo darwin-rebuild switch --flake "$(flake_ref)#${username}@macbook"
+                    # --impure: the nvim module asserts ~/projects/neovim exists,
+                    # which needs real filesystem access outside pure eval.
+                    exec sudo darwin-rebuild switch --impure --flake "$(flake_ref)#${username}@macbook"
                     ;;
                   Linux)
-                    exec sudo nixos-rebuild switch --flake "$(flake_ref)"
+                    exec sudo nixos-rebuild switch --impure --flake "$(flake_ref)"
                     ;;
                 esac
                 ;;
@@ -123,6 +122,16 @@
                 exit 1
                 ;;
             esac
+          ''}";
+        };
+        update-nvim-lock = {
+          type = "app";
+          program = "${pkgs.writeShellScript "update-nvim-lock" ''
+            set -euo pipefail
+            cd "${toString ./.}"
+            exec nvim --headless \
+              "+lua vim.pack.update(nil, { target = 'lockfile', force = true })" \
+              "+qa"
           ''}";
         };
       });

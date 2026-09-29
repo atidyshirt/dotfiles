@@ -1,4 +1,4 @@
-{ dotfilesRoot, ... }:
+{ config, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -7,10 +7,19 @@
     vimdiffAlias = true;
     withRuby = false;
     withPython3 = false;
-    # Provider disables go through the wrapper instead of writing
-    # ~/.config/nvim/init.lua, which would conflict with the directory symlink.
     sideloadInitLua = true;
   };
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/projects/neovim";
 
-  xdg.configFile."nvim".source = dotfilesRoot + "/config/nvim";
+  assertions = [
+    {
+      assertion = builtins.pathExists "${config.home.homeDirectory}/projects/neovim";
+      message = ''
+        ~/projects/neovim is missing - clone it before rebuilding:
+          git clone git@github.com:atidyshirt/neovim.git ~/projects/neovim
+      '';
+    }
+  ];
 }
