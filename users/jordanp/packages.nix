@@ -27,6 +27,7 @@
       rustfmt
       tectonic
       tmux
+      tree-sitter
       zig
       zsh
     ]
