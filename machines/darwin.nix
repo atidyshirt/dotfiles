@@ -12,13 +12,15 @@
   fonts.packages = [ pkgs.nerd-fonts.fira-code ];
 
   nixpkgs.config.allowUnfreePredicate =
-    pkg: builtins.elem (pkgs.lib.getName pkg) [
+    pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
       "1password"
       "1password-cli"
       "1password-gui"
       "orbstack"
       "claude-code"
       "raycast"
+      "discord"
     ];
 
   nix.settings.experimental-features = [

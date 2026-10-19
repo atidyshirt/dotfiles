@@ -36,6 +36,7 @@
       raycast
       orbstack
       lima
+      discord
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       kubectl
